@@ -2,11 +2,11 @@ package listas;
 
 import nodos.NodoSimple;
 
-public class ListaSimple {
+public class ListaClientesAtendidos {
     NodoSimple primero;
     NodoSimple ultimo;
 
-    public ListaSimple() {
+    public ListaClientesAtendidos() {
         this.primero = null;
         this.ultimo = null;
     }

@@ -2,11 +2,11 @@ package listas;
 
 import nodos.NodoSimple;
 
-public class Cola {
+public class PilaImagenes {
     NodoSimple primero;
     NodoSimple ultimo;
 
-    public Cola() {
+    public PilaImagenes() {
         this.primero = null;
         this.ultimo = null;
     }
@@ -15,18 +15,18 @@ public class Cola {
         return primero==null;
     }
 
-    public void encolar(Object data) {
+    public void apilar(Object data) {
         NodoSimple nuevo = new NodoSimple(data);
         if (estaVacia()) {
             this.primero = nuevo;
-            this.ultimo = nuevo;
         } else {
-            this.ultimo.setSiguiente(nuevo);
-            this.ultimo = nuevo;
+            NodoSimple actual = this.primero;
+            this.primero = nuevo;
+            this.primero.setSiguiente(actual);
         }
     }
 
-    public void desencolar() {
+    public void desapilar() {
         NodoSimple actual = this.primero.getSiguiente();
         this.primero.setSiguiente(null);
         this.primero = actual;
@@ -42,4 +42,5 @@ public class Cola {
         }
             
     }
+
 }
