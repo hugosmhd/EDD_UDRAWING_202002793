@@ -38,10 +38,12 @@ public class ColaRecepcion {
         }
     }
 
-    public void desencolar() {
+    public Cliente desencolar() {
         NodoSimple actual = this.primero.getSiguiente();
+        Cliente auxiliar = (Cliente)this.primero.getData();
         this.primero.setSiguiente(null);
         this.primero = actual;
+        return auxiliar;
     }
 
     public void visualizar(){
@@ -49,7 +51,7 @@ public class ColaRecepcion {
 
         while( actual!= null){
             Cliente aux = (Cliente) actual.getData();
-            System.out.println("--------- ESTAMOS --------------");
+            System.out.println("--------- CLIENTE --------------");
             // if (actual.getSiguiente()!=null) {
             System.out.println("ID: " + aux.getIdCliente());                
             System.out.println("Nombre: " + aux.getNombre());                

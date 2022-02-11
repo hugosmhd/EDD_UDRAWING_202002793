@@ -1,10 +1,9 @@
 import java.util.Scanner;
 
 import funciones.CargaMasiva;
-
+import funciones.EjecutarPaso;
 import listas.ColaRecepcion;
-// import listas.ListaSimple;
-// import listas.Pila;
+import listas.ListaVentanillas;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -14,13 +13,14 @@ public class App {
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
         ColaRecepcion colaClientes = new ColaRecepcion();
+        ListaVentanillas listaVentanillas = new ListaVentanillas();
 
             
         while(!salir){
                 
             System.out.println("1. Carga masiva");
-            System.out.println("2. Opcion 2");
-            System.out.println("3. Opcion 3");
+            System.out.println("2. Cantidad de ventanillas");
+            System.out.println("3. Ejecutar paso");
             System.out.println("4. Salir");
                 
             System.out.println("Escribe una de las opciones");
@@ -28,16 +28,24 @@ public class App {
                 
             switch(opcion){
                 case 1:
-                    System.out.println("Has seleccionado la opcion 1");
+                    // System.out.println("Has seleccionado la opcion 1");
                     String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
                     CargaMasiva.cargar(ruta, colaClientes);
                     colaClientes.visualizar();
                     break;
                 case 2:
-                    System.out.println("Has seleccionado la opcion 2");
+                    // System.out.println("Has seleccionado la opcion 2");
+                    int cantidadVentanillas;
+                    System.out.println("Ingresa la cantidad de ventanillas");
+                    cantidadVentanillas = sn.nextInt();
+                    listaVentanillas.insertarAlFinal(cantidadVentanillas);
+                    listaVentanillas.visualizar();
                     break;
                     case 3:
                     System.out.println("Has seleccionado la opcion 3");
+                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas);
+                    colaClientes.visualizar();
+                    listaVentanillas.visualizar();
                     break;
                     case 4:
                     salir=true;
