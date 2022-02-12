@@ -12,7 +12,7 @@ public class Ventanilla {
     public Ventanilla(int idVentanilla, boolean disponible) {
         this.idVentanilla = idVentanilla;
         this.disponible = disponible;
-        this.imagenesCliente = null;
+        this.imagenesCliente = new PilaImagenes();
         this.cliente = null;
     }
 

@@ -2,6 +2,7 @@ package listas;
 
 import nodos.NodoSimple;
 import objetos.Cliente;
+import objetos.Imagen;
 import objetos.Ventanilla;
 
 public class ListaVentanillas {
@@ -53,6 +54,19 @@ public class ListaVentanillas {
             
     }
 
+    public Ventanilla disponible(){
+        NodoSimple actual= this.primero;
+
+        while( actual != null){
+            Ventanilla aux = (Ventanilla) actual.getData();
+            if(aux.isDisponible()) {
+                return aux;
+            }
+            actual=actual.getSiguiente();
+        }
+        return null;
+    }
+    
     public void atenderCliente(Cliente cliente) {
         NodoSimple actual= this.primero;
 
@@ -67,7 +81,38 @@ public class ListaVentanillas {
             actual=actual.getSiguiente();
         }
 
-        // System.out.println("No hay ventanillas disponibles por ahora");
+      
+
+    }
+
+    public void entregarImagenes() {
+        NodoSimple actual= this.primero;
+
+        while( actual != null){
+            Ventanilla aux = (Ventanilla) actual.getData();
+            if(!aux.isDisponible()) {
+                Cliente clienteAtendiendo = aux.getCliente();
+                System.out.println("------------***** ------");
+                System.out.println(clienteAtendiendo);
+                System.out.println("------------***** ------");
+                if(clienteAtendiendo.getCantidadColor() > 0) {
+                    System.out.println("Entra aqui porque hay de color");
+                    int nuevaCantidadColor = clienteAtendiendo.getCantidadColor() - 1;
+                    clienteAtendiendo.setCantidadColor(nuevaCantidadColor);
+                    Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), true);
+                    aux.getImagenesCliente().apilar(nuevaImagen);
+                } else if(clienteAtendiendo.getCantidadBW() > 0) {
+                    int nuevaCantidadBW = clienteAtendiendo.getCantidadBW() - 1;
+                    clienteAtendiendo.setCantidadBW(nuevaCantidadBW);
+                    Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), false);
+                    aux.getImagenesCliente().apilar(nuevaImagen);
+                } else {
+                    aux.setCliente(null);
+                    aux.setDisponible(true);
+                }
+            }
+            actual=actual.getSiguiente();
+        }
 
     }
 
