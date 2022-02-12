@@ -4,6 +4,7 @@ public class NodoDobleCircular {
     Object data;
     NodoDobleCircular siguiente;
     NodoDobleCircular anterior;
+    NodoSimple imagen;
 
     public NodoDobleCircular(Object data){
         this.data=data;

@@ -1,6 +1,7 @@
 package listas;
 
 import nodos.NodoSimple;
+import objetos.Imagen;
 
 public class PilaImagenes {
     NodoSimple primero;
@@ -35,12 +36,28 @@ public class PilaImagenes {
     public void visualizar(){
         NodoSimple actual= this.primero;
 
-        while( actual!= null){
-            if (actual.getSiguiente()!=null) System.out.print(actual.getData() + ",");
-            else System.out.println(actual.getData());
+        while( actual!= null) {
+            System.out.println("-+-+-+-+-+-*/*/*/*/*/*");
+            Imagen imagen = (Imagen)actual.getData();
+            System.out.println(imagen.getIdCliente());
+            System.out.println(imagen.isColor());
             actual=actual.getSiguiente();
         }
             
+    }
+
+    public void encolarImpresion(ColaImpresion colaColor, ColaImpresion colaBW) {
+        NodoSimple actual = this.primero;
+        while( actual!= null) {
+            Imagen imagenEncolar = (Imagen) actual.getData();
+            if (imagenEncolar.isColor()) {
+                colaColor.encolar(imagenEncolar);
+            } else {
+                colaBW.encolar(imagenEncolar);
+            }
+            actual=actual.getSiguiente();
+            this.desapilar();
+        }
     }
 
 }

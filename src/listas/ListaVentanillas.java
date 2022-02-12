@@ -49,6 +49,9 @@ public class ListaVentanillas {
                 System.out.println("A Blanco y Negro: " +clienteAtendiendo.getCantidadBW());   
 
             }
+            if(aux.getImagenesCliente() != null) {
+                aux.getImagenesCliente().visualizar();
+            }
             actual=actual.getSiguiente();
         }
             
@@ -85,7 +88,7 @@ public class ListaVentanillas {
 
     }
 
-    public void entregarImagenes(ListaCircularEspera listaClientesEspera) {
+    public void entregarImagenes(ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW) {
         NodoSimple actual= this.primero;
 
         while( actual != null){
@@ -93,7 +96,6 @@ public class ListaVentanillas {
             if(!aux.isDisponible()) {
                 Cliente clienteAtendiendo = aux.getCliente();
                 if(clienteAtendiendo.getCantidadColor() > 0) {
-                    System.out.println("Entra aqui porque hay de color");
                     int nuevaCantidadColor = clienteAtendiendo.getCantidadColor() - 1;
                     clienteAtendiendo.setCantidadColor(nuevaCantidadColor);
                     Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), true);
@@ -104,9 +106,10 @@ public class ListaVentanillas {
                     Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), false);
                     aux.getImagenesCliente().apilar(nuevaImagen);
                 } else {
-                    listaClientesEspera.insertar(aux.getCliente());
-                    aux.setCliente(null);
                     aux.setDisponible(true);
+                    listaClientesEspera.insertar(aux.getCliente());
+                    aux.getImagenesCliente().encolarImpresion(colaColor, colaBW);
+                    aux.setCliente(null);
                 }
             }
             actual=actual.getSiguiente();

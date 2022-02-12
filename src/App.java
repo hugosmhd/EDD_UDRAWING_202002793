@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import funciones.CargaMasiva;
 import funciones.EjecutarPaso;
+import listas.ColaImpresion;
 import listas.ColaRecepcion;
 import listas.ListaCircularEspera;
 import listas.ListaVentanillas;
@@ -22,6 +23,8 @@ public class App {
         ColaRecepcion colaClientes = new ColaRecepcion();
         ListaVentanillas listaVentanillas = new ListaVentanillas();
         ListaCircularEspera  listaClientesEspera = new ListaCircularEspera();
+        ColaImpresion colaColor = new ColaImpresion();
+        ColaImpresion colaBW = new ColaImpresion();
 
             
         while(!salir){
@@ -51,10 +54,18 @@ public class App {
                     break;
                     case 3:
                     System.out.println("Has seleccionado la opcion 3");
-                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera);
+                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, colaBW);
+                    System.out.println("----------------------------------------");
                     colaClientes.visualizar();
+                    System.out.println("----------------------------------------");
                     listaVentanillas.visualizar();
+                    System.out.println("----------------------------------------");
                     listaClientesEspera.imprimir();
+                    System.out.println("----------------------------------------");
+                    System.out.println("************* COLA A BW ***********");
+                    colaBW.visualizar();
+                    System.out.println("************* COLA A COLOR ***********");
+                    colaColor.visualizar();
                     break;
                     case 4:
                     salir=true;
