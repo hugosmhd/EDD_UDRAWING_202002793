@@ -85,16 +85,13 @@ public class ListaVentanillas {
 
     }
 
-    public void entregarImagenes() {
+    public void entregarImagenes(ListaCircularEspera listaClientesEspera) {
         NodoSimple actual= this.primero;
 
         while( actual != null){
             Ventanilla aux = (Ventanilla) actual.getData();
             if(!aux.isDisponible()) {
                 Cliente clienteAtendiendo = aux.getCliente();
-                System.out.println("------------***** ------");
-                System.out.println(clienteAtendiendo);
-                System.out.println("------------***** ------");
                 if(clienteAtendiendo.getCantidadColor() > 0) {
                     System.out.println("Entra aqui porque hay de color");
                     int nuevaCantidadColor = clienteAtendiendo.getCantidadColor() - 1;
@@ -107,6 +104,7 @@ public class ListaVentanillas {
                     Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), false);
                     aux.getImagenesCliente().apilar(nuevaImagen);
                 } else {
+                    listaClientesEspera.insertar(aux.getCliente());
                     aux.setCliente(null);
                     aux.setDisponible(true);
                 }

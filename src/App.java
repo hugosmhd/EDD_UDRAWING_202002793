@@ -3,10 +3,17 @@ import java.util.Scanner;
 import funciones.CargaMasiva;
 import funciones.EjecutarPaso;
 import listas.ColaRecepcion;
+import listas.ListaCircularEspera;
 import listas.ListaVentanillas;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        
+        // listaEspera.insertar(1);
+        // listaEspera.insertar(2);
+        // listaEspera.insertar(3);
+        // listaEspera.imprimir();
 
         
         Scanner sn = new Scanner(System.in);
@@ -14,6 +21,7 @@ public class App {
         int opcion; //Guardaremos la opcion del usuario
         ColaRecepcion colaClientes = new ColaRecepcion();
         ListaVentanillas listaVentanillas = new ListaVentanillas();
+        ListaCircularEspera  listaClientesEspera = new ListaCircularEspera();
 
             
         while(!salir){
@@ -43,9 +51,10 @@ public class App {
                     break;
                     case 3:
                     System.out.println("Has seleccionado la opcion 3");
-                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas);
+                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera);
                     colaClientes.visualizar();
                     listaVentanillas.visualizar();
+                    listaClientesEspera.imprimir();
                     break;
                     case 4:
                     salir=true;
@@ -55,6 +64,8 @@ public class App {
             }
                 
         }
+
+        // ******************************************************
         // Cola colaClientes = new Cola();
 
         // System.out.println("COLA CLIENTES");

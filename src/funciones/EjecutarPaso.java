@@ -1,12 +1,14 @@
 package funciones;
 
 import listas.ColaRecepcion;
+import listas.ListaCircularEspera;
 import listas.ListaVentanillas;
 import objetos.Ventanilla;
 
 public class EjecutarPaso {
-    public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas) {
-        listaVentanillas.entregarImagenes();
+    public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas,
+    ListaCircularEspera listaClientesEspera) {
+        listaVentanillas.entregarImagenes(listaClientesEspera);
         if(!colaClientes.estaVacia() && !listaVentanillas.estaVacia()) {
             Ventanilla ventanillaDisponible = listaVentanillas.disponible();
             if(ventanillaDisponible != null) {

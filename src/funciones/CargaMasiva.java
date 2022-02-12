@@ -30,7 +30,6 @@ public class CargaMasiva {
             while(keys.hasNext()) {
                 String key = keys.next();
                 if (clientes.get(key) instanceof JSONObject) {
-                    // System.out.println("Solo una vez");
                     JSONObject cliente = (JSONObject) clientes.get(key);
 
                     String idCliente = (String) cliente.get("id_cliente"); 
