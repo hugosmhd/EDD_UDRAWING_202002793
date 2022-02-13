@@ -9,6 +9,8 @@ import objetos.Ventanilla;
 public class EjecutarPaso {
     public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas,
     ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW) {
+        colaColor.imprimir();
+        colaBW.imprimir();
         listaVentanillas.entregarImagenes(listaClientesEspera, colaColor, colaBW);
         if(!colaClientes.estaVacia() && !listaVentanillas.estaVacia()) {
             Ventanilla ventanillaDisponible = listaVentanillas.disponible();

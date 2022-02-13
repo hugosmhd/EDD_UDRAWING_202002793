@@ -35,6 +35,20 @@ public class ColaImpresion {
         return auxiliar;
     }
 
+    public void imprimir() {
+        if(this.primero != null) {
+            Imagen actual = (Imagen) this.primero.getData();
+            int pasosActuales = actual.getPasos();
+            actual.setPasos(pasosActuales + 1);
+            if(actual.isColor() && actual.getPasos() == 2) {
+                Imagen imagenImpresa = this.desencolar();
+            } else if (!actual.isColor() && actual.getPasos() == 1) {
+                Imagen imagenImpresa = this.desencolar();
+            }
+        }
+        
+    }
+
     public void visualizar(){
         NodoSimple actual= this.primero;
 
@@ -43,6 +57,7 @@ public class ColaImpresion {
             System.out.println("--------- IMAGEN --------------");
             System.out.println("ID Cliente: " + aux.getIdCliente());                
             System.out.println("A color: " + aux.isColor());
+            System.out.println("Pasos: " + aux.getPasos());
             actual=actual.getSiguiente();
         }
             
