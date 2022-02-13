@@ -4,13 +4,20 @@ import listas.ColaImpresion;
 import listas.ColaRecepcion;
 import listas.ListaCircularEspera;
 import listas.ListaVentanillas;
+import objetos.Imagen;
 import objetos.Ventanilla;
 
 public class EjecutarPaso {
     public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas,
     ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW) {
-        colaColor.imprimir();
-        colaBW.imprimir();
+        Imagen imagenImpresaColor =  colaColor.imprimir();
+        Imagen imagenImpresaBW = colaBW.imprimir();
+        if(imagenImpresaColor != null) {
+            listaClientesEspera.insertarImagen(imagenImpresaColor);
+        }
+        if(imagenImpresaBW != null) {
+            listaClientesEspera.insertarImagen(imagenImpresaBW);
+        }
         listaVentanillas.entregarImagenes(listaClientesEspera, colaColor, colaBW);
         if(!colaClientes.estaVacia() && !listaVentanillas.estaVacia()) {
             Ventanilla ventanillaDisponible = listaVentanillas.disponible();

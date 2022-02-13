@@ -35,17 +35,20 @@ public class ColaImpresion {
         return auxiliar;
     }
 
-    public void imprimir() {
+    public Imagen imprimir() {
         if(this.primero != null) {
             Imagen actual = (Imagen) this.primero.getData();
             int pasosActuales = actual.getPasos();
             actual.setPasos(pasosActuales + 1);
             if(actual.isColor() && actual.getPasos() == 2) {
                 Imagen imagenImpresa = this.desencolar();
+                return imagenImpresa;
             } else if (!actual.isColor() && actual.getPasos() == 1) {
                 Imagen imagenImpresa = this.desencolar();
+                return imagenImpresa;
             }
         }
+        return null;
         
     }
 

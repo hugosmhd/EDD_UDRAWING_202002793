@@ -4,11 +4,12 @@ public class NodoDobleCircular {
     Object data;
     NodoDobleCircular siguiente;
     NodoDobleCircular anterior;
-    NodoSimple imagen;
+    NodoSimple imagenes;
 
     public NodoDobleCircular(Object data){
         this.data=data;
         siguiente=anterior=null;
+        imagenes = null;
     }
 
     public Object getData() {
@@ -34,6 +35,16 @@ public class NodoDobleCircular {
     public void setAnterior(NodoDobleCircular anterior) {
         this.anterior = anterior;
     }
+
+    public NodoSimple getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(NodoSimple imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    
 
     
 
