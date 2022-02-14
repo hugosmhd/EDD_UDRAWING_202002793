@@ -1,0 +1,7 @@
+digraph G { 
+node[shape=box, color=red];
+nodo1304836502[label=" ID CLIENTE: 3"]
+nodo225534817[label=" ID CLIENTE: 3"]
+nodo1304836502 -> nodo225534817;
+rankdir=LR;
+} 

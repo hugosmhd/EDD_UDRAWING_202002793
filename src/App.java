@@ -35,6 +35,9 @@ public class App {
             System.out.println("2. Cantidad de ventanillas");
             System.out.println("3. Ejecutar paso");
             System.out.println("4. Grapviz ventanillas");
+            System.out.println("5. Grapviz cola clientes");
+            System.out.println("6. Grapviz cola color");
+            System.out.println("7. Grapviz cola bw");
             System.out.println("10. Salir");
                 
             System.out.println("Escribe una de las opciones");
@@ -78,6 +81,12 @@ public class App {
                     break;
                 case 5:
                     colaClientes.dibujarGraphviz();
+                    break;
+                case 6:
+                    colaColor.dibujarGraphviz("colacolor");
+                    break;
+                case 7:
+                    colaBW.dibujarGraphviz("colabw");
                     break;
                 case 10:
                     salir=true;
