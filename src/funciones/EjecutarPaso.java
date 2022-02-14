@@ -10,6 +10,11 @@ import objetos.Ventanilla;
 public class EjecutarPaso {
     public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas,
     ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW) {
+
+        String idProxClienteColor = colaColor.idClienteProximo();
+        String idProxClienteBW = colaBW.idClienteProximo();
+        // listaClientesEspera
+
         Imagen imagenImpresaColor =  colaColor.imprimir();
         Imagen imagenImpresaBW = colaBW.imprimir();
         if(imagenImpresaColor != null) {

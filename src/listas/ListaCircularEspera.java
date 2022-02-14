@@ -6,41 +6,40 @@ import objetos.Cliente;
 import objetos.Imagen;
 
 public class ListaCircularEspera {
-    NodoDobleCircular primero;
-    NodoDobleCircular ultimo;
+    // NodoDobleCircular primero;
+    // NodoDobleCircular ultimo;
+    NodoDobleCircular lc;
 
     public ListaCircularEspera() {
-        this.primero = null;
-        this.ultimo = null;
+        // this.primero = null;
+        // this.ultimo = null;
+        this.lc = null;
     }
 
     public boolean estaVacia(){
-        return primero==null;
+        return this.lc==null;
     }
 
     public void insertar(Cliente cliente){
-        NodoDobleCircular nuevo=new NodoDobleCircular(cliente);
-        if (this.estaVacia()){
-            nuevo.setAnterior(nuevo);
+        NodoDobleCircular nuevo = new NodoDobleCircular(cliente);
+        if (this.estaVacia()) {
             nuevo.setSiguiente(nuevo);
-            this.primero=nuevo;            
-            this.ultimo=nuevo;            
-        }
-        else{
-            nuevo.setAnterior(this.ultimo);
-            this.ultimo.setSiguiente(nuevo);
-            this.ultimo = nuevo;
-            this.ultimo.setSiguiente(this.primero);
-            this.primero.setAnterior(this.ultimo);
-            
+            nuevo.setAnterior(nuevo);
+        } else {
+            NodoDobleCircular primero = this.lc.getSiguiente();  // bueno
+            nuevo.setSiguiente(primero);  // bueno
+            nuevo.setAnterior(this.lc); // bueno
 
+            this.lc.setSiguiente(nuevo);
+            primero.setAnterior(nuevo);
         }
+        this.lc = nuevo;
     }
 
     public void imprimir(){
-        NodoDobleCircular actual= this.primero;
+        if(this.lc != null) {
+            NodoDobleCircular actual= this.lc.getSiguiente();
 
-        if(actual != null) {
             do {
                 Cliente aux = (Cliente) actual.getData();
                 System.out.println("--------- CLIENTE EN ESPERA --------------");
@@ -58,13 +57,13 @@ public class ListaCircularEspera {
                     actualImg = actualImg.getSiguiente();
                 }                
                 actual=actual.getSiguiente();
-            } while( actual != this.primero);
+            } while( actual != this.lc.getSiguiente());
         }
             
     }
 
     public void insertarImagen(Imagen imgImpresa) {
-        NodoDobleCircular actual= this.primero;
+        NodoDobleCircular actual= this.lc.getSiguiente();
 
         if(actual != null) {
             do {
@@ -80,8 +79,21 @@ public class ListaCircularEspera {
                     }
                 }                
                 actual=actual.getSiguiente();
-            } while(actual != this.primero);
+            } while(actual != this.lc.getSiguiente());
         }
+    }
+
+    public void retirarCliente(String idProxClienteColor, String idProxClienteBW) {
+        // NodoDobleCircular actual= this.primero;
+        // if(actual != null) {
+        //     do {
+        //         Cliente aux = (Cliente) actual.getData();
+        //         if(actual.getImagenes() != null && (aux.getIdCliente() != idProxClienteColor && aux.getIdCliente() != idProxClienteBW)) {
+                    
+        //         }
+        //         actual=actual.getSiguiente();
+        //     } while(actual != this.primero);
+        // }
     }
 
 }

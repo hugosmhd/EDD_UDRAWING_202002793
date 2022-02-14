@@ -65,4 +65,13 @@ public class ColaImpresion {
         }
             
     }
+
+    public String idClienteProximo() {
+        if(!this.estaVacia()) {
+            Imagen img = (Imagen)this.primero.getData();
+            return img.getIdCliente();
+        }
+        return null;
+    }
+
 }
