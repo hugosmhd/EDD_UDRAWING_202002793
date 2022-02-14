@@ -1,0 +1,9 @@
+digraph G { 
+node[shape=box, color=red];
+nodo1581781576[label=" Cliente: Andres Lopez"]
+nodo1725154839[label=" Cliente: Juan Perez"]
+nodo1670675563[label=" Cliente: Luiz Higueros"]
+nodo1581781576 -> nodo1725154839;
+nodo1725154839 -> nodo1670675563;
+rankdir=LR;
+} 

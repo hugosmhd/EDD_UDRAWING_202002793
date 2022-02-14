@@ -39,6 +39,7 @@ public class App {
             System.out.println("6. Grapviz cola color");
             System.out.println("7. Grapviz cola bw");
             System.out.println("8. Grapviz pila de las ventanillas");
+            System.out.println("9. Grapviz lista clientes atendidos");
             System.out.println("10. Salir");
                 
             System.out.println("Escribe una de las opciones");
@@ -91,6 +92,9 @@ public class App {
                     break;
                 case 8:
                     listaVentanillas.dibujarGraphvizPila();
+                    break;
+                case 9:
+                    listaClientesAtendidos.dibujarGraphviz();
                     break;
                 case 10:
                     salir=true;
