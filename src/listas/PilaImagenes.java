@@ -60,4 +60,26 @@ public class PilaImagenes {
         }
     }
 
+    public String codigoGraphviz() {
+        StringBuilder dot = new StringBuilder();
+        
+        String nombresNodos = "";
+        String conexiones = "";
+        NodoSimple actual= this.primero;
+        while( actual!= null){
+            Imagen imagenActual = (Imagen) actual.getData();
+            String color = imagenActual.isColor() ? "Color" : "Blanco y Negro";
+            nombresNodos += "nodo" + actual.hashCode() + "[label=\" ID CLIENTE: " +  imagenActual.getIdCliente() + "\n" + color + "\"]" + "\n";
+            if (actual.getSiguiente() != null)            
+                conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
+            actual=actual.getSiguiente();
+        }
+        
+        dot.append(nombresNodos);
+        dot.append(conexiones);
+        
+        return dot.toString();
+    }
+    
+
 }

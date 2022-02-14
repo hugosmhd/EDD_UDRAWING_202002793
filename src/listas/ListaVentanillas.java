@@ -181,5 +181,46 @@ public class ListaVentanillas {
         }
     }
 
+    ///////////////////////////////////////////////////////
+    public String codigoGraphvizPila() {
+        StringBuilder dot = new StringBuilder();
+        dot.append("digraph G { \n");
+        dot.append("node[shape=box, color=red];\n");
+                
+        NodoSimple actual= this.primero;
+        while( actual!= null){
+            Ventanilla vtnActual = (Ventanilla) actual.getData();
+            String subgraph = "";
+            String conexiones = "";
+            subgraph += "subgraph cluster_" + vtnActual.getIdVentanilla() + "{ \n";
+            subgraph += "label = \" Ventanilla: " + vtnActual.getIdVentanilla()  +  "\";\n";
+            conexiones += vtnActual.getImagenesCliente().codigoGraphviz();
+            // if (actual.getSiguiente() != null) {         
+            // }
+            subgraph += conexiones;
+            subgraph += "}";
+            dot.append(subgraph);    
+
+            actual=actual.getSiguiente();
+        }
+        
+        // dot.append("rankdir=LR;\n");
+        dot.append("} \n");    
+        
+        return dot.toString();
+    }
+    
+    public void dibujarGraphvizPila() {
+        try {
+            escribirArchivo("pilaimg.dot", codigoGraphvizPila());
+            ProcessBuilder proceso;
+            proceso = new ProcessBuilder("dot","-Tpng","-o","pilaimg.png","pilaimg.dot");
+            proceso.redirectErrorStream(true);
+            proceso.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

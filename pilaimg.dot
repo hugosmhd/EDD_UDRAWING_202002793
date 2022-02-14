@@ -1,0 +1,17 @@
+digraph G { 
+node[shape=box, color=red];
+subgraph cluster_0{ 
+label = " Ventanilla: 0";
+nodo723074861[label=" ID CLIENTE: 3
+Blanco y Negro"]
+}subgraph cluster_1{ 
+label = " Ventanilla: 1";
+nodo895328852[label=" ID CLIENTE: 2
+Color"]
+nodo1304836502[label=" ID CLIENTE: 2
+Color"]
+nodo1670675563[label=" ID CLIENTE: 2
+Color"]
+nodo895328852 -> nodo1304836502;
+nodo1304836502 -> nodo1670675563;
+}} 
