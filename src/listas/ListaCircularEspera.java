@@ -84,16 +84,24 @@ public class ListaCircularEspera {
     }
 
     public void retirarCliente(String idProxClienteColor, String idProxClienteBW) {
-        // NodoDobleCircular actual= this.primero;
-        // if(actual != null) {
-        //     do {
-        //         Cliente aux = (Cliente) actual.getData();
-        //         if(actual.getImagenes() != null && (aux.getIdCliente() != idProxClienteColor && aux.getIdCliente() != idProxClienteBW)) {
-                    
-        //         }
-        //         actual=actual.getSiguiente();
-        //     } while(actual != this.primero);
-        // }
+        
+        if(this.lc != null) {
+            NodoDobleCircular actual= this.lc.getSiguiente();
+            do {
+                Cliente aux = (Cliente) actual.getData();
+                if(actual.getImagenes() != null && (aux.getIdCliente() != idProxClienteColor && aux.getIdCliente() != idProxClienteBW)) {
+                    actual.getAnterior().setSiguiente(actual.getSiguiente());
+                    actual.getSiguiente().setAnterior(actual.getAnterior());
+                    if(actual == this.lc && this.lc.getAnterior() != this.lc) {
+                        this.lc = this.lc.getAnterior();
+                    } else if(actual == this.lc && this.lc.getAnterior() == this.lc) {
+                        this.lc = null;
+                        break;
+                    }
+                }
+                actual=actual.getSiguiente();
+            } while(actual != this.lc.getSiguiente());
+        }
     }
 
 }

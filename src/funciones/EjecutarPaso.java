@@ -13,7 +13,7 @@ public class EjecutarPaso {
 
         String idProxClienteColor = colaColor.idClienteProximo();
         String idProxClienteBW = colaBW.idClienteProximo();
-        // listaClientesEspera
+        listaClientesEspera.retirarCliente(idProxClienteColor, idProxClienteBW);
 
         Imagen imagenImpresaColor =  colaColor.imprimir();
         Imagen imagenImpresaBW = colaBW.imprimir();
