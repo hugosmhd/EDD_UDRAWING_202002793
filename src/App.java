@@ -76,6 +76,9 @@ public class App {
                 case 4:
                     listaVentanillas.dibujarGraphviz();
                     break;
+                case 5:
+                    colaClientes.dibujarGraphviz();
+                    break;
                 case 10:
                     salir=true;
                     break;

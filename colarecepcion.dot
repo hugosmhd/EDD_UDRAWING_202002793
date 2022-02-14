@@ -1,0 +1,9 @@
+digraph G { 
+node[shape=box, color=red];
+nodo1581781576[label=" Ventanilla: Andres Lopez"]
+nodo1725154839[label=" Ventanilla: Juan Perez"]
+nodo1670675563[label=" Ventanilla: Luiz Higueros"]
+nodo1581781576 -> nodo1725154839;
+nodo1725154839 -> nodo1670675563;
+rankdir=LR;
+} 

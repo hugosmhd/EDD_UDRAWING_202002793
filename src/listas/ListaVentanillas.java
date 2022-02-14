@@ -1,13 +1,8 @@
 package listas;
 
-import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 
-import javafx.print.PrintColor;
-
-import java.awt.Desktop;
 
 import nodos.NodoSimple;
 import objetos.Cliente;
