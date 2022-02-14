@@ -34,7 +34,8 @@ public class App {
             System.out.println("1. Carga masiva");
             System.out.println("2. Cantidad de ventanillas");
             System.out.println("3. Ejecutar paso");
-            System.out.println("4. Salir");
+            System.out.println("4. Grapviz ventanillas");
+            System.out.println("10. Salir");
                 
             System.out.println("Escribe una de las opciones");
             opcion = sn.nextInt();
@@ -54,7 +55,7 @@ public class App {
                     listaVentanillas.insertarAlFinal(cantidadVentanillas);
                     listaVentanillas.visualizar();
                     break;
-                    case 3:
+                case 3:
                     System.out.println("Has seleccionado la opcion 3");
                     EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
                     colaBW, listaClientesAtendidos);
@@ -72,7 +73,10 @@ public class App {
                     System.out.println("************* COLA A COLOR ***********");
                     colaColor.visualizar();
                     break;
-                    case 4:
+                case 4:
+                    listaVentanillas.dibujarGraphviz();
+                    break;
+                case 10:
                     salir=true;
                     break;
                     default:

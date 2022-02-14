@@ -1,5 +1,14 @@
 package listas;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javafx.print.PrintColor;
+
+import java.awt.Desktop;
+
 import nodos.NodoSimple;
 import objetos.Cliente;
 import objetos.Imagen;
@@ -121,5 +130,61 @@ public class ListaVentanillas {
         }
 
     }
+
+    public String codigoGraphviz() {
+        StringBuilder dot = new StringBuilder();
+        dot.append("digraph G { \n");
+        dot.append("node[shape=box, color=red];\n");
+        
+        String nombresNodos = "";
+        String conexiones = "";
+        NodoSimple actual= this.primero;
+        while( actual!= null){
+            Ventanilla vtnActual = (Ventanilla) actual.getData();
+            nombresNodos += "nodo" + actual.hashCode() + "[label=\" Ventanilla: " +  vtnActual.getIdVentanilla() + "\"]" + "\n";
+            if (actual.getSiguiente() != null)            
+                conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
+            actual=actual.getSiguiente();
+        }
+        
+        dot.append(nombresNodos);
+        dot.append(conexiones);
+        dot.append("rankdir=LR;\n");
+        dot.append("} \n");    
+        
+        return dot.toString();
+    }
+    
+    private void escribirArchivo(String ruta, String contenido) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+            pw.write(contenido);
+            pw.close();
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(pw != null) {
+                pw.close();
+            }            
+        }
+    }
+    
+    public void dibujarGraphviz() {
+        try {
+            escribirArchivo("ventanillas.dot", codigoGraphviz());
+            ProcessBuilder proceso;
+            proceso = new ProcessBuilder("dot","-Tpng","-o","ventanillas.png","ventanillas.dot");
+            proceso.redirectErrorStream(true);
+            proceso.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
