@@ -5,6 +5,7 @@ import funciones.EjecutarPaso;
 import listas.ColaImpresion;
 import listas.ColaRecepcion;
 import listas.ListaCircularEspera;
+import listas.ListaClientesAtendidos;
 import listas.ListaVentanillas;
 
 public class App {
@@ -23,6 +24,7 @@ public class App {
         ColaRecepcion colaClientes = new ColaRecepcion();
         ListaVentanillas listaVentanillas = new ListaVentanillas();
         ListaCircularEspera  listaClientesEspera = new ListaCircularEspera();
+        ListaClientesAtendidos  listaClientesAtendidos = new ListaClientesAtendidos();
         ColaImpresion colaColor = new ColaImpresion();
         ColaImpresion colaBW = new ColaImpresion();
 
@@ -54,12 +56,15 @@ public class App {
                     break;
                     case 3:
                     System.out.println("Has seleccionado la opcion 3");
-                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, colaBW);
-                    System.out.println("----------------------------------------");
+                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
+                    colaBW, listaClientesAtendidos);
+                    System.out.println("--------- COLA DE CLIENTES ---------");
                     colaClientes.visualizar();
-                    System.out.println("----------------------------------------");
+                    System.out.println("---------- LISTA DE VENTANILLAS ------------");
                     listaVentanillas.visualizar();
-                    System.out.println("----------------------------------------");
+                    System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
+                    listaClientesAtendidos.visualizar();
+                    System.out.println("---------- LISTA CLIENTES EN ESPERA ------------");
                     listaClientesEspera.imprimir();
                     System.out.println("----------------------------------------");
                     System.out.println("************* COLA A BW ***********");

@@ -88,13 +88,15 @@ public class ListaVentanillas {
 
     }
 
-    public void entregarImagenes(ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW) {
+    public void entregarImagenes(ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, 
+    ColaImpresion colaBW, ListaClientesAtendidos listaClientesAtendidos) {
         NodoSimple actual= this.primero;
 
         while( actual != null){
             Ventanilla aux = (Ventanilla) actual.getData();
             if(!aux.isDisponible()) {
                 Cliente clienteAtendiendo = aux.getCliente();
+                clienteAtendiendo.setTotalPasos();
                 if(clienteAtendiendo.getCantidadColor() > 0) {
                     int nuevaCantidadColor = clienteAtendiendo.getCantidadColor() - 1;
                     clienteAtendiendo.setCantidadColor(nuevaCantidadColor);
@@ -107,10 +109,13 @@ public class ListaVentanillas {
                     aux.getImagenesCliente().apilar(nuevaImagen);
                 } else {
                     aux.setDisponible(true);
+                    clienteAtendiendo.setVentanillaAtencion("Ventanilla: " + aux.getIdVentanilla());
                     listaClientesEspera.insertar(aux.getCliente());
+                    listaClientesAtendidos.insertarAlFinal(clienteAtendiendo);
                     aux.getImagenesCliente().encolarImpresion(colaColor, colaBW);
                     aux.setCliente(null);
                 }
+                
             }
             actual=actual.getSiguiente();
         }

@@ -56,13 +56,7 @@ public class ColaRecepcion {
             System.out.println("ID: " + aux.getIdCliente());                
             System.out.println("Nombre: " + aux.getNombre());                
             System.out.println("A Color: " + aux.getCantidadColor());                
-            System.out.println("A Blanco y Negro: " +aux.getCantidadBW());                
-            // } else {
-                // System.out.println(aux.getIdCliente());                
-                // System.out.println(aux.getNombre());                
-                // System.out.println(aux.getCantidadColor());                
-                // System.out.println(aux.getCantidadBW()); 
-            // } 
+            System.out.println("A Blanco y Negro: " +aux.getCantidadBW()); 
             actual=actual.getSiguiente();
         }
             

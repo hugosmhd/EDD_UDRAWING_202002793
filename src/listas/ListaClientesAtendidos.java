@@ -1,6 +1,7 @@
 package listas;
 
 import nodos.NodoSimple;
+import objetos.Cliente;
 
 public class ListaClientesAtendidos {
     NodoSimple primero;
@@ -15,7 +16,7 @@ public class ListaClientesAtendidos {
         return primero==null;
     }
 
-    public void insertarAlFinal(Object data) {
+    public void insertarAlFinal(Cliente data) {
         NodoSimple nuevo = new NodoSimple(data);
         if (estaVacia()) {
             this.primero = nuevo;
@@ -30,8 +31,16 @@ public class ListaClientesAtendidos {
         NodoSimple actual= this.primero;
 
         while(actual != null){
-            if (actual.getSiguiente()!=null) System.out.print(actual.getData() + ",");
-            else System.out.println(actual.getData());
+            Cliente aux = (Cliente) actual.getData();
+            System.out.println("--------- CLIENTE --------------");
+            // if (actual.getSiguiente()!=null) {
+            System.out.println("ID: " + aux.getIdCliente());                
+            System.out.println("Nombre: " + aux.getNombre());                
+            System.out.println("Ventanilla atencion: " + aux.getVentanillaAtencion());                
+            System.out.println("A Color: " + aux.getCantidadColor());                
+            System.out.println("A Blanco y Negro: " +aux.getCantidadBW());
+            System.out.println("Total imagenes: " +aux.getTotalImagenes());
+            System.out.println("Cantidad total de pasos: " + aux.getTotalPasos());
             actual=actual.getSiguiente();
         }
             

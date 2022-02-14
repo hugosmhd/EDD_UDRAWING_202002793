@@ -62,6 +62,7 @@ public class ListaCircularEspera {
             
     }
 
+
     public void insertarImagen(Imagen imgImpresa) {
         NodoDobleCircular actual= this.lc.getSiguiente();
 
@@ -70,12 +71,18 @@ public class ListaCircularEspera {
                 Cliente cliente = (Cliente) actual.getData();
                 if(cliente.getIdCliente() == imgImpresa.getIdCliente()) {
                     NodoSimple imgLista = new NodoSimple(imgImpresa);
+                    cliente.setTotalImagenes();
                     if(actual.getImagenes() == null) {
                         actual.setImagenes(imgLista);
                     } else {
                         NodoSimple actualImagen = actual.getImagenes();
                         imgLista.setSiguiente(actualImagen);
                         actual.setImagenes(imgLista);
+                    }
+                    if(imgImpresa.isColor()) {
+                        cliente.setCantidadColor(cliente.getCantidadColor() + 1);
+                    } else {
+                        cliente.setCantidadBW(cliente.getCantidadBW() + 1);
                     }
                 }                
                 actual=actual.getSiguiente();

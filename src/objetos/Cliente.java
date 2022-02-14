@@ -5,12 +5,18 @@ public class Cliente {
     public String nombre;
     public int cantidadColor;
     public int cantidadBW;
+    public int totalImagenes;
+    public String ventanillaAtencion;
+    public int totalPasos;
 
     public Cliente(String idCliente, String nombre, int cantidadColor, int cantidadBW) {
         this.idCliente = idCliente;
         this.nombre = nombre;
         this.cantidadColor = cantidadColor;
         this.cantidadBW = cantidadBW;
+        this.totalImagenes = 0;
+        this.totalPasos = 0;
+        this.ventanillaAtencion = null;
     }
 
     public String getIdCliente() {
@@ -44,6 +50,32 @@ public class Cliente {
     public void setCantidadBW(int cantidadBW) {
         this.cantidadBW = cantidadBW;
     }
+
+    public String getVentanillaAtencion() {
+        return ventanillaAtencion;
+    }
+
+    public void setVentanillaAtencion(String ventanillaAtencion) {
+        this.ventanillaAtencion = ventanillaAtencion;
+    }
+
+    public int getTotalImagenes() {
+        return totalImagenes;
+    }
+
+    public void setTotalImagenes() {
+        this.totalImagenes += 1;
+    }
+
+    public int getTotalPasos() {
+        return totalPasos;
+    }
+
+    public void setTotalPasos() {
+        this.totalPasos += 1;
+    }
+
+    
 
     
 }
