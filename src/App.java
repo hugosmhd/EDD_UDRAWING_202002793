@@ -40,7 +40,8 @@ public class App {
             System.out.println("7. Grapviz cola bw");
             System.out.println("8. Grapviz pila de las ventanillas");
             System.out.println("9. Grapviz lista clientes atendidos");
-            System.out.println("10. Salir");
+            System.out.println("10. Grapviz lista clientes espera");
+            System.out.println("15. Salir");
                 
             System.out.println("Escribe una de las opciones");
             opcion = sn.nextInt();
@@ -97,6 +98,9 @@ public class App {
                     listaClientesAtendidos.dibujarGraphviz();
                     break;
                 case 10:
+                    listaClientesEspera.dibujarGraphviz();
+                    break;
+                case 15:
                     salir=true;
                     break;
                     default:

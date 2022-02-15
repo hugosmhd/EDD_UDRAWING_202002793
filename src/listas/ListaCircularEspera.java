@@ -1,5 +1,8 @@
 package listas;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import nodos.NodoDobleCircular;
 import nodos.NodoSimple;
 import objetos.Cliente;
@@ -62,7 +65,6 @@ public class ListaCircularEspera {
             
     }
 
-
     public void insertarImagen(Imagen imgImpresa) {
         NodoDobleCircular actual= this.lc.getSiguiente();
 
@@ -110,5 +112,86 @@ public class ListaCircularEspera {
             } while(actual != this.lc.getSiguiente());
         }
     }
+
+    public String codigoGraphviz() {
+        StringBuilder dot = new StringBuilder();
+        dot.append("digraph G { \n");
+        dot.append("node[shape=box, color=red];\n");
+        
+        String nombresNodos = "";
+        String nodosRank = "";
+        String conexiones = "";
+        int grupo = 1;
+
+        NodoDobleCircular actual= this.lc.getSiguiente();
+
+            do {
+                Cliente clienteActual = (Cliente) actual.getData();
+                nombresNodos += "nodo" + actual.hashCode() + "[label=\" Cliente: " +  clienteActual.getNombre() + "\" " +
+                ", style = filled, fillcolor = lightskyblue, group = " + grupo + "]" + "\n";
+                      
+                conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
+                conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getAnterior().hashCode());
+                nodosRank += "nodo" + actual.hashCode() + "; ";
+               
+                NodoSimple actualImg = actual.getImagenes();
+                if(actualImg != null) {
+                    conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actualImg.hashCode());
+                }
+                while(actualImg != null) {
+                    Imagen imagenActual = (Imagen) actualImg.getData();
+                    String color = imagenActual.isColor() ? "Color" : "Blanco y Negro";
+                    nombresNodos += "nodo" + actualImg.hashCode() + "[label=\"" +  color + "\" " +
+                    ",width = 1.8, group = " + grupo + "]" + "\n";     
+                    if(actualImg.getSiguiente() != null) {
+                        conexiones += String.format("nodo%d -> nodo%d;\n", actualImg.hashCode(), actualImg.getSiguiente().hashCode());               
+                    }
+                    actualImg = actualImg.getSiguiente();
+                }
+                actual=actual.getSiguiente();
+                grupo += 1;
+            } while( actual != this.lc.getSiguiente());
+        
+        dot.append(nombresNodos);
+        dot.append(conexiones);
+        dot.append("{ rank = same; " + nodosRank + " }\n");
+
+        // dot.append("rankdir=LR;\n");
+        dot.append("} \n");    
+        
+        return dot.toString();
+    }
+    
+    private void escribirArchivo(String ruta, String contenido) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+            pw.write(contenido);
+            pw.close();
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(pw != null) {
+                pw.close();
+            }            
+        }
+    }
+    
+    public void dibujarGraphviz() {
+        try {
+            escribirArchivo("clientesespera.dot", codigoGraphviz());
+            ProcessBuilder proceso;
+            proceso = new ProcessBuilder("dot","-Tpng","-o","clientesespera.png","clientesespera.dot");
+            proceso.redirectErrorStream(true);
+            proceso.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
