@@ -1,9 +1,0 @@
-digraph G { 
-node[shape=box, color=red];
-nodo1670675563[label=" ID CLIENTE: 2"]
-nodo723074861[label=" ID CLIENTE: 2"]
-nodo895328852[label=" ID CLIENTE: 2"]
-nodo1670675563 -> nodo723074861;
-nodo723074861 -> nodo895328852;
-rankdir=LR;
-} 

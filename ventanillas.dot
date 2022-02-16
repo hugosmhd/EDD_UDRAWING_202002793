@@ -1,7 +1,0 @@
-digraph G { 
-node[shape=box, color=red];
-nodo1581781576[label=" Ventanilla: 0"]
-nodo1725154839[label=" Ventanilla: 1"]
-nodo1581781576 -> nodo1725154839;
-rankdir=LR;
-} 

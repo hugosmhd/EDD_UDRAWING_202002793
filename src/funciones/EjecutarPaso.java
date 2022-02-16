@@ -13,10 +13,13 @@ public class EjecutarPaso {
     ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW, 
     ListaClientesAtendidos listaClientesAtendidos) {
 
+        colaClientes.aumentarPasoClientes();
+        listaClientesEspera.aumentarPaso();
+
         // listaClientesEspera.aumentarPaso();
         String idProxClienteColor = colaColor.idClienteProximo();
         String idProxClienteBW = colaBW.idClienteProximo();
-        listaClientesEspera.retirarCliente(idProxClienteColor, idProxClienteBW);
+        listaClientesEspera.retirarCliente(idProxClienteColor, idProxClienteBW, listaClientesAtendidos);
 
         Imagen imagenImpresaColor =  colaColor.imprimir();
         Imagen imagenImpresaBW = colaBW.imprimir();

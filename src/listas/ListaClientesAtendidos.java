@@ -48,6 +48,21 @@ public class ListaClientesAtendidos {
         }
             
     }
+    public Cliente buscar(String idCliente){
+        NodoSimple actual= this.primero;
+
+        Cliente aux = (Cliente) actual.getData();
+        while(actual != null && aux.getIdCliente() != idCliente){
+            aux = (Cliente) actual.getData();
+            actual=actual.getSiguiente();
+        }
+        if(actual == null) {
+            System.out.println("No se encuentra el cliente con este id en la lista de clientes atendidos");
+        }
+        return aux;
+            
+    }
+    
     
     public String codigoGraphviz() {
         StringBuilder dot = new StringBuilder();

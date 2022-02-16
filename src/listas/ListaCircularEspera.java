@@ -9,8 +9,6 @@ import objetos.Cliente;
 import objetos.Imagen;
 
 public class ListaCircularEspera {
-    // NodoDobleCircular primero;
-    // NodoDobleCircular ultimo;
     NodoDobleCircular lc;
 
     public ListaCircularEspera() {
@@ -92,7 +90,7 @@ public class ListaCircularEspera {
         }
     }
 
-    public void retirarCliente(String idProxClienteColor, String idProxClienteBW) {
+    public void retirarCliente(String idProxClienteColor, String idProxClienteBW, ListaClientesAtendidos listaClientesAtendidos) {
         
         if(this.lc != null) {
             NodoDobleCircular actual= this.lc.getSiguiente();
@@ -101,6 +99,8 @@ public class ListaCircularEspera {
                 if(actual.getImagenes() != null && (aux.getIdCliente() != idProxClienteColor && aux.getIdCliente() != idProxClienteBW)) {
                     actual.getAnterior().setSiguiente(actual.getSiguiente());
                     actual.getSiguiente().setAnterior(actual.getAnterior());
+                    Cliente espera = listaClientesAtendidos.buscar(aux.getIdCliente());
+                    espera.totalPasos = aux.getTotalPasos();
                     if(actual == this.lc && this.lc.getAnterior() != this.lc) {
                         this.lc = this.lc.getAnterior();
                     } else if(actual == this.lc && this.lc.getAnterior() == this.lc) {
@@ -112,6 +112,21 @@ public class ListaCircularEspera {
             } while(actual != this.lc.getSiguiente());
         }
     }
+
+    public void aumentarPaso() {
+        
+        if(this.lc != null) {
+            NodoDobleCircular actual= this.lc.getSiguiente();
+
+            do {
+                Cliente aux = (Cliente) actual.getData();
+                aux.setTotalPasos();             
+                actual=actual.getSiguiente();
+            } while( actual != this.lc.getSiguiente());
+        }
+    }
+    
+    ////////////////////////////////////////
 
     public String codigoGraphviz() {
         StringBuilder dot = new StringBuilder();

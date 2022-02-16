@@ -9,157 +9,167 @@ import listas.ListaClientesAtendidos;
 import listas.ListaVentanillas;
 
 public class App {
-    public static void main(String[] args) throws Exception {
-
-        
-        // listaEspera.insertar(1);
-        // listaEspera.insertar(2);
-        // listaEspera.insertar(3);
-        // listaEspera.imprimir();
-
-        
+    public static void main(String[] args) throws Exception {             
         Scanner sn = new Scanner(System.in);
-        boolean salir = false;
-        int opcion; //Guardaremos la opcion del usuario
-        ColaRecepcion colaClientes = new ColaRecepcion();
-        ListaVentanillas listaVentanillas = new ListaVentanillas();
-        ListaCircularEspera  listaClientesEspera = new ListaCircularEspera();
-        ListaClientesAtendidos  listaClientesAtendidos = new ListaClientesAtendidos();
-        ColaImpresion colaColor = new ColaImpresion();
-        ColaImpresion colaBW = new ColaImpresion();
+        Scanner snString = new Scanner(System.in);
+            boolean salir = false;
+            boolean salirParametros = false;
+            int opcion; //Guardaremos la opcion del usuario
+            ColaRecepcion colaClientes = new ColaRecepcion();
+            ListaVentanillas listaVentanillas = new ListaVentanillas();
+            ListaCircularEspera  listaClientesEspera = new ListaCircularEspera();
+            ListaClientesAtendidos  listaClientesAtendidos = new ListaClientesAtendidos();
+            ColaImpresion colaColor = new ColaImpresion();
+            ColaImpresion colaBW = new ColaImpresion();
 
-            
-        while(!salir){
                 
-            System.out.println("1. Carga masiva");
-            System.out.println("2. Cantidad de ventanillas");
-            System.out.println("3. Ejecutar paso");
-            System.out.println("4. Grapviz ventanillas");
-            System.out.println("5. Grapviz cola clientes");
-            System.out.println("6. Grapviz cola color");
-            System.out.println("7. Grapviz cola bw");
-            System.out.println("8. Grapviz pila de las ventanillas");
-            System.out.println("9. Grapviz lista clientes atendidos");
-            System.out.println("10. Grapviz lista clientes espera");
-            System.out.println("15. Salir");
-                
-            System.out.println("Escribe una de las opciones");
-            opcion = sn.nextInt();
-                
-            switch(opcion){
-                case 1:
-                    // System.out.println("Has seleccionado la opcion 1");
-                    String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
-                    CargaMasiva.cargar(ruta, colaClientes);
-                    colaClientes.visualizar();
+            while(!salir){
+                System.out.println("------- MENU PRINCIPAL UDRAWING PAPER -------");
+                System.out.println("1. Parametros iniciales");
+                System.out.println("2. Ejecutar paso");
+                System.out.println("3. Estado en memoria de las estructuras");
+                System.out.println("4. Reportes");
+                System.out.println("5. Acerca de");
+                System.out.println("6. Salir");                    
+                    
+                System.out.println("Escribe una de las opciones");
+                opcion = sn.nextInt();
+                    
+                switch(opcion){
+                    case 1:
+                    salirParametros = false;
+                    do {
+                        System.out.println("------- MENU PARAMTROS INICIALES -------");
+                        System.out.println("1. Carga masiva de clientes");
+                        System.out.println("2. Cantidad de ventanillas");
+                        System.out.println("3. Regresar al menu principal");
+                        int opcionParametros = sn.nextInt();
+                        switch(opcionParametros) {
+                            case 1:
+                                // String ruta;
+                                System.out.println("Ingresa la ruta del archivo");
+                                // ruta = snString.nextLine();
+                                String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
+                                CargaMasiva.cargar(ruta, colaClientes);
+                                break;
+                            case 2:
+                                int cantidadVentanillas;
+                                System.out.println("Ingresa la cantidad de ventanillas");
+                                cantidadVentanillas = sn.nextInt();
+                                listaVentanillas.insertarAlFinal(cantidadVentanillas);
+                                // listaVentanillas.visualizar();
+                                break;
+                            case 3:
+                                System.out.println("Regresando al menu principal...");
+                                salirParametros = true;
+                                break;
+                        }
+                        // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
+                        // CargaMasiva.cargar(ruta, colaClientes);
+                        // colaClientes.visualizar();
+                    } while(!salirParametros);
                     break;
-                case 2:
-                    // System.out.println("Has seleccionado la opcion 2");
-                    int cantidadVentanillas;
-                    System.out.println("Ingresa la cantidad de ventanillas");
-                    cantidadVentanillas = sn.nextInt();
-                    listaVentanillas.insertarAlFinal(cantidadVentanillas);
-                    listaVentanillas.visualizar();
-                    break;
-                case 3:
-                    System.out.println("Has seleccionado la opcion 3");
-                    EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
-                    colaBW, listaClientesAtendidos);
-                    System.out.println("--------- COLA DE CLIENTES ---------");
-                    colaClientes.visualizar();
-                    System.out.println("---------- LISTA DE VENTANILLAS ------------");
-                    listaVentanillas.visualizar();
-                    System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
-                    listaClientesAtendidos.visualizar();
-                    System.out.println("---------- LISTA CLIENTES EN ESPERA ------------");
-                    listaClientesEspera.imprimir();
-                    System.out.println("----------------------------------------");
-                    System.out.println("************* COLA A BW ***********");
-                    colaBW.visualizar();
-                    System.out.println("************* COLA A COLOR ***********");
-                    colaColor.visualizar();
-                    break;
-                case 4:
-                    listaVentanillas.dibujarGraphviz();
-                    break;
-                case 5:
-                    colaClientes.dibujarGraphviz();
-                    break;
-                case 6:
-                    colaColor.dibujarGraphviz("colacolor");
-                    break;
-                case 7:
-                    colaBW.dibujarGraphviz("colabw");
-                    break;
-                case 8:
-                    listaVentanillas.dibujarGraphvizPila();
-                    break;
-                case 9:
-                    listaClientesAtendidos.dibujarGraphviz();
-                    break;
-                case 10:
-                    listaClientesEspera.dibujarGraphviz();
-                    break;
-                case 15:
-                    salir=true;
-                    break;
+                    case 2:
+                        System.out.println("EJECUTANDO PASO");
+                        EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
+                        colaBW, listaClientesAtendidos);
+                        // System.out.println("Has seleccionado la opcion 2");
+                        // int cantidadVentanillas;
+                        // System.out.println("Ingresa la cantidad de ventanillas");
+                        // cantidadVentanillas = sn.nextInt();
+                        // listaVentanillas.insertarAlFinal(cantidadVentanillas);
+                        // listaVentanillas.visualizar();
+                        break;
+                    case 3:
+                        salirParametros = false;
+                        do {
+                            System.out.println("------- MENU ESTADO EN MEMORIA DE LAS ESTRUCTURAS -------");
+                            System.out.println("1. Cola de clientes (Recepcion)");
+                            System.out.println("2. Lista de ventanillas");
+                            System.out.println("3. Pila de imagenes en ventanillas");
+                            System.out.println("4. Lista de clientes atendidos");
+                            System.out.println("5. Cola de impresion a color");
+                            System.out.println("6. Cola de impresion en blanco y negro");
+                            System.out.println("7. Lista de clientes en espera");
+                            System.out.println("8. Todas las estructuras");
+                            System.out.println("9. Regresar al menu principal");
+                            int opcionParametros = sn.nextInt();
+                            switch(opcionParametros) {
+                                case 1:
+                                    colaClientes.dibujarGraphviz();
+                                    System.out.println("Grafica generada");
+                                    break;
+                                case 2:
+                                    listaVentanillas.dibujarGraphviz();
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 3:
+                                    listaVentanillas.dibujarGraphvizPila();
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 4:
+                                    listaClientesAtendidos.dibujarGraphviz();
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 5:
+                                    colaColor.dibujarGraphviz("colacolor");
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 6:
+                                    colaBW.dibujarGraphviz("colabw");
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 7:
+                                    listaClientesEspera.dibujarGraphviz();
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 8:
+                                    // listaClientesEspera.dibujarGraphviz();
+                                    System.out.println("Grafica generada");                                    
+                                    break;
+                                case 9:
+                                    System.out.println("Regresando al menu principal...");
+                                    salirParametros = true;
+                                    break;
+                            }
+                        } while(!salirParametros);
+                        break;
+                        
+                        // EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
+                        // colaBW, listaClientesAtendidos);
+                        // System.out.println("--------- COLA DE CLIENTES ---------");
+                        // colaClientes.visualizar();
+                        // System.out.println("---------- LISTA DE VENTANILLAS ------------");
+                        // listaVentanillas.visualizar();
+                        // System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
+                        // listaClientesAtendidos.visualizar();
+                        // System.out.println("---------- LISTA CLIENTES EN ESPERA ------------");
+                        // listaClientesEspera.imprimir();
+                        // System.out.println("----------------------------------------");
+                        // System.out.println("************* COLA A BW ***********");
+                        // colaBW.visualizar();
+                        // System.out.println("************* COLA A COLOR ***********");
+                        // colaColor.visualizar();
+                    case 4:
+                        // listaVentanillas.dibujarGraphviz();
+                        break;
+                    case 5:
+                        // colaClientes.dibujarGraphviz();
+                        break;
+                    case 6:
+                        salir=true;
+                        break;
                     default:
-                    System.out.println("Solo números entre 1 y 4");
+                        System.out.println("Solo números entre 1 y 6");
+                    
+                }
+                System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
+                listaClientesAtendidos.visualizar();
+                    
             }
-                
-        }
+        
 
-        // ******************************************************
-        // Cola colaClientes = new Cola();
-
-        // System.out.println("COLA CLIENTES");
-        // colaClientes.encolar(1);
-        // colaClientes.encolar(2);
-        // colaClientes.encolar(3);
-        // colaClientes.encolar(4);
-
-        // colaClientes.visualizar();
-
-        // colaClientes.desencolar();
-        // colaClientes.desencolar();
-        // colaClientes.encolar(5);
-        // colaClientes.encolar(6);
-
-        // colaClientes.visualizar();
-
-        // System.out.println("LISTA VENTANILLAS");
-        // ListaSimple listaVentanillas = new ListaSimple();
-        // listaVentanillas.insertarAlFinal("Ventanilla 1");
-        // listaVentanillas.insertarAlFinal("Ventanilla 2");
-        // listaVentanillas.visualizar();
-
-        // System.out.println("PILA IMAGENES");
-        // Pila pilaImagenes = new Pila();
-        // pilaImagenes.apilar("Imagen bw");
-        // pilaImagenes.apilar("Imagen c");
-        // pilaImagenes.apilar("Imagen bw 2");
-        // pilaImagenes.visualizar();
-
-        // pilaImagenes.desapilar();
-        // pilaImagenes.visualizar();
-
-        // ListaSimple listaClientesAtendidos = new ListaSimple();
-        // System.out.println("LISTA CLIENTES ATENDIDOS");
-        // listaClientesAtendidos.insertarAlFinal("Alberto");
-        // listaClientesAtendidos.insertarAlFinal("Maria");
-        // listaClientesAtendidos.insertarAlFinal("Juan");
-        // listaClientesAtendidos.insertarAlFinal("Sofia");
-        // listaClientesAtendidos.visualizar();
-
-        // Cola colaColor = new Cola();
-        // System.out.println("COLA DE IMPESORAS A COLOR");
-        // colaColor.encolar("1 hoja");
-        // colaColor.encolar("2 hoja");
-        // colaColor.encolar("3 hoja");
-        // colaColor.encolar("4 hoja");
-        // colaColor.encolar("5 hoja");
-        // colaColor.visualizar();
-        // colaColor.desencolar();
-        // colaColor.visualizar();
     }
+
+
 }

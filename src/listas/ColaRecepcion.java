@@ -89,6 +89,15 @@ public class ColaRecepcion {
         return dot.toString();
     }
     
+    public void aumentarPasoClientes() {
+        NodoSimple actual= this.primero;
+        while( actual!= null){
+            Cliente clienteActual = (Cliente) actual.getData();
+            clienteActual.setTotalPasos();
+            actual=actual.getSiguiente();
+        }
+    }
+
     private void escribirArchivo(String ruta, String contenido) {
         FileWriter fichero = null;
         PrintWriter pw = null;
