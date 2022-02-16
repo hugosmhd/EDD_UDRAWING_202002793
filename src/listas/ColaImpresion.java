@@ -45,9 +45,11 @@ public class ColaImpresion {
             actual.setPasos(pasosActuales + 1);
             if(actual.isColor() && actual.getPasos() == 2) {
                 Imagen imagenImpresa = this.desencolar();
+                System.out.println("HA SIDO IMPRESA UNA IMAGEN A COLOR DEL CLIENTE " + imagenImpresa.getIdCliente());
                 return imagenImpresa;
             } else if (!actual.isColor() && actual.getPasos() == 1) {
                 Imagen imagenImpresa = this.desencolar();
+                System.out.println("HA SIDO IMPRESA UNA IMAGEN A BW DEL CLIENTE " + imagenImpresa.getIdCliente());
                 return imagenImpresa;
             }
         }
@@ -76,6 +78,8 @@ public class ColaImpresion {
         }
         return null;
     }
+
+    ////////////////////////////////////////////////////
 
     public String codigoGraphviz() {
         StringBuilder dot = new StringBuilder();

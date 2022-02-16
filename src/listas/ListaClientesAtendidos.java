@@ -56,9 +56,6 @@ public class ListaClientesAtendidos {
             aux = (Cliente) actual.getData();
             actual=actual.getSiguiente();
         }
-        if(actual == null) {
-            System.out.println("No se encuentra el cliente con este id en la lista de clientes atendidos");
-        }
         return aux;
             
     }

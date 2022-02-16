@@ -106,11 +106,13 @@ public class ListaVentanillas {
                     clienteAtendiendo.setCantidadColor(nuevaCantidadColor);
                     Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), true);
                     aux.getImagenesCliente().apilar(nuevaImagen);
+                    System.out.println("LA VENTANILLA " + aux.getIdVentanilla() + " RECIBIO UNA IMAGEN A COLOR DEL CLIENTE " + clienteAtendiendo.getIdCliente());
                 } else if(clienteAtendiendo.getCantidadBW() > 0) {
                     int nuevaCantidadBW = clienteAtendiendo.getCantidadBW() - 1;
                     clienteAtendiendo.setCantidadBW(nuevaCantidadBW);
                     Imagen nuevaImagen = new Imagen(clienteAtendiendo.getIdCliente(), false);
                     aux.getImagenesCliente().apilar(nuevaImagen);
+                    System.out.println("LA VENTANILLA " + aux.getIdVentanilla() + " RECIBIO UNA IMAGEN A BW DEL CLIENTE " + clienteAtendiendo.getIdCliente());
                 } else {
                     aux.setDisponible(true);
                     clienteAtendiendo.setVentanillaAtencion("Ventanilla: " + aux.getIdVentanilla());
@@ -118,6 +120,7 @@ public class ListaVentanillas {
                     listaClientesAtendidos.insertarAlFinal(clienteAtendiendo);
                     aux.getImagenesCliente().encolarImpresion(colaColor, colaBW);
                     aux.setCliente(null);
+                    System.out.println("EL CLIENTE " + clienteAtendiendo.getIdCliente() + " HA TERMINADO DE ENTREGAR SUS IMAGENES EN LA VENTANILLA " + aux.getIdVentanilla() + " Y SUS IMAGENES HAN SIDO COLOCADAS EN SUS RESPECTIVAS COLAS");
                 }
                 
             }

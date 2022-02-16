@@ -23,6 +23,7 @@ public class ListaCircularEspera {
 
     public void insertar(Cliente cliente){
         NodoDobleCircular nuevo = new NodoDobleCircular(cliente);
+        System.out.println("EL CLIENTE " + cliente.idCliente + " HA SIDO ATENDIDO E INGRESA A LA LISTA DE ESPERA");
         if (this.estaVacia()) {
             nuevo.setSiguiente(nuevo);
             nuevo.setAnterior(nuevo);
@@ -101,6 +102,7 @@ public class ListaCircularEspera {
                     actual.getSiguiente().setAnterior(actual.getAnterior());
                     Cliente espera = listaClientesAtendidos.buscar(aux.getIdCliente());
                     espera.totalPasos = aux.getTotalPasos();
+                    System.out.println("EL CLIENTE " + espera.getIdCliente() + " HA TERMINADO DE RECIBIR SUS IMANGES Y SE RETIRA DE LA EMPRESA");
                     if(actual == this.lc && this.lc.getAnterior() != this.lc) {
                         this.lc = this.lc.getAnterior();
                     } else if(actual == this.lc && this.lc.getAnterior() == this.lc) {

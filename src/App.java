@@ -12,6 +12,7 @@ public class App {
     public static void main(String[] args) throws Exception {             
         Scanner sn = new Scanner(System.in);
         Scanner snString = new Scanner(System.in);
+        int contadorPasos = 1;
             boolean salir = false;
             boolean salirParametros = false;
             int opcion; //Guardaremos la opcion del usuario
@@ -70,9 +71,11 @@ public class App {
                     } while(!salirParametros);
                     break;
                     case 2:
-                        System.out.println("EJECUTANDO PASO");
+                        System.out.println("---------** PASO " + contadorPasos + " **---------");
+                        System.out.println("----------------------------------");
                         EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
                         colaBW, listaClientesAtendidos);
+                        contadorPasos += 1;
                         // System.out.println("Has seleccionado la opcion 2");
                         // int cantidadVentanillas;
                         // System.out.println("Ingresa la cantidad de ventanillas");
@@ -163,8 +166,8 @@ public class App {
                         System.out.println("Solo números entre 1 y 6");
                     
                 }
-                System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
-                listaClientesAtendidos.visualizar();
+                // System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
+                // listaClientesAtendidos.visualizar();
                     
             }
         

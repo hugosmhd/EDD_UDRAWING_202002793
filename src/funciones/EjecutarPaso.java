@@ -5,6 +5,7 @@ import listas.ColaRecepcion;
 import listas.ListaCircularEspera;
 import listas.ListaClientesAtendidos;
 import listas.ListaVentanillas;
+import objetos.Cliente;
 import objetos.Imagen;
 import objetos.Ventanilla;
 
@@ -33,7 +34,9 @@ public class EjecutarPaso {
         if(!colaClientes.estaVacia() && !listaVentanillas.estaVacia()) {
             Ventanilla ventanillaDisponible = listaVentanillas.disponible();
             if(ventanillaDisponible != null) {
-                ventanillaDisponible.setCliente(colaClientes.desencolar());
+                Cliente clienteEspera = colaClientes.desencolar();
+                ventanillaDisponible.setCliente(clienteEspera);
+                System.out.println("EL CLIENTE " + clienteEspera.getIdCliente() + " INGRESA A LA VENTANILLA " + ventanillaDisponible.getIdVentanilla());
                 ventanillaDisponible.setDisponible(false);                
             }
         } else if(!listaVentanillas.estaVacia()) {
