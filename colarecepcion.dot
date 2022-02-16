@@ -1,0 +1,11 @@
+digraph G { 
+node[shape=box, color=red];
+nodo1670675563[label="Luiz Higueros"]
+nodo723074861[label="Baldwin Gomez"]
+nodo225534817[label="Baltasar Cardoso"]
+nodo1878246837[label="Carlota Griego"]
+nodo1670675563 -> nodo723074861;
+nodo723074861 -> nodo225534817;
+nodo225534817 -> nodo1878246837;
+rankdir=LR;
+} 
