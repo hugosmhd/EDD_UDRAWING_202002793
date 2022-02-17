@@ -30,17 +30,6 @@ public class ColaRecepcion {
         }
     }
 
-    public void encolarMasiva(Cliente data) {
-        NodoSimple nuevo = new NodoSimple(data);
-        if (estaVacia()) {
-            this.primero = nuevo;
-            this.ultimo = nuevo;
-        } else {
-            nuevo.setSiguiente(this.primero);
-            this.primero = nuevo;
-        }
-    }
-
     public Cliente desencolar() {
         NodoSimple actual = this.primero.getSiguiente();
         Cliente auxiliar = (Cliente)this.primero.getData();

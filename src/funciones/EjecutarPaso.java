@@ -13,7 +13,7 @@ public class EjecutarPaso {
     public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas,
     ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW, 
     ListaClientesAtendidos listaClientesAtendidos) {
-        GenerarAleatorios.aleatorios(colaClientes);
+        // GenerarAleatorios.aleatorios(colaClientes);
 
         colaClientes.aumentarPasoClientes();
         listaClientesEspera.aumentarPaso();

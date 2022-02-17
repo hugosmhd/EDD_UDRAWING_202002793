@@ -1,11 +1,103 @@
 digraph G { 
 node[shape=box, color=red];
-nodo1670675563[label="Luiz Higueros"]
-nodo723074861[label="Baldwin Gomez"]
-nodo225534817[label="Baltasar Cardoso"]
-nodo1878246837[label="Carlota Griego"]
+nodo21685669[label="Polly Rodriguez"]
+nodo2133927002[label="Yang Wiggins"]
+nodo1836019240[label="Douglas Dominguez"]
+nodo325040804[label="Faith Hopkins"]
+nodo1173230247[label="Sandy Mason"]
+nodo856419764[label="Stefanie Wise"]
+nodo621009875[label="Leach Ross"]
+nodo1265094477[label="Tabatha Pickett"]
+nodo2125039532[label="Tommie Mcpherson"]
+nodo312714112[label="Shannon Johnston"]
+nodo692404036[label="Leigh Bright"]
+nodo1554874502[label="Alyce Alford"]
+nodo1846274136[label="Haley Rosario"]
+nodo1639705018[label="Durham Logan"]
+nodo1627674070[label="Elinor Ford"]
+nodo1360875712[label="Noelle Morse"]
+nodo1625635731[label="Gutierrez Casey"]
+nodo1580066828[label="Long Meyer"]
+nodo491044090[label="Geraldine Pierce"]
+nodo644117698[label="Roman Branch"]
+nodo1872034366[label="Pruitt Perez"]
+nodo1581781576[label="Nola Winters"]
+nodo1725154839[label="Gay Mcmillan"]
+nodo1670675563[label="Carolyn Harmon"]
+nodo723074861[label="Jolene Mccall"]
+nodo895328852[label="Evelyn Fitzgerald"]
+nodo1304836502[label="Hudson Lancaster"]
+nodo225534817[label="Ellison Hood"]
+nodo1878246837[label="Whitney Clayton"]
+nodo929338653[label="Moore Horton"]
+nodo1259475182[label="Maggie Levine"]
+nodo1300109446[label="Andrews Vance"]
+nodo1020371697[label="Dixie Howard"]
+nodo789451787[label="Heidi Lowery"]
+nodo1950409828[label="Bennett Malone"]
+nodo1229416514[label="Witt Forbes"]
+nodo2016447921[label="Erma Barron"]
+nodo666988784[label="Mabel Nicholson"]
+nodo1414644648[label="Maddox Frazier"]
+nodo640070680[label="Brigitte Wheeler"]
+nodo1510467688[label="Christa Mendoza"]
+nodo1995265320[label="Etta Blake"]
+nodo746292446[label="Macdonald Murray"]
+nodo1072591677[label="Garza York"]
+nodo1523554304[label="Hatfield Sykes"]
+nodo1175962212[label="Washington Dickerson"]
+nodo918221580[label="Ethel Cortez"]
+nodo2055281021[label="Vicky Jimenez"]
+nodo1554547125[label="Romero Sanders"]
+nodo617901222[label="Shana Burke"]
+nodo21685669 -> nodo2133927002;
+nodo2133927002 -> nodo1836019240;
+nodo1836019240 -> nodo325040804;
+nodo325040804 -> nodo1173230247;
+nodo1173230247 -> nodo856419764;
+nodo856419764 -> nodo621009875;
+nodo621009875 -> nodo1265094477;
+nodo1265094477 -> nodo2125039532;
+nodo2125039532 -> nodo312714112;
+nodo312714112 -> nodo692404036;
+nodo692404036 -> nodo1554874502;
+nodo1554874502 -> nodo1846274136;
+nodo1846274136 -> nodo1639705018;
+nodo1639705018 -> nodo1627674070;
+nodo1627674070 -> nodo1360875712;
+nodo1360875712 -> nodo1625635731;
+nodo1625635731 -> nodo1580066828;
+nodo1580066828 -> nodo491044090;
+nodo491044090 -> nodo644117698;
+nodo644117698 -> nodo1872034366;
+nodo1872034366 -> nodo1581781576;
+nodo1581781576 -> nodo1725154839;
+nodo1725154839 -> nodo1670675563;
 nodo1670675563 -> nodo723074861;
-nodo723074861 -> nodo225534817;
+nodo723074861 -> nodo895328852;
+nodo895328852 -> nodo1304836502;
+nodo1304836502 -> nodo225534817;
 nodo225534817 -> nodo1878246837;
+nodo1878246837 -> nodo929338653;
+nodo929338653 -> nodo1259475182;
+nodo1259475182 -> nodo1300109446;
+nodo1300109446 -> nodo1020371697;
+nodo1020371697 -> nodo789451787;
+nodo789451787 -> nodo1950409828;
+nodo1950409828 -> nodo1229416514;
+nodo1229416514 -> nodo2016447921;
+nodo2016447921 -> nodo666988784;
+nodo666988784 -> nodo1414644648;
+nodo1414644648 -> nodo640070680;
+nodo640070680 -> nodo1510467688;
+nodo1510467688 -> nodo1995265320;
+nodo1995265320 -> nodo746292446;
+nodo746292446 -> nodo1072591677;
+nodo1072591677 -> nodo1523554304;
+nodo1523554304 -> nodo1175962212;
+nodo1175962212 -> nodo918221580;
+nodo918221580 -> nodo2055281021;
+nodo2055281021 -> nodo1554547125;
+nodo1554547125 -> nodo617901222;
 rankdir=LR;
 } 

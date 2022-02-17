@@ -8,6 +8,7 @@ public class Cliente {
     public int totalImagenes;
     public String ventanillaAtencion;
     public int totalPasos;
+    public boolean terminoImpresion;
 
     public Cliente(String idCliente, String nombre, int cantidadColor, int cantidadBW) {
         this.idCliente = idCliente;
@@ -17,6 +18,9 @@ public class Cliente {
         this.totalImagenes = 0;
         this.totalPasos = 0;
         this.ventanillaAtencion = null;
+        this.terminoImpresion = false;
+    }
+    public Cliente() {
     }
 
     public String getIdCliente() {
@@ -74,6 +78,16 @@ public class Cliente {
     public void setTotalPasos() {
         this.totalPasos += 1;
     }
+
+    public boolean isTerminoImpresion() {
+        return terminoImpresion;
+    }
+
+    public void setTerminoImpresion(boolean terminoImpresion) {
+        this.terminoImpresion = terminoImpresion;
+    }
+
+    
 
     
 

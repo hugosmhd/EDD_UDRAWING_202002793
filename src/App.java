@@ -154,6 +154,9 @@ public class App {
                         // System.out.println("************* COLA A COLOR ***********");
                         // colaColor.visualizar();
                     case 4:
+                        System.out.println("////////// AQUI ESTAN ORDENADOS LOS PASOS ///////////////");
+                        listaClientesAtendidos.ordenamientoSeleccionPasos();
+                        listaClientesAtendidos.visualizar();
                         // listaVentanillas.dibujarGraphviz();
                         break;
                     case 5:
@@ -166,8 +169,8 @@ public class App {
                         System.out.println("Solo números entre 1 y 6");
                     
                 }
-                // System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
-                // listaClientesAtendidos.visualizar();
+                System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
+                listaClientesAtendidos.visualizar();
                     
             }
         

@@ -102,6 +102,7 @@ public class ListaCircularEspera {
                     actual.getSiguiente().setAnterior(actual.getAnterior());
                     Cliente espera = listaClientesAtendidos.buscar(aux.getIdCliente());
                     espera.totalPasos = aux.getTotalPasos();
+                    espera.setTerminoImpresion(true);
                     System.out.println("EL CLIENTE " + espera.getIdCliente() + " HA TERMINADO DE RECIBIR SUS IMANGES Y SE RETIRA DE LA EMPRESA");
                     if(actual == this.lc && this.lc.getAnterior() != this.lc) {
                         this.lc = this.lc.getAnterior();

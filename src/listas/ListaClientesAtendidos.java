@@ -9,10 +9,12 @@ import objetos.Cliente;
 public class ListaClientesAtendidos {
     NodoSimple primero;
     NodoSimple ultimo;
+    int cantidadClientes;
 
     public ListaClientesAtendidos() {
         this.primero = null;
         this.ultimo = null;
+        this.cantidadClientes = 0;
     }
 
     public boolean estaVacia() {
@@ -24,9 +26,11 @@ public class ListaClientesAtendidos {
         if (estaVacia()) {
             this.primero = nuevo;
             this.ultimo = nuevo;
+            this.cantidadClientes += 1;
         } else {
             this.ultimo.setSiguiente(nuevo);
             this.ultimo = nuevo;
+            this.cantidadClientes += 1;
         }
     }
 
@@ -48,6 +52,7 @@ public class ListaClientesAtendidos {
         }
             
     }
+    
     public Cliente buscar(String idCliente){
         NodoSimple actual= this.primero;
 
@@ -59,8 +64,7 @@ public class ListaClientesAtendidos {
         return aux;
             
     }
-    
-    
+        
     public String codigoGraphviz() {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
@@ -114,6 +118,60 @@ public class ListaClientesAtendidos {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void ordenamientoSeleccionPasos() {
+        Cliente aux;    // menor tiene el indice del elemento menor, no el valor
+        int contadorUno = 0, contadorDos = 0;
+        NodoSimple actualRecorrido = this.primero;
+        while(actualRecorrido != null && contadorUno<this.cantidadClientes-1){
+
+            NodoSimple actualRecorridoDos = actualRecorrido;
+            while(actualRecorridoDos != null && contadorDos < (this.cantidadClientes-contadorUno-1)){
+                Cliente clienteEvaluar = (Cliente) actualRecorridoDos.getData();
+                Cliente clienteEvaluarDos = (Cliente) actualRecorridoDos.getSiguiente().getData();
+                if(clienteEvaluar.getTotalPasos() < clienteEvaluarDos.getTotalPasos()) {
+                    aux = clienteEvaluar;
+                    actualRecorridoDos.setData(clienteEvaluarDos);
+                    actualRecorridoDos.getSiguiente().setData(aux);
+                }
+                contadorDos += 1;
+                actualRecorridoDos=actualRecorridoDos.getSiguiente();
+            }
+            
+            contadorUno += 1;
+            actualRecorrido=actualRecorrido.getSiguiente();
+        }     
+    }
+
+    
+            // menor = (Cliente) actualRecorrido.getData();
+
+            // NodoSimple actualRecorridoDos = actualRecorrido.getSiguiente();
+            // while(actualRecorridoDos != null){
+            //     Cliente clienteJ = (Cliente) actualRecorridoDos.getData();
+            //     if(clienteJ.getTotalPasos() > menor.getTotalPasos()) {
+            //         menor = clienteJ;
+            //     }
+            //     actualRecorridoDos=actualRecorridoDos.getSiguiente();
+            // }
+            // temp = (Cliente) actualRecorrido.getData();
+            // actualRecorrido.setData(menor);
+            // menor = temp;
+
+    public static void ordenamiento(int[] arreglo) {
+        int menor, temp;  // menor tiene el indice del elemento menor, no el valor
+        for(int i=0; i<arreglo.length-1; i++) {
+            menor = i;
+            for(int j = i + 1; j < arreglo.length; j++) {
+                if(arreglo[j] < arreglo[menor]) {
+                    menor = j;
+                }
+            }
+            temp = arreglo[i];
+            arreglo[i] = arreglo[menor];
+            arreglo[menor] = temp;
+        }   
     }
 
 
