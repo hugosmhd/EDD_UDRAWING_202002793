@@ -59,7 +59,7 @@ public class CargaMasiva {
                 }
             } else if(estado == 2) {
                 if(archivoString.charAt(i) == '"') {
-                    System.out.println("----------------------");
+                    // System.out.println("----------------------");
                     estado = 3;
                 }
             } else if(estado == 3) {
@@ -150,17 +150,19 @@ public class CargaMasiva {
                 }
             } else if(estado == 10) {
                 if(idCliente != "" && nombreCliente != "" && imgColor != "" && imgBW != "") {
-                    Cliente nuevo = new Cliente(idCliente, nombreCliente, Integer.parseInt(imgColor), Integer.parseInt(imgColor));
+                    imgColor = imgColor.replaceAll("\\s","");
+                    imgColor = imgColor.replaceAll("\\s","");
+                    Cliente nuevo = new Cliente(idCliente, nombreCliente, Integer.parseInt(imgColor), Integer.parseInt(imgBW));
                     colaClientes.encolar(nuevo);
-                    System.out.println("ID " + idCliente);
-                    System.out.println("NOMBRE " + nombreCliente);
-                    System.out.println("COLOR " + imgColor);
-                    System.out.println("BLANCO Y NEGRO " + imgBW);
+                    // System.out.println("ID " + idCliente);
+                    // System.out.println("NOMBRE " + nombreCliente);
+                    // System.out.println("COLOR " + Integer.parseInt(imgColor));
+                    // System.out.println("BLANCO Y NEGRO " + Integer.parseInt(imgBW));
                     idCliente = "";
                     nombreCliente = "";
                     imgColor = "";
                     imgBW = "";
-                    System.out.println("SE DEBE CREAR UN NUEVO CLIENTE");
+                    // System.out.println("SE DEBE CREAR UN NUEVO CLIENTE");
                 }
                 if(archivoString.charAt(i) == ',') {                    
                     estado = 1;

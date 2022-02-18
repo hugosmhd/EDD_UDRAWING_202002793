@@ -155,7 +155,7 @@ public class App {
                         // colaColor.visualizar();
                     case 4:
                         System.out.println("////////// AQUI ESTAN ORDENADOS LOS PASOS ///////////////");
-                        listaClientesAtendidos.ordenamientoSeleccionPasos();
+                        listaClientesAtendidos.ordenamientoBurbujaPasos();
                         listaClientesAtendidos.visualizar();
                         // listaVentanillas.dibujarGraphviz();
                         break;
@@ -169,8 +169,8 @@ public class App {
                         System.out.println("Solo números entre 1 y 6");
                     
                 }
-                System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
-                listaClientesAtendidos.visualizar();
+                // System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
+                // listaClientesAtendidos.visualizar();
                     
             }
         

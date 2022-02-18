@@ -64,7 +64,9 @@ public class ColaRecepcion {
         NodoSimple actual= this.primero;
         while( actual!= null){
             Cliente clienteActual = (Cliente) actual.getData();
-            nombresNodos += "nodo" + actual.hashCode() + "[label=\"" +  clienteActual.getNombre() + "\"]" + "\n";
+            nombresNodos += "nodo" + actual.hashCode() + "[label=\" ID:" +  clienteActual.getIdCliente()
+            + "\\n" + clienteActual.getNombre() + "\\n" + "COLOR: " + clienteActual.getCantidadColor() +  
+            "\\n" + "BW: " + clienteActual.getCantidadBW() +  "\"]" + "\n";
             if (actual.getSiguiente() != null)            
                 conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
             actual=actual.getSiguiente();

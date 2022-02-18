@@ -15,10 +15,10 @@ public class Cliente {
         this.nombre = nombre;
         this.cantidadColor = cantidadColor;
         this.cantidadBW = cantidadBW;
-        this.totalImagenes = 0;
         this.totalPasos = 0;
         this.ventanillaAtencion = null;
         this.terminoImpresion = false;
+        this.totalImagenes = cantidadColor + cantidadBW;
     }
     public Cliente() {
     }

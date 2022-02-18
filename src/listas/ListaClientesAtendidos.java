@@ -75,7 +75,8 @@ public class ListaClientesAtendidos {
         NodoSimple actual= this.primero;
         while( actual!= null){
             Cliente clienteActual = (Cliente) actual.getData();
-            nombresNodos += "nodo" + actual.hashCode() + "[label=\" Cliente: " +  clienteActual.getNombre() + "\"]" + "\n";
+            nombresNodos += "nodo" + actual.hashCode() + "[label=\" ID:" +  clienteActual.getIdCliente() + "\\n" + 
+            "Cliente: " +  clienteActual.getNombre() +  "\"]" + "\n";
             if (actual.getSiguiente() != null)            
                 conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
             actual=actual.getSiguiente();
@@ -120,7 +121,7 @@ public class ListaClientesAtendidos {
         }
     }
 
-    public void ordenamientoSeleccionPasos() {
+    public void ordenamientoBurbujaPasos() {
         Cliente aux;    // menor tiene el indice del elemento menor, no el valor
         int contadorUno = 0, contadorDos = 0;
         NodoSimple actualRecorrido = this.primero;
@@ -143,21 +144,6 @@ public class ListaClientesAtendidos {
             actualRecorrido=actualRecorrido.getSiguiente();
         }     
     }
-
-    
-            // menor = (Cliente) actualRecorrido.getData();
-
-            // NodoSimple actualRecorridoDos = actualRecorrido.getSiguiente();
-            // while(actualRecorridoDos != null){
-            //     Cliente clienteJ = (Cliente) actualRecorridoDos.getData();
-            //     if(clienteJ.getTotalPasos() > menor.getTotalPasos()) {
-            //         menor = clienteJ;
-            //     }
-            //     actualRecorridoDos=actualRecorridoDos.getSiguiente();
-            // }
-            // temp = (Cliente) actualRecorrido.getData();
-            // actualRecorrido.setData(menor);
-            // menor = temp;
 
     public static void ordenamiento(int[] arreglo) {
         int menor, temp;  // menor tiene el indice del elemento menor, no el valor

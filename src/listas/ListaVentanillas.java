@@ -24,7 +24,7 @@ public class ListaVentanillas {
 
     public void insertarAlFinal(int cantidadVentanillas) {
         for(int i=0; i < cantidadVentanillas; i++) {
-            Ventanilla ventanilla = new Ventanilla(i, true);
+            Ventanilla ventanilla = new Ventanilla(i+1, true);
             NodoSimple nuevo = new NodoSimple(ventanilla);
             if (estaVacia()) {
                 this.primero = nuevo;

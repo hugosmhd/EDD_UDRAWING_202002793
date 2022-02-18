@@ -72,7 +72,7 @@ public class ListaCircularEspera {
                 Cliente cliente = (Cliente) actual.getData();
                 if(cliente.getIdCliente() == imgImpresa.getIdCliente()) {
                     NodoSimple imgLista = new NodoSimple(imgImpresa);
-                    cliente.setTotalImagenes();
+                    // cliente.setTotalImagenes();
                     if(actual.getImagenes() == null) {
                         actual.setImagenes(imgLista);
                     } else {
@@ -97,7 +97,10 @@ public class ListaCircularEspera {
             NodoDobleCircular actual= this.lc.getSiguiente();
             do {
                 Cliente aux = (Cliente) actual.getData();
-                if(actual.getImagenes() != null && (aux.getIdCliente() != idProxClienteColor && aux.getIdCliente() != idProxClienteBW)) {
+                System.out.println("DESDE LA LISTA CIRUCLAR RETIRAR " + aux.getTotalImagenes());
+                System.out.println("DESDE LA LISTA CIRUCLAR COLOR " + aux.getCantidadColor());
+                System.out.println("DESDE LA LISTA CIRUCLAR BW " + aux.getCantidadBW());
+                if(actual.getImagenes() != null && (aux.getCantidadColor() + aux.getCantidadBW() == aux.getTotalImagenes())) {
                     actual.getAnterior().setSiguiente(actual.getSiguiente());
                     actual.getSiguiente().setAnterior(actual.getAnterior());
                     Cliente espera = listaClientesAtendidos.buscar(aux.getIdCliente());

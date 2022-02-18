@@ -1,0 +1,13 @@
+digraph G { 
+node[shape=box, color=red];
+nodo2133927002[label=" Cliente: Douglas Dominguez" , style = filled, fillcolor = lightskyblue, group = 1]
+nodo312714112[label="Blanco y Negro" ,width = 1.8, group = 1]
+nodo2125039532[label="Blanco y Negro" ,width = 1.8, group = 1]
+nodo621009875[label="Blanco y Negro" ,width = 1.8, group = 1]
+nodo2133927002 -> nodo2133927002;
+nodo2133927002 -> nodo2133927002;
+nodo2133927002 -> nodo312714112;
+nodo312714112 -> nodo2125039532;
+nodo2125039532 -> nodo621009875;
+{ rank = same; nodo2133927002;  }
+} 
