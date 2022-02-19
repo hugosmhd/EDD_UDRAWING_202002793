@@ -1,13 +1,21 @@
 digraph G { 
 node[shape=box, color=red];
-nodo2133927002[label=" Cliente: Douglas Dominguez" , style = filled, fillcolor = lightskyblue, group = 1]
-nodo312714112[label="Blanco y Negro" ,width = 1.8, group = 1]
-nodo2125039532[label="Blanco y Negro" ,width = 1.8, group = 1]
-nodo621009875[label="Blanco y Negro" ,width = 1.8, group = 1]
-nodo2133927002 -> nodo2133927002;
-nodo2133927002 -> nodo2133927002;
-nodo2133927002 -> nodo312714112;
-nodo312714112 -> nodo2125039532;
-nodo2125039532 -> nodo621009875;
-{ rank = same; nodo2133927002;  }
+nodo1846274136[label=" ID: 1\nPolly Rodriguez\n COLOR: 1\n BW: 2" , style = filled, fillcolor = lightskyblue, group = 1]
+nodo1360875712[label="Blanco y Negro" ,width = 1.8, group = 1]
+nodo1625635731[label="Color" ,width = 1.8, group = 1]
+nodo1580066828[label="Blanco y Negro" ,width = 1.8, group = 1]
+nodo1639705018[label=" ID: 3\nDouglas Dominguez\n COLOR: 0\n BW: 1" , style = filled, fillcolor = lightskyblue, group = 2]
+nodo491044090[label="Blanco y Negro" ,width = 1.8, group = 2]
+nodo1627674070[label=" ID: 2\nYang Wiggins\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 3]
+nodo1846274136 -> nodo1639705018;
+nodo1846274136 -> nodo1627674070;
+nodo1846274136 -> nodo1360875712;
+nodo1360875712 -> nodo1625635731;
+nodo1625635731 -> nodo1580066828;
+nodo1639705018 -> nodo1627674070;
+nodo1639705018 -> nodo1846274136;
+nodo1639705018 -> nodo491044090;
+nodo1627674070 -> nodo1846274136;
+nodo1627674070 -> nodo1639705018;
+{ rank = same; nodo1846274136; nodo1639705018; nodo1627674070;  }
 } 

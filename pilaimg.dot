@@ -2,38 +2,23 @@ digraph G {
 node[shape=box, color=red];
 subgraph cluster_1{ 
 label = " Ventanilla: 1";
-nodo21685669[label=" ID CLIENTE: 41
-Blanco y Negro"]
-nodo2133927002[label=" ID CLIENTE: 41
+nodo621009875[label=" ID CLIENTE: 1
 Color"]
-nodo1836019240[label=" ID CLIENTE: 41
+nodo1265094477[label=" ID CLIENTE: 1
 Color"]
-nodo21685669 -> nodo2133927002;
-nodo2133927002 -> nodo1836019240;
-}subgraph cluster_2{ 
-label = " Ventanilla: 2";
-nodo325040804[label=" ID CLIENTE: 43
-Color"]
-}subgraph cluster_3{ 
-label = " Ventanilla: 3";
-nodo1173230247[label=" ID CLIENTE: 42
-Color"]
-nodo856419764[label=" ID CLIENTE: 42
-Color"]
-nodo1173230247 -> nodo856419764;
-}subgraph cluster_4{ 
-label = " Ventanilla: 4";
-nodo621009875[label=" ID CLIENTE: 40
-Color"]
-nodo1265094477[label=" ID CLIENTE: 40
-Color"]
-nodo2125039532[label=" ID CLIENTE: 40
-Color"]
-nodo312714112[label=" ID CLIENTE: 40
+nodo2125039532[label=" ID CLIENTE: 1
 Color"]
 nodo621009875 -> nodo1265094477;
 nodo1265094477 -> nodo2125039532;
-nodo2125039532 -> nodo312714112;
-}subgraph cluster_5{ 
-label = " Ventanilla: 5";
+}subgraph cluster_2{ 
+label = " Ventanilla: 2";
+nodo312714112[label=" ID CLIENTE: 2
+Blanco y Negro"]
+nodo692404036[label=" ID CLIENTE: 2
+Color"]
+nodo312714112 -> nodo692404036;
+}subgraph cluster_3{ 
+label = " Ventanilla: 3";
+nodo1554874502[label=" ID CLIENTE: 3
+Blanco y Negro"]
 }} 

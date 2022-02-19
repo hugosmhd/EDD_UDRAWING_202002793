@@ -139,7 +139,9 @@ public class ListaVentanillas {
         NodoSimple actual= this.primero;
         while( actual!= null){
             Ventanilla vtnActual = (Ventanilla) actual.getData();
-            nombresNodos += "nodo" + actual.hashCode() + "[label=\" Ventanilla: " +  vtnActual.getIdVentanilla() + "\"]" + "\n";
+            String diponible = vtnActual.isDisponible() ? "SI" : "NO";
+            nombresNodos += "nodo" + actual.hashCode() + "[label=\" Ventanilla: " +  vtnActual.getIdVentanilla() +
+            "\\n DISPONIBLE: " + diponible + "\"]" + "\n";
             if (actual.getSiguiente() != null)            
                 conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
             actual=actual.getSiguiente();

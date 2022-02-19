@@ -1,13 +1,9 @@
 digraph G { 
 node[shape=box, color=red];
-nodo895328852[label=" Ventanilla: 1"]
-nodo1304836502[label=" Ventanilla: 2"]
-nodo225534817[label=" Ventanilla: 3"]
-nodo1878246837[label=" Ventanilla: 4"]
-nodo929338653[label=" Ventanilla: 5"]
-nodo895328852 -> nodo1304836502;
-nodo1304836502 -> nodo225534817;
-nodo225534817 -> nodo1878246837;
-nodo1878246837 -> nodo929338653;
+nodo325040804[label=" Ventanilla: 1\n DISPONIBLE: SI"]
+nodo1173230247[label=" Ventanilla: 2\n DISPONIBLE: SI"]
+nodo856419764[label=" Ventanilla: 3\n DISPONIBLE: SI"]
+nodo325040804 -> nodo1173230247;
+nodo1173230247 -> nodo856419764;
 rankdir=LR;
 } 

@@ -82,6 +82,7 @@ public class App {
                         // cantidadVentanillas = sn.nextInt();
                         // listaVentanillas.insertarAlFinal(cantidadVentanillas);
                         // listaVentanillas.visualizar();
+                        // snString.nextLine();
                         break;
                     case 3:
                         salirParametros = false;
@@ -154,11 +155,39 @@ public class App {
                         // System.out.println("************* COLA A COLOR ***********");
                         // colaColor.visualizar();
                     case 4:
-                        System.out.println("////////// AQUI ESTAN ORDENADOS LOS PASOS ///////////////");
-                        listaClientesAtendidos.ordenamientoBurbujaPasos();
-                        listaClientesAtendidos.visualizar();
-                        // listaVentanillas.dibujarGraphviz();
+                        salirParametros = false;
+                        do {
+                            System.out.println("------- MENU REPORTES -------");
+                            System.out.println("1. Top 5 clientes con mayor cantidad de imagenes a color");
+                            System.out.println("2. Top 5 clientes con menor cantidad de imagenes a blanco y negro");
+                            System.out.println("3. Informacion del cliente con mas pasos en el sistema");
+                            System.out.println("4. Datos de un cliente en especifico por el ID");
+                            System.out.println("5. Regresar al menu principal");
+                            int opcionParametros = sn.nextInt();
+                            switch(opcionParametros) {
+                                case 1:
+                                    listaClientesAtendidos.topCincoMayorImgColor();
+                                    // listaClientesAtendidos.visualizar();
+                                    break;
+                                case 2:
+                                                                 
+                                    break;
+                                case 3:
+                                    
+                                    break;
+                                case 4:
+                                    
+                                    break;
+                                case 5:
+                                    System.out.println("Regresando al menu principal...");
+                                    salirParametros = true;
+                                    break;
+                            }
+                        } while(!salirParametros);
                         break;
+                        // System.out.println("////////// AQUI ESTAN ORDENADOS MENOS BW ///////////////");
+                        // listaClientesAtendidos.ordenamientoBurbujaImgBw();
+                        // listaClientesAtendidos.visualizar();
                     case 5:
                         // colaClientes.dibujarGraphviz();
                         break;
