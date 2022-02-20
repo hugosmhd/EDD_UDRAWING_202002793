@@ -124,13 +124,13 @@ public class ListaClientesAtendidos {
         }
     }
 
-    public void ordenamientoBurbujaPasos() {
-        Cliente aux;    // menor tiene el indice del elemento menor, no el valor
-        int contadorUno = 0, contadorDos = 0;
+    public void ordenamientoClienteMasPasos() {
+        Cliente aux;
+        int contadorUno = 0;
         NodoSimple actualRecorrido = this.primero;
-        while(actualRecorrido != null && contadorUno<this.cantidadClientes-1){
-
-            NodoSimple actualRecorridoDos = actualRecorrido;
+        while(actualRecorrido != null && contadorUno<(this.cantidadClientes-1)){
+            NodoSimple actualRecorridoDos = this.primero;
+            int contadorDos = 0;
             while(actualRecorridoDos != null && contadorDos < (this.cantidadClientes-contadorUno-1)){
                 Cliente clienteEvaluar = (Cliente) actualRecorridoDos.getData();
                 Cliente clienteEvaluarDos = (Cliente) actualRecorridoDos.getSiguiente().getData();
@@ -141,8 +141,7 @@ public class ListaClientesAtendidos {
                 }
                 contadorDos += 1;
                 actualRecorridoDos=actualRecorridoDos.getSiguiente();
-            }
-            
+            }            
             contadorUno += 1;
             actualRecorrido=actualRecorrido.getSiguiente();
         }     
@@ -240,6 +239,71 @@ public class ListaClientesAtendidos {
         }
 
     }
+
+    public void clienteMasPasos() {
+        this.ordenamientoClienteMasPasos();
+        NodoSimple actual= this.primero;
+        int contador = 1;
+
+        while(actual != null){
+            Cliente aux = (Cliente) actual.getData();
+            if(actual.getSiguiente() != null && aux.isTerminoImpresion())  {
+                Cliente clienteSiguiente = (Cliente) actual.getSiguiente().getData();
+                System.out.println("--------- CLIENTE " + (contador) + "--------------");
+                System.out.println("ID: " + aux.getIdCliente());                
+                System.out.println("Nombre: " + aux.getNombre());                
+                System.out.println("Ventanilla atencion: " + aux.getVentanillaAtencion());                
+                System.out.println("A Color: " + aux.getCantidadColor());                
+                System.out.println("A Blanco y Negro: " +aux.getCantidadBW());
+                System.out.println("Total imagenes: " +aux.getTotalImagenes());
+                System.out.println("Cantidad total de pasos: " + aux.getTotalPasos());
+                contador += 1;
+                if((aux.getTotalPasos() != clienteSiguiente.getTotalPasos())) {
+                    break;
+                }
+                
+                
+            }           
+            actual=actual.getSiguiente();
+        }
+
+    }
+
+    public void datosCliente(String idCliente) {
+        NodoSimple actual = this.primero;
+        if (this.primero != null) {
+            Cliente clienteActual = (Cliente) actual.getData();
+            while (!clienteActual.getIdCliente().equalsIgnoreCase(idCliente)) {
+                if (actual.getSiguiente() != null) {
+                    clienteActual = (Cliente) actual.getSiguiente().getData();
+                } else {
+                    actual = actual.getSiguiente();
+                    break;
+                }
+                actual = actual.getSiguiente();
+            }
+            if (actual == null) {
+                System.out.println("Cliente no encontrado verifique que el ID exista");
+            } else {
+                System.out.println("--------- CLIENTE --------------");
+                System.out.println("ID: " + clienteActual.getIdCliente());                
+                System.out.println("Nombre: " + clienteActual.getNombre());                
+                System.out.println("Ventanilla atencion: " + clienteActual.getVentanillaAtencion());                
+                System.out.println("A Color: " + clienteActual.getCantidadColor());                
+                System.out.println("A Blanco y Negro: " +clienteActual.getCantidadBW());
+                System.out.println("Total imagenes: " +clienteActual.getTotalImagenes());
+                System.out.println("Cantidad total de pasos: " + clienteActual.getTotalPasos());
+    
+            }
+        } else {
+            System.out.println("No hay clientes en la lista de clientes atendidos");
+        }
+
+        
+
+    }
+
+    
 
     
 }

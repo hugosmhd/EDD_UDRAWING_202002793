@@ -76,13 +76,6 @@ public class App {
                         EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
                         colaBW, listaClientesAtendidos);
                         contadorPasos += 1;
-                        // System.out.println("Has seleccionado la opcion 2");
-                        // int cantidadVentanillas;
-                        // System.out.println("Ingresa la cantidad de ventanillas");
-                        // cantidadVentanillas = sn.nextInt();
-                        // listaVentanillas.insertarAlFinal(cantidadVentanillas);
-                        // listaVentanillas.visualizar();
-                        // snString.nextLine();
                         break;
                     case 3:
                         salirParametros = false;
@@ -138,22 +131,6 @@ public class App {
                             }
                         } while(!salirParametros);
                         break;
-                        
-                        // EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
-                        // colaBW, listaClientesAtendidos);
-                        // System.out.println("--------- COLA DE CLIENTES ---------");
-                        // colaClientes.visualizar();
-                        // System.out.println("---------- LISTA DE VENTANILLAS ------------");
-                        // listaVentanillas.visualizar();
-                        // System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
-                        // listaClientesAtendidos.visualizar();
-                        // System.out.println("---------- LISTA CLIENTES EN ESPERA ------------");
-                        // listaClientesEspera.imprimir();
-                        // System.out.println("----------------------------------------");
-                        // System.out.println("************* COLA A BW ***********");
-                        // colaBW.visualizar();
-                        // System.out.println("************* COLA A COLOR ***********");
-                        // colaColor.visualizar();
                     case 4:
                         salirParametros = false;
                         do {
@@ -172,10 +149,12 @@ public class App {
                                     listaClientesAtendidos.topCincoMenosImgBW();                                                                 
                                     break;
                                 case 3:
-                                    
+                                    listaClientesAtendidos.clienteMasPasos();                                    
                                     break;
                                 case 4:
-                                    
+                                    System.out.println("Ingrese el ID del cliente:");
+                                    String idCliente = snString.nextLine();
+                                    listaClientesAtendidos.datosCliente(idCliente);                                    
                                     break;
                                 case 5:
                                     System.out.println("Regresando al menu principal...");
