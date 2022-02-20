@@ -52,12 +52,17 @@ public class App {
                                 ruta = snString.nextLine();
                                 // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
                                 CargaMasiva.cargar(ruta, colaClientes);
+                                System.out.println("Presione enter para continuar");
+                                snString.nextLine();
                                 break;
                             case 2:
                                 int cantidadVentanillas;
                                 System.out.println("Ingresa la cantidad de ventanillas");
                                 cantidadVentanillas = sn.nextInt();
                                 listaVentanillas.insertarAlFinal(cantidadVentanillas);
+                                System.out.println("Ventanillas creadas");
+                                System.out.println("Presione enter para continuar");
+                                snString.nextLine();
                                 break;
                             case 3:
                                 System.out.println("Regresando al menu principal...");
@@ -72,6 +77,8 @@ public class App {
                         EjecutarPaso.ejecutarPaso(colaClientes, listaVentanillas, listaClientesEspera, colaColor, 
                         colaBW, listaClientesAtendidos);
                         contadorPasos += 1;
+                        System.out.println("Presione enter para continuar");
+                        snString.nextLine();
                         break;
                     case 3:
                         salirParametros = false;
@@ -91,22 +98,32 @@ public class App {
                                 case 1:
                                     colaClientes.dibujarGraphviz();
                                     System.out.println("Grafica generada");
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();
                                     break;
                                 case 2:
                                     listaVentanillas.dibujarGraphviz();
-                                    System.out.println("Grafica generada");                                    
+                                    System.out.println("Grafica generada");
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                              
                                     break;
                                 case 3:
                                     listaVentanillas.dibujarGraphvizPila();
-                                    System.out.println("Grafica generada");                                    
+                                    System.out.println("Grafica generada");
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                           
                                     break;
                                 case 4:
                                     listaClientesAtendidos.dibujarGraphviz();
-                                    System.out.println("Grafica generada");                                    
+                                    System.out.println("Grafica generada");    
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                
                                     break;
                                 case 5:
                                     colaColor.dibujarGraphviz("colacolor");
-                                    System.out.println("Grafica generada");                                    
+                                    System.out.println("Grafica generada");   
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                 
                                     break;
                                 case 6:
                                     colaBW.dibujarGraphviz("colabw");
@@ -114,7 +131,9 @@ public class App {
                                     break;
                                 case 7:
                                     listaClientesEspera.dibujarGraphviz();
-                                    System.out.println("Grafica generada");                                    
+                                    System.out.println("Grafica generada");   
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                 
                                     break;
                                 case 8:
                                     colaClientes.dibujarGraphviz();
@@ -124,7 +143,9 @@ public class App {
                                     colaColor.dibujarGraphviz("colacolor");
                                     colaBW.dibujarGraphviz("colabw");
                                     listaClientesEspera.dibujarGraphviz();
-                                    System.out.println("Grafica generada");                                    
+                                    System.out.println("Grafica generada");   
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                 
                                     break;
                                 case 9:
                                     System.out.println("Regresando al menu principal...");
@@ -146,17 +167,25 @@ public class App {
                             switch(opcionParametros) {
                                 case 1:
                                     listaClientesAtendidos.topCincoMayorImgColor();
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();
                                     break;
                                 case 2:
-                                    listaClientesAtendidos.topCincoMenosImgBW();                                                                 
+                                    listaClientesAtendidos.topCincoMenosImgBW();    
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                                             
                                     break;
                                 case 3:
-                                    listaClientesAtendidos.clienteMasPasos();                                    
+                                    listaClientesAtendidos.clienteMasPasos();   
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                 
                                     break;
                                 case 4:
                                     System.out.println("Ingrese el ID del cliente:");
                                     String idCliente = snString.nextLine();
-                                    listaClientesAtendidos.datosCliente(idCliente);                                    
+                                    listaClientesAtendidos.datosCliente(idCliente);   
+                                    System.out.println("Presione enter para continuar");
+                                    snString.nextLine();                                 
                                     break;
                                 case 5:
                                     System.out.println("Regresando al menu principal...");
@@ -171,6 +200,8 @@ public class App {
                         System.out.println("Carné: 202002793");
                         System.out.println("Estructura de Datos");
                         System.out.println("Sección A, Primer Semestre 2022");
+                        System.out.println("Presione enter para continuar");
+                        snString.nextLine();
                         break;
                     case 6:
                         salir=true;

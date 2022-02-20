@@ -4,47 +4,41 @@ label="PILA DE IMAGENES EN VENTANILLAS"
 fontsize = 40;
 subgraph cluster_1{ 
 label = " Ventanilla: 1";
+nodo1480010240[label=" ID CLIENTE: 14
+Color"]
+nodo81628611[label=" ID CLIENTE: 14
+Color"]
+nodo1480010240 -> nodo81628611;
 }subgraph cluster_2{ 
 label = " Ventanilla: 2";
-nodo424058530[label=" ID CLIENTE: 7
+nodo1828972342[label=" ID CLIENTE: 15
 Blanco y Negro"]
-nodo321001045[label=" ID CLIENTE: 7
-Blanco y Negro"]
-nodo791452441[label=" ID CLIENTE: 7
-Blanco y Negro"]
-nodo834600351[label=" ID CLIENTE: 7
-Blanco y Negro"]
-nodo471910020[label=" ID CLIENTE: 7
-Color"]
-nodo531885035[label=" ID CLIENTE: 7
-Color"]
-nodo1418481495[label=" ID CLIENTE: 7
-Color"]
-nodo424058530 -> nodo321001045;
-nodo321001045 -> nodo791452441;
-nodo791452441 -> nodo834600351;
-nodo834600351 -> nodo471910020;
-nodo471910020 -> nodo531885035;
-nodo531885035 -> nodo1418481495;
 }subgraph cluster_3{ 
 label = " Ventanilla: 3";
-nodo303563356[label=" ID CLIENTE: 12
-Color"]
-nodo135721597[label=" ID CLIENTE: 12
-Color"]
-nodo303563356 -> nodo135721597;
 }subgraph cluster_4{ 
 label = " Ventanilla: 4";
-nodo142257191[label=" ID CLIENTE: 11
+nodo1452126962[label=" ID CLIENTE: 13
 Blanco y Negro"]
-nodo1044036744[label=" ID CLIENTE: 11
+nodo931919113[label=" ID CLIENTE: 13
 Blanco y Negro"]
-nodo1826771953[label=" ID CLIENTE: 11
-Color"]
-nodo142257191 -> nodo1044036744;
-nodo1044036744 -> nodo1826771953;
+nodo1607521710[label=" ID CLIENTE: 13
+Blanco y Negro"]
+nodo1452126962 -> nodo931919113;
+nodo931919113 -> nodo1607521710;
 }subgraph cluster_5{ 
 label = " Ventanilla: 5";
-nodo1406718218[label=" ID CLIENTE: 13
+nodo764977973[label=" ID CLIENTE: 11
 Blanco y Negro"]
+nodo381259350[label=" ID CLIENTE: 11
+Blanco y Negro"]
+nodo2129789493[label=" ID CLIENTE: 11
+Blanco y Negro"]
+nodo668386784[label=" ID CLIENTE: 11
+Blanco y Negro"]
+nodo1329552164[label=" ID CLIENTE: 11
+Color"]
+nodo764977973 -> nodo381259350;
+nodo381259350 -> nodo2129789493;
+nodo2129789493 -> nodo668386784;
+nodo668386784 -> nodo1329552164;
 }} 

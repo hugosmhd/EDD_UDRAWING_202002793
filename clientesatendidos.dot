@@ -2,22 +2,26 @@ digraph G {
 node[shape=box, color=red];
 label="LISTA DE CLIENTES ATENDIDOS";
 fontsize = 40;
-nodo245257410[label=" ID:1\nCliente: Polly Rodriguez\nIMG COLOR: 3\nIMG BW: 2\nPASOS TOTAL: 14\nVENT. ATENCION: Ventanilla: 1\nTERMINO PROCESO: Si"]
-nodo1705736037[label=" ID:2\nCliente: Yang Wiggins\nIMG COLOR: 1\nIMG BW: 3\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 2\nTERMINO PROCESO: No"]
-nodo455659002[label=" ID:3\nCliente: Douglas Dominguez\nIMG COLOR: 0\nIMG BW: 3\nPASOS TOTAL: 13\nVENT. ATENCION: Ventanilla: 3\nTERMINO PROCESO: Si"]
-nodo250421012[label=" ID:6\nCliente: Stefanie Wise\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 1\nTERMINO PROCESO: No"]
-nodo1915318863[label=" ID:4\nCliente: Faith Hopkins\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 4\nTERMINO PROCESO: No"]
-nodo1283928880[label=" ID:5\nCliente: Sandy Mason\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 5\nTERMINO PROCESO: No"]
-nodo295530567[label=" ID:10\nCliente: Shannon Johnston\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 4\nTERMINO PROCESO: No"]
-nodo2003749087[label=" ID:9\nCliente: Tommie Mcpherson\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 3\nTERMINO PROCESO: No"]
-nodo1324119927[label=" ID:8\nCliente: Tabatha Pickett\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 15\nVENT. ATENCION: Ventanilla: 1\nTERMINO PROCESO: No"]
-nodo245257410 -> nodo1705736037;
-nodo1705736037 -> nodo455659002;
-nodo455659002 -> nodo250421012;
-nodo250421012 -> nodo1915318863;
-nodo1915318863 -> nodo1283928880;
-nodo1283928880 -> nodo295530567;
-nodo295530567 -> nodo2003749087;
-nodo2003749087 -> nodo1324119927;
+nodo980546781[label=" ID:1\nCliente: Polly Rodriguez\nIMG COLOR: 3\nIMG BW: 2\nPASOS TOTAL: 14\nVENT. ATENCION: Ventanilla: 1\nTERMINO PROCESO: Si"]
+nodo2061475679[label=" ID:3\nCliente: Douglas Dominguez\nIMG COLOR: 0\nIMG BW: 3\nPASOS TOTAL: 13\nVENT. ATENCION: Ventanilla: 3\nTERMINO PROCESO: Si"]
+nodo140435067[label=" ID:2\nCliente: Yang Wiggins\nIMG COLOR: 1\nIMG BW: 4\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 2\nTERMINO PROCESO: Si"]
+nodo363771819[label=" ID:6\nCliente: Stefanie Wise\nIMG COLOR: 1\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 1\nTERMINO PROCESO: No"]
+nodo2065951873[label=" ID:4\nCliente: Faith Hopkins\nIMG COLOR: 0\nIMG BW: 1\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 4\nTERMINO PROCESO: No"]
+nodo1791741888[label=" ID:5\nCliente: Sandy Mason\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 5\nTERMINO PROCESO: No"]
+nodo1595428806[label=" ID:9\nCliente: Tommie Mcpherson\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 3\nTERMINO PROCESO: No"]
+nodo1072408673[label=" ID:10\nCliente: Shannon Johnston\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 4\nTERMINO PROCESO: No"]
+nodo1531448569[label=" ID:8\nCliente: Tabatha Pickett\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 1\nTERMINO PROCESO: No"]
+nodo1867083167[label=" ID:7\nCliente: Leach Ross\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 2\nTERMINO PROCESO: No"]
+nodo1915910607[label=" ID:12\nCliente: Alyce Alford\nIMG COLOR: 0\nIMG BW: 0\nPASOS TOTAL: 17\nVENT. ATENCION: Ventanilla: 3\nTERMINO PROCESO: No"]
+nodo980546781 -> nodo2061475679;
+nodo2061475679 -> nodo140435067;
+nodo140435067 -> nodo363771819;
+nodo363771819 -> nodo2065951873;
+nodo2065951873 -> nodo1791741888;
+nodo1791741888 -> nodo1595428806;
+nodo1595428806 -> nodo1072408673;
+nodo1072408673 -> nodo1531448569;
+nodo1531448569 -> nodo1867083167;
+nodo1867083167 -> nodo1915910607;
 rankdir=LR;
 } 

@@ -56,7 +56,7 @@
     "Cliente10": {
         "id_cliente": 10,
         "nombre_cliente": "Shannon Johnston",
-        "img_color": 0,
+        "img_color": 1,
         "img_bw": 0
     },
     "Cliente11": {
@@ -87,7 +87,7 @@
         "id_cliente": 15,
         "nombre_cliente": "Elinor Ford",
         "img_color": 0,
-        "img_bw": 0
+        "img_bw": 2
     },
     "Cliente16": {
         "id_cliente": 16,
@@ -146,7 +146,7 @@
     "Cliente25": {
         "id_cliente": 25,
         "nombre_cliente": "Jolene Mccall",
-        "img_color": 0,
+        "img_color": 3,
         "img_bw": 0
     },
     "Cliente26": {
