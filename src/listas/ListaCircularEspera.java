@@ -135,14 +135,16 @@ public class ListaCircularEspera {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
         dot.append("node[shape=box, color=red];\n");
+        dot.append("label=\"LISTA CIRCULAR CLIENTES EN ESPERA\";\n");            
+        dot.append("fontsize = 40;\n");   
         
         String nombresNodos = "";
         String nodosRank = "";
         String conexiones = "";
         int grupo = 1;
 
-        NodoDobleCircular actual= this.lc.getSiguiente();
-
+        if(this.lc != null) {
+            NodoDobleCircular actual= this.lc.getSiguiente();
             do {
                 Cliente clienteActual = (Cliente) actual.getData();
                 nombresNodos += "nodo" + actual.hashCode() + "[label=\" ID: " +  clienteActual.getIdCliente() +
@@ -170,6 +172,7 @@ public class ListaCircularEspera {
                 actual=actual.getSiguiente();
                 grupo += 1;
             } while( actual != this.lc.getSiguiente());
+        }
         
         dot.append(nombresNodos);
         dot.append(conexiones);

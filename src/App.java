@@ -121,7 +121,13 @@ public class App {
                                     System.out.println("Grafica generada");                                    
                                     break;
                                 case 8:
-                                    // listaClientesEspera.dibujarGraphviz();
+                                    colaClientes.dibujarGraphviz();
+                                    listaVentanillas.dibujarGraphviz();
+                                    listaVentanillas.dibujarGraphvizPila();
+                                    listaClientesAtendidos.dibujarGraphviz();
+                                    colaColor.dibujarGraphviz("colacolor");
+                                    colaBW.dibujarGraphviz("colabw");
+                                    listaClientesEspera.dibujarGraphviz();
                                     System.out.println("Grafica generada");                                    
                                     break;
                                 case 9:
@@ -163,9 +169,6 @@ public class App {
                             }
                         } while(!salirParametros);
                         break;
-                        // System.out.println("////////// AQUI ESTAN ORDENADOS MENOS BW ///////////////");
-                        // listaClientesAtendidos.ordenamientoBurbujaImgBw();
-                        // listaClientesAtendidos.visualizar();
                     case 5:
                         // colaClientes.dibujarGraphviz();
                         break;

@@ -81,10 +81,16 @@ public class ColaImpresion {
 
     ////////////////////////////////////////////////////
 
-    public String codigoGraphviz() {
+    public String codigoGraphviz(boolean isColor) {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
         dot.append("node[shape=box, color=red];\n");
+        if (isColor) {
+            dot.append("label=\"COLA DE IMPRESION A COLOR\";\n");            
+        } else {
+            dot.append("label=\"COLA DE IMPRESION A BLANCO Y NEGRO\";\n");            
+        }
+        dot.append("fontsize = 40;\n");            
         
         String nombresNodos = "";
         String conexiones = "";
@@ -126,7 +132,8 @@ public class ColaImpresion {
     
     public void dibujarGraphviz(String nombre) {
         try {
-            escribirArchivo(nombre+".dot", codigoGraphviz());
+            boolean isColor = nombre.equalsIgnoreCase("colacolor") ? true : false;
+            escribirArchivo(nombre+".dot", codigoGraphviz(isColor));
             ProcessBuilder proceso;
             proceso = new ProcessBuilder("dot","-Tpng","-o",nombre+".png",nombre+".dot");
             proceso.redirectErrorStream(true);

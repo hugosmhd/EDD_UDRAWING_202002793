@@ -1,24 +1,47 @@
 digraph G { 
 node[shape=box, color=red];
+label="PILA DE IMAGENES EN VENTANILLAS"
+fontsize = 40;
 subgraph cluster_1{ 
 label = " Ventanilla: 1";
-nodo621009875[label=" ID CLIENTE: 1
+nodo812265671[label=" ID CLIENTE: 37
+Blanco y Negro"]
+nodo648129364[label=" ID CLIENTE: 37
+Blanco y Negro"]
+nodo1494279232[label=" ID CLIENTE: 37
 Color"]
-nodo1265094477[label=" ID CLIENTE: 1
-Color"]
-nodo2125039532[label=" ID CLIENTE: 1
-Color"]
-nodo621009875 -> nodo1265094477;
-nodo1265094477 -> nodo2125039532;
+nodo812265671 -> nodo648129364;
+nodo648129364 -> nodo1494279232;
 }subgraph cluster_2{ 
 label = " Ventanilla: 2";
-nodo312714112[label=" ID CLIENTE: 2
+nodo193064360[label=" ID CLIENTE: 35
 Blanco y Negro"]
-nodo692404036[label=" ID CLIENTE: 2
+nodo1029991479[label=" ID CLIENTE: 35
+Blanco y Negro"]
+nodo1650967483[label=" ID CLIENTE: 35
 Color"]
-nodo312714112 -> nodo692404036;
+nodo1296064247[label=" ID CLIENTE: 35
+Color"]
+nodo1637070917[label=" ID CLIENTE: 35
+Color"]
+nodo780237624[label=" ID CLIENTE: 35
+Color"]
+nodo193064360 -> nodo1029991479;
+nodo1029991479 -> nodo1650967483;
+nodo1650967483 -> nodo1296064247;
+nodo1296064247 -> nodo1637070917;
+nodo1637070917 -> nodo780237624;
 }subgraph cluster_3{ 
 label = " Ventanilla: 3";
-nodo1554874502[label=" ID CLIENTE: 3
-Blanco y Negro"]
+nodo109961541[label=" ID CLIENTE: 38
+Color"]
+nodo1104106489[label=" ID CLIENTE: 38
+Color"]
+nodo109961541 -> nodo1104106489;
+}subgraph cluster_4{ 
+label = " Ventanilla: 4";
+}subgraph cluster_5{ 
+label = " Ventanilla: 5";
+nodo670700378[label=" ID CLIENTE: 39
+Color"]
 }} 

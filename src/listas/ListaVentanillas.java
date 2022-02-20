@@ -133,6 +133,8 @@ public class ListaVentanillas {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
         dot.append("node[shape=box, color=red];\n");
+        dot.append("label=\"LISTA DE VENTANILLAS\"\n");       
+        dot.append("fontsize = 40;\n");   
         
         String nombresNodos = "";
         String conexiones = "";
@@ -191,7 +193,9 @@ public class ListaVentanillas {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
         dot.append("node[shape=box, color=red];\n");
-                
+        dot.append("label=\"PILA DE IMAGENES EN VENTANILLAS\"\n");         
+        dot.append("fontsize = 40;\n");   
+
         NodoSimple actual= this.primero;
         while( actual!= null){
             Ventanilla vtnActual = (Ventanilla) actual.getData();

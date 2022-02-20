@@ -1,9 +1,25 @@
 digraph G { 
 node[shape=box, color=red];
-nodo21685669[label=" ID:1\nPolly Rodriguez\nCOLOR: 3\nBW: 2"]
-nodo2133927002[label=" ID:2\nYang Wiggins\nCOLOR: 1\nBW: 4"]
-nodo1836019240[label=" ID:3\nDouglas Dominguez\nCOLOR: 0\nBW: 3"]
-nodo21685669 -> nodo2133927002;
-nodo2133927002 -> nodo1836019240;
+label="COLA EN RECEPCION";
+fontsize = 40;
+nodo1625635731[label=" ID:41\nChrista Mendoza\nCOLOR: 2\nBW: 3"]
+nodo1580066828[label=" ID:42\nEtta Blake\nCOLOR: 3\nBW: 0"]
+nodo491044090[label=" ID:43\nMacdonald Murray\nCOLOR: 1\nBW: 1"]
+nodo644117698[label=" ID:44\nGarza York\nCOLOR: 2\nBW: 0"]
+nodo1872034366[label=" ID:45\nHatfield Sykes\nCOLOR: 1\nBW: 0"]
+nodo1581781576[label=" ID:46\nWashington Dickerson\nCOLOR: 3\nBW: 0"]
+nodo1725154839[label=" ID:47\nEthel Cortez\nCOLOR: 3\nBW: 2"]
+nodo1670675563[label=" ID:48\nVicky Jimenez\nCOLOR: 4\nBW: 4"]
+nodo723074861[label=" ID:49\nRomero Sanders\nCOLOR: 2\nBW: 0"]
+nodo895328852[label=" ID:50\nShana Burke\nCOLOR: 0\nBW: 4"]
+nodo1625635731 -> nodo1580066828;
+nodo1580066828 -> nodo491044090;
+nodo491044090 -> nodo644117698;
+nodo644117698 -> nodo1872034366;
+nodo1872034366 -> nodo1581781576;
+nodo1581781576 -> nodo1725154839;
+nodo1725154839 -> nodo1670675563;
+nodo1670675563 -> nodo723074861;
+nodo723074861 -> nodo895328852;
 rankdir=LR;
 } 

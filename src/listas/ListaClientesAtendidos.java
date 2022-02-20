@@ -69,17 +69,21 @@ public class ListaClientesAtendidos {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
         dot.append("node[shape=box, color=red];\n");
+        dot.append("label=\"LISTA DE CLIENTES ATENDIDOS\";\n");            
+        dot.append("fontsize = 40;\n");   
         
         String nombresNodos = "";
         String conexiones = "";
         NodoSimple actual= this.primero;
         while( actual!= null){
             Cliente clienteActual = (Cliente) actual.getData();
+            String terminoProceso = clienteActual.isTerminoImpresion() ? "Si" : "No";
             nombresNodos += "nodo" + actual.hashCode() + "[label=\" ID:" +  clienteActual.getIdCliente() + "\\n" + 
             "Cliente: " +  clienteActual.getNombre() + "\\n" +  "IMG COLOR: " +  clienteActual.getCantidadColor() + 
             "\\n" +  "IMG BW: " +  clienteActual.getCantidadBW() + 
             "\\n" +  "PASOS TOTAL: " +  clienteActual.getTotalPasos() + 
-            "\\n" +  "VENT. ATENCION: " +  clienteActual.getVentanillaAtencion() + "\"]" + "\n";
+            "\\n" +  "VENT. ATENCION: " +  clienteActual.getVentanillaAtencion() + 
+            "\\n" +  "TERMINO PROCESO: " +  terminoProceso + "\"]" + "\n";
             if (actual.getSiguiente() != null)            
                 conexiones += String.format("nodo%d -> nodo%d;\n", actual.hashCode(), actual.getSiguiente().hashCode());
             actual=actual.getSiguiente();

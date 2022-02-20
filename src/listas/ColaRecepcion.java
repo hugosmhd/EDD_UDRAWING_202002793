@@ -58,7 +58,8 @@ public class ColaRecepcion {
         StringBuilder dot = new StringBuilder();
         dot.append("digraph G { \n");
         dot.append("node[shape=box, color=red];\n");
-        
+        dot.append("label=\"COLA EN RECEPCION\";\n");            
+        dot.append("fontsize = 40;\n");   
         String nombresNodos = "";
         String conexiones = "";
         NodoSimple actual= this.primero;

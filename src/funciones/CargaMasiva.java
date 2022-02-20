@@ -38,15 +38,10 @@ public class CargaMasiva {
          br = new BufferedReader(fr);
          String archivoString = "";
 
-         // Lectura del fichero
          String linea;
          while((linea=br.readLine())!=null)
-            // System.out.println(linea);
             archivoString += linea;
 
-        // archivoString = archivoString.replaceAll("\\s","");
-        // System.out.println(archivoString);
-        
         for (int i=0; i < archivoString.length(); i++) {
 
             if(estado == 0) {
@@ -59,7 +54,6 @@ public class CargaMasiva {
                 }
             } else if(estado == 2) {
                 if(archivoString.charAt(i) == '"') {
-                    // System.out.println("----------------------");
                     estado = 3;
                 }
             } else if(estado == 3) {
@@ -72,14 +66,11 @@ public class CargaMasiva {
                 }
             } else if(estado == 5) {
                 if(archivoString.charAt(i) == '"') {
-                    // System.out.println("DESDE EL ESTADO 5");
                     estado = 6;
                 }
             } else if(estado == 6) {
-                // System.out.println("DESDE EL ESTADO 6");
                 if(archivoString.charAt(i) != '"') {
                     identificadorActual += archivoString.charAt(i);
-                    // System.out.println("ESTADO 6" + identificadorActual);
                 } else {
                     estado = 7;
                 }
@@ -91,86 +82,53 @@ public class CargaMasiva {
                 if(archivoString.charAt(i) == '"') {
                     estado = 9;
                 } else if(Character.isDigit(archivoString.charAt(i))) {
-                    // System.out.println("EMPEZAMOS A LLENAR EN ESTADO 8");
-                    // System.out.println(archivoString.charAt(i));
-                    // System.out.println("JAJAJA " + identificadorActual);
-                    // System.out.println("JAJAJA " + identificadorActual.length());
                     if(identificadorActual.equalsIgnoreCase("id_cliente")) {
-                        // System.out.println("TIENE QUE ENTRARRRRRRR AAAAAAAAAAAAAAAAAA");
                         idCliente += archivoString.charAt(i);
-                        // System.out.println(idCliente);
                     } else if(identificadorActual.equalsIgnoreCase("img_color")) {
                         imgColor += archivoString.charAt(i);
-                        // System.out.println(imgColor);
                     } else if(identificadorActual.equalsIgnoreCase("img_bw")) {
                         imgBW += archivoString.charAt(i);
-                        // System.out.println(imgBW);
                     } 
-                    // else if(archivoString.charAt(i) == ',') {
-                    //     identificadorActual = "";
-                    //     estado = 5;
-                    // } else if(archivoString.charAt(i) == '}') {
-                    //     identificadorActual = "";
-                    //     estado = 10;
-                    // }
                 } else if(archivoString.charAt(i) == ',') {
-                    // System.out.println("IDENTs " + identificadorActual);
                     identificadorActual = "";
                     estado = 5;
                 } else if(archivoString.charAt(i) == '}') {
-                    // System.out.println("IDENTs " + identificadorActual);
                     identificadorActual = "";
                     estado = 10;
                 }
             } else if(estado == 9) {
-                // System.out.println("EMPEZAMOS A LLENAR EN EL ESTADO 9");
-                // System.out.println(archivoString.charAt(i));
-                // System.out.println("JAJAJA " + identificadorActual);
                 if(identificadorActual.equalsIgnoreCase("nombre_cliente") && archivoString.charAt(i) != ',' && archivoString.charAt(i) != '}' && archivoString.charAt(i) != '"') {
                     nombreCliente += archivoString.charAt(i);
-                    // System.out.println("Entre en el nombre del cliente estado 9");
-                    // System.out.println(nombreCliente);
-                } else if(identificadorActual.equalsIgnoreCase("id_cliente") && archivoString.charAt(i) != ',' && archivoString.charAt(i) == '}') {
+                } else if(identificadorActual.equalsIgnoreCase("id_cliente") && archivoString.charAt(i) != ',' && archivoString.charAt(i) != '}' && archivoString.charAt(i) != '"') {
                     idCliente += archivoString.charAt(i);
-                    // System.out.println(idCliente);
-                } else if(identificadorActual.equalsIgnoreCase("img_color") && archivoString.charAt(i) != ',' && archivoString.charAt(i) == '}') {
+                } else if(identificadorActual.equalsIgnoreCase("img_color") && archivoString.charAt(i) != ',' && archivoString.charAt(i) != '}' && archivoString.charAt(i) != '"') {
                     imgColor += archivoString.charAt(i);
-                    System.out.println(imgColor);
-                } else if(identificadorActual.equalsIgnoreCase("img_bw") && archivoString.charAt(i) != ',' && archivoString.charAt(i) == '}') {
+                } else if(identificadorActual.equalsIgnoreCase("img_bw") && archivoString.charAt(i) != ',' && archivoString.charAt(i) != '}' && archivoString.charAt(i) != '"') {
                     imgBW += archivoString.charAt(i);
-                    System.out.println(imgBW);
                 } else if(archivoString.charAt(i) == ',') {
-                    // System.out.println("IDENT " + identificadorActual);
                     identificadorActual = "";
                     estado = 5;
                 } else if(archivoString.charAt(i) == '}') {
-                    // System.out.println("IDENT " + identificadorActual);
                     identificadorActual = "";
                     estado = 10;
                 }
             } else if(estado == 10) {
                 if(idCliente != "" && nombreCliente != "" && imgColor != "" && imgBW != "") {
                     imgColor = imgColor.replaceAll("\\s","");
-                    imgColor = imgColor.replaceAll("\\s","");
+                    imgBW = imgBW.replaceAll("\\s","");
                     Cliente nuevo = new Cliente(idCliente, nombreCliente, Integer.parseInt(imgColor), Integer.parseInt(imgBW));
                     colaClientes.encolar(nuevo);
-                    // System.out.println("ID " + idCliente);
-                    // System.out.println("NOMBRE " + nombreCliente);
-                    // System.out.println("COLOR " + Integer.parseInt(imgColor));
-                    // System.out.println("BLANCO Y NEGRO " + Integer.parseInt(imgBW));
                     idCliente = "";
                     nombreCliente = "";
                     imgColor = "";
                     imgBW = "";
-                    // System.out.println("SE DEBE CREAR UN NUEVO CLIENTE");
                 }
                 if(archivoString.charAt(i) == ',') {                    
                     estado = 1;
                 } else if(archivoString.charAt(i) == '}') {
-                    System.out.println("Se termino el algoritmo");
+                    System.out.println("Se termino de leer el archivo :)");
                 }
             }
-            // System.out.println();
         }
       }
       catch(Exception e){

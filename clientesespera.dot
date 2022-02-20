@@ -1,21 +1,93 @@
 digraph G { 
 node[shape=box, color=red];
-nodo1846274136[label=" ID: 1\nPolly Rodriguez\n COLOR: 1\n BW: 2" , style = filled, fillcolor = lightskyblue, group = 1]
-nodo1360875712[label="Blanco y Negro" ,width = 1.8, group = 1]
-nodo1625635731[label="Color" ,width = 1.8, group = 1]
-nodo1580066828[label="Blanco y Negro" ,width = 1.8, group = 1]
-nodo1639705018[label=" ID: 3\nDouglas Dominguez\n COLOR: 0\n BW: 1" , style = filled, fillcolor = lightskyblue, group = 2]
-nodo491044090[label="Blanco y Negro" ,width = 1.8, group = 2]
-nodo1627674070[label=" ID: 2\nYang Wiggins\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 3]
-nodo1846274136 -> nodo1639705018;
-nodo1846274136 -> nodo1627674070;
-nodo1846274136 -> nodo1360875712;
-nodo1360875712 -> nodo1625635731;
-nodo1625635731 -> nodo1580066828;
-nodo1639705018 -> nodo1627674070;
-nodo1639705018 -> nodo1846274136;
-nodo1639705018 -> nodo491044090;
-nodo1627674070 -> nodo1846274136;
-nodo1627674070 -> nodo1639705018;
-{ rank = same; nodo1846274136; nodo1639705018; nodo1627674070;  }
+label="LISTA CIRCULAR CLIENTES EN ESPERA";
+fontsize = 40;
+nodo1283928880[label=" ID: 10\nShannon Johnston\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 1]
+nodo1831932724[label=" ID: 15\nElinor Ford\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 2]
+nodo1023892928[label=" ID: 11\nLeigh Bright\n COLOR: 1\n BW: 4" , style = filled, fillcolor = lightskyblue, group = 3]
+nodo1775282465[label="Color" ,width = 1.8, group = 3]
+nodo1342443276[label="Blanco y Negro" ,width = 1.8, group = 3]
+nodo769287236[label="Blanco y Negro" ,width = 1.8, group = 3]
+nodo1587487668[label="Blanco y Negro" ,width = 1.8, group = 3]
+nodo1199823423[label="Blanco y Negro" ,width = 1.8, group = 3]
+nodo2093631819[label=" ID: 14\nDurham Logan\n COLOR: 0\n BW: 2" , style = filled, fillcolor = lightskyblue, group = 4]
+nodo2047329716[label="Blanco y Negro" ,width = 1.8, group = 4]
+nodo930990596[label="Blanco y Negro" ,width = 1.8, group = 4]
+nodo2074407503[label=" ID: 18\nLong Meyer\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 5]
+nodo999966131[label=" ID: 19\nGeraldine Pierce\n COLOR: 0\n BW: 1" , style = filled, fillcolor = lightskyblue, group = 6]
+nodo787604730[label="Blanco y Negro" ,width = 1.8, group = 6]
+nodo2003749087[label=" ID: 17\nGutierrez Casey\n COLOR: 0\n BW: 1" , style = filled, fillcolor = lightskyblue, group = 7]
+nodo1147985808[label="Blanco y Negro" ,width = 1.8, group = 7]
+nodo1848402763[label=" ID: 20\nRoman Branch\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 8]
+nodo933699219[label=" ID: 23\nGay Mcmillan\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 9]
+nodo2121055098[label=" ID: 25\nJolene Mccall\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 10]
+nodo2084435065[label=" ID: 22\nNola Winters\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 11]
+nodo1896277646[label=" ID: 21\nPruitt Perez\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 12]
+nodo2128227771[label=" ID: 26\nEvelyn Fitzgerald\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 13]
+nodo1702297201[label=" ID: 27\nHudson Lancaster\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 14]
+nodo1996181658[label=" ID: 24\nCarolyn Harmon\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 15]
+nodo806353501[label=" ID: 28\nEllison Hood\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 16]
+nodo521645586[label=" ID: 29\nWhitney Clayton\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 17]
+nodo1867750575[label=" ID: 30\nMoore Horton\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 18]
+nodo1921595561[label=" ID: 32\nAndrews Vance\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 19]
+nodo565760380[label=" ID: 36\nWitt Forbes\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 20]
+nodo6566818[label=" ID: 31\nMaggie Levine\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 21]
+nodo596512129[label=" ID: 33\nDixie Howard\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 22]
+nodo1349277854[label=" ID: 34\nHeidi Lowery\n COLOR: 0\n BW: 0" , style = filled, fillcolor = lightskyblue, group = 23]
+nodo1283928880 -> nodo1831932724;
+nodo1283928880 -> nodo1349277854;
+nodo1831932724 -> nodo1023892928;
+nodo1831932724 -> nodo1283928880;
+nodo1023892928 -> nodo2093631819;
+nodo1023892928 -> nodo1831932724;
+nodo1023892928 -> nodo1775282465;
+nodo1775282465 -> nodo1342443276;
+nodo1342443276 -> nodo769287236;
+nodo769287236 -> nodo1587487668;
+nodo1587487668 -> nodo1199823423;
+nodo2093631819 -> nodo2074407503;
+nodo2093631819 -> nodo1023892928;
+nodo2093631819 -> nodo2047329716;
+nodo2047329716 -> nodo930990596;
+nodo2074407503 -> nodo999966131;
+nodo2074407503 -> nodo2093631819;
+nodo999966131 -> nodo2003749087;
+nodo999966131 -> nodo2074407503;
+nodo999966131 -> nodo787604730;
+nodo2003749087 -> nodo1848402763;
+nodo2003749087 -> nodo999966131;
+nodo2003749087 -> nodo1147985808;
+nodo1848402763 -> nodo933699219;
+nodo1848402763 -> nodo2003749087;
+nodo933699219 -> nodo2121055098;
+nodo933699219 -> nodo1848402763;
+nodo2121055098 -> nodo2084435065;
+nodo2121055098 -> nodo933699219;
+nodo2084435065 -> nodo1896277646;
+nodo2084435065 -> nodo2121055098;
+nodo1896277646 -> nodo2128227771;
+nodo1896277646 -> nodo2084435065;
+nodo2128227771 -> nodo1702297201;
+nodo2128227771 -> nodo1896277646;
+nodo1702297201 -> nodo1996181658;
+nodo1702297201 -> nodo2128227771;
+nodo1996181658 -> nodo806353501;
+nodo1996181658 -> nodo1702297201;
+nodo806353501 -> nodo521645586;
+nodo806353501 -> nodo1996181658;
+nodo521645586 -> nodo1867750575;
+nodo521645586 -> nodo806353501;
+nodo1867750575 -> nodo1921595561;
+nodo1867750575 -> nodo521645586;
+nodo1921595561 -> nodo565760380;
+nodo1921595561 -> nodo1867750575;
+nodo565760380 -> nodo6566818;
+nodo565760380 -> nodo1921595561;
+nodo6566818 -> nodo596512129;
+nodo6566818 -> nodo565760380;
+nodo596512129 -> nodo1349277854;
+nodo596512129 -> nodo6566818;
+nodo1349277854 -> nodo1283928880;
+nodo1349277854 -> nodo596512129;
+{ rank = same; nodo1283928880; nodo1831932724; nodo1023892928; nodo2093631819; nodo2074407503; nodo999966131; nodo2003749087; nodo1848402763; nodo933699219; nodo2121055098; nodo2084435065; nodo1896277646; nodo2128227771; nodo1702297201; nodo1996181658; nodo806353501; nodo521645586; nodo1867750575; nodo1921595561; nodo565760380; nodo6566818; nodo596512129; nodo1349277854;  }
 } 
