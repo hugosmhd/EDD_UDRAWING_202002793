@@ -40,7 +40,6 @@ public class ListaClientesAtendidos {
         while(actual != null){
             Cliente aux = (Cliente) actual.getData();
             System.out.println("--------- CLIENTE --------------");
-            // if (actual.getSiguiente()!=null) {
             System.out.println("ID: " + aux.getIdCliente());                
             System.out.println("Nombre: " + aux.getNombre());                
             System.out.println("Ventanilla atencion: " + aux.getVentanillaAtencion());                
@@ -199,6 +198,7 @@ public class ListaClientesAtendidos {
     }
 
     public void topCincoMayorImgColor() {
+        System.out.println("--------- TOP 5 CLIENTES CON MAS IMAGENES A COLOR ---------");
         this.ordenamientoBurbujaImgColor();
         NodoSimple actual= this.primero;
         int contador = 0;
@@ -222,6 +222,7 @@ public class ListaClientesAtendidos {
     }
 
     public void topCincoMenosImgBW() {
+        System.out.println("--------- TOP 5 CLIENTES CON MENOS IMAGENES A BW ---------");
         this.ordenamientoBurbujaImgBw();
         NodoSimple actual= this.primero;
         int contador = 0;
@@ -245,6 +246,7 @@ public class ListaClientesAtendidos {
     }
 
     public void clienteMasPasos() {
+        System.out.println("--------- CLIENTE CON MAS PASOS ---------");
         this.ordenamientoClienteMasPasos();
         NodoSimple actual= this.primero;
         int contador = 1;
@@ -274,6 +276,7 @@ public class ListaClientesAtendidos {
     }
 
     public void datosCliente(String idCliente) {
+        System.out.println("--------- DATOS DEL CLIENTE ---------");
         NodoSimple actual = this.primero;
         if (this.primero != null) {
             Cliente clienteActual = (Cliente) actual.getData();
@@ -306,8 +309,5 @@ public class ListaClientesAtendidos {
         
 
     }
-
-    
-
     
 }

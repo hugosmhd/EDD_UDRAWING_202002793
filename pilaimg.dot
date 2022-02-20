@@ -4,44 +4,47 @@ label="PILA DE IMAGENES EN VENTANILLAS"
 fontsize = 40;
 subgraph cluster_1{ 
 label = " Ventanilla: 1";
-nodo812265671[label=" ID CLIENTE: 37
-Blanco y Negro"]
-nodo648129364[label=" ID CLIENTE: 37
-Blanco y Negro"]
-nodo1494279232[label=" ID CLIENTE: 37
-Color"]
-nodo812265671 -> nodo648129364;
-nodo648129364 -> nodo1494279232;
 }subgraph cluster_2{ 
 label = " Ventanilla: 2";
-nodo193064360[label=" ID CLIENTE: 35
+nodo424058530[label=" ID CLIENTE: 7
 Blanco y Negro"]
-nodo1029991479[label=" ID CLIENTE: 35
+nodo321001045[label=" ID CLIENTE: 7
 Blanco y Negro"]
-nodo1650967483[label=" ID CLIENTE: 35
+nodo791452441[label=" ID CLIENTE: 7
+Blanco y Negro"]
+nodo834600351[label=" ID CLIENTE: 7
+Blanco y Negro"]
+nodo471910020[label=" ID CLIENTE: 7
 Color"]
-nodo1296064247[label=" ID CLIENTE: 35
+nodo531885035[label=" ID CLIENTE: 7
 Color"]
-nodo1637070917[label=" ID CLIENTE: 35
+nodo1418481495[label=" ID CLIENTE: 7
 Color"]
-nodo780237624[label=" ID CLIENTE: 35
-Color"]
-nodo193064360 -> nodo1029991479;
-nodo1029991479 -> nodo1650967483;
-nodo1650967483 -> nodo1296064247;
-nodo1296064247 -> nodo1637070917;
-nodo1637070917 -> nodo780237624;
+nodo424058530 -> nodo321001045;
+nodo321001045 -> nodo791452441;
+nodo791452441 -> nodo834600351;
+nodo834600351 -> nodo471910020;
+nodo471910020 -> nodo531885035;
+nodo531885035 -> nodo1418481495;
 }subgraph cluster_3{ 
 label = " Ventanilla: 3";
-nodo109961541[label=" ID CLIENTE: 38
+nodo303563356[label=" ID CLIENTE: 12
 Color"]
-nodo1104106489[label=" ID CLIENTE: 38
+nodo135721597[label=" ID CLIENTE: 12
 Color"]
-nodo109961541 -> nodo1104106489;
+nodo303563356 -> nodo135721597;
 }subgraph cluster_4{ 
 label = " Ventanilla: 4";
+nodo142257191[label=" ID CLIENTE: 11
+Blanco y Negro"]
+nodo1044036744[label=" ID CLIENTE: 11
+Blanco y Negro"]
+nodo1826771953[label=" ID CLIENTE: 11
+Color"]
+nodo142257191 -> nodo1044036744;
+nodo1044036744 -> nodo1826771953;
 }subgraph cluster_5{ 
 label = " Ventanilla: 5";
-nodo670700378[label=" ID CLIENTE: 39
-Color"]
+nodo1406718218[label=" ID CLIENTE: 13
+Blanco y Negro"]
 }} 

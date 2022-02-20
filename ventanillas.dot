@@ -2,14 +2,14 @@ digraph G {
 node[shape=box, color=red];
 label="LISTA DE VENTANILLAS"
 fontsize = 40;
-nodo1304836502[label=" Ventanilla: 1\n DISPONIBLE: NO"]
-nodo225534817[label=" Ventanilla: 2\n DISPONIBLE: NO"]
-nodo1878246837[label=" Ventanilla: 3\n DISPONIBLE: NO"]
-nodo929338653[label=" Ventanilla: 4\n DISPONIBLE: NO"]
-nodo1259475182[label=" Ventanilla: 5\n DISPONIBLE: NO"]
-nodo1304836502 -> nodo225534817;
-nodo225534817 -> nodo1878246837;
-nodo1878246837 -> nodo929338653;
-nodo929338653 -> nodo1259475182;
+nodo1528902577[label=" Ventanilla: 1\n DISPONIBLE: NO"]
+nodo1927950199[label=" Ventanilla: 2\n DISPONIBLE: NO"]
+nodo868693306[label=" Ventanilla: 3\n DISPONIBLE: NO"]
+nodo1746572565[label=" Ventanilla: 4\n DISPONIBLE: NO"]
+nodo989110044[label=" Ventanilla: 5\n DISPONIBLE: NO"]
+nodo1528902577 -> nodo1927950199;
+nodo1927950199 -> nodo868693306;
+nodo868693306 -> nodo1746572565;
+nodo1746572565 -> nodo989110044;
 rankdir=LR;
 } 

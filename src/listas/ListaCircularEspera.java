@@ -12,8 +12,6 @@ public class ListaCircularEspera {
     NodoDobleCircular lc;
 
     public ListaCircularEspera() {
-        // this.primero = null;
-        // this.ultimo = null;
         this.lc = null;
     }
 
@@ -28,9 +26,9 @@ public class ListaCircularEspera {
             nuevo.setSiguiente(nuevo);
             nuevo.setAnterior(nuevo);
         } else {
-            NodoDobleCircular primero = this.lc.getSiguiente();  // bueno
-            nuevo.setSiguiente(primero);  // bueno
-            nuevo.setAnterior(this.lc); // bueno
+            NodoDobleCircular primero = this.lc.getSiguiente();  
+            nuevo.setSiguiente(primero);  
+            nuevo.setAnterior(this.lc); 
 
             this.lc.setSiguiente(nuevo);
             primero.setAnterior(nuevo);
@@ -72,7 +70,6 @@ public class ListaCircularEspera {
                 Cliente cliente = (Cliente) actual.getData();
                 if(cliente.getIdCliente() == imgImpresa.getIdCliente()) {
                     NodoSimple imgLista = new NodoSimple(imgImpresa);
-                    // cliente.setTotalImagenes();
                     if(actual.getImagenes() == null) {
                         actual.setImagenes(imgLista);
                     } else {
@@ -178,7 +175,6 @@ public class ListaCircularEspera {
         dot.append(conexiones);
         dot.append("{ rank = same; " + nodosRank + " }\n");
 
-        // dot.append("rankdir=LR;\n");
         dot.append("} \n");    
         
         return dot.toString();

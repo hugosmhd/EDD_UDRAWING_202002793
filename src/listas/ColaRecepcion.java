@@ -44,7 +44,6 @@ public class ColaRecepcion {
         while( actual!= null){
             Cliente aux = (Cliente) actual.getData();
             System.out.println("--------- CLIENTE --------------");
-            // if (actual.getSiguiente()!=null) {
             System.out.println("ID: " + aux.getIdCliente());                
             System.out.println("Nombre: " + aux.getNombre());                
             System.out.println("A Color: " + aux.getCantidadColor());                

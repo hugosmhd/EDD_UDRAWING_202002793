@@ -13,12 +13,11 @@ public class EjecutarPaso {
     public static void ejecutarPaso(ColaRecepcion colaClientes, ListaVentanillas listaVentanillas,
     ListaCircularEspera listaClientesEspera, ColaImpresion colaColor, ColaImpresion colaBW, 
     ListaClientesAtendidos listaClientesAtendidos) {
-        // GenerarAleatorios.aleatorios(colaClientes);
+        GenerarAleatorios.aleatorios(colaClientes);
 
         colaClientes.aumentarPasoClientes();
         listaClientesEspera.aumentarPaso();
 
-        // listaClientesEspera.aumentarPaso();
         String idProxClienteColor = colaColor.idClienteProximo();
         String idProxClienteBW = colaBW.idClienteProximo();
         listaClientesEspera.retirarCliente(idProxClienteColor, idProxClienteBW, listaClientesAtendidos);
@@ -40,8 +39,6 @@ public class EjecutarPaso {
                 System.out.println("EL CLIENTE " + clienteEspera.getIdCliente() + " INGRESA A LA VENTANILLA " + ventanillaDisponible.getIdVentanilla());
                 ventanillaDisponible.setDisponible(false);                
             }
-        } else if(!listaVentanillas.estaVacia()) {
-            System.out.println("Ya no hay clientes por atender :)");
         }
 
     }

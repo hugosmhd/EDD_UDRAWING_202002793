@@ -47,10 +47,10 @@ public class App {
                         int opcionParametros = sn.nextInt();
                         switch(opcionParametros) {
                             case 1:
-                                // String ruta;
+                                String ruta;
                                 System.out.println("Ingresa la ruta del archivo");
-                                // ruta = snString.nextLine();
-                                String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
+                                ruta = snString.nextLine();
+                                // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
                                 CargaMasiva.cargar(ruta, colaClientes);
                                 break;
                             case 2:
@@ -58,16 +58,12 @@ public class App {
                                 System.out.println("Ingresa la cantidad de ventanillas");
                                 cantidadVentanillas = sn.nextInt();
                                 listaVentanillas.insertarAlFinal(cantidadVentanillas);
-                                // listaVentanillas.visualizar();
                                 break;
                             case 3:
                                 System.out.println("Regresando al menu principal...");
                                 salirParametros = true;
                                 break;
                         }
-                        // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_FASE1_202002793\\data.json";
-                        // CargaMasiva.cargar(ruta, colaClientes);
-                        // colaClientes.visualizar();
                     } while(!salirParametros);
                     break;
                     case 2:
@@ -170,7 +166,11 @@ public class App {
                         } while(!salirParametros);
                         break;
                     case 5:
-                        // colaClientes.dibujarGraphviz();
+                        System.out.println("--------- DATOS DEL ESTUDIANTE ---------");
+                        System.out.println("Nombre: Hugo Sebastian Martínez Hernández");
+                        System.out.println("Carné: 202002793");
+                        System.out.println("Estructura de Datos");
+                        System.out.println("Sección A, Primer Semestre 2022");
                         break;
                     case 6:
                         salir=true;
@@ -179,8 +179,6 @@ public class App {
                         System.out.println("Solo números entre 1 y 6");
                     
                 }
-                // System.out.println("---------- LISTA DE CLIENTES ATENDIDOS ------------");
-                // listaClientesAtendidos.visualizar();
                     
             }
         

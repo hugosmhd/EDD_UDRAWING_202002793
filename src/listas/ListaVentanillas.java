@@ -204,8 +204,6 @@ public class ListaVentanillas {
             subgraph += "subgraph cluster_" + vtnActual.getIdVentanilla() + "{ \n";
             subgraph += "label = \" Ventanilla: " + vtnActual.getIdVentanilla()  +  "\";\n";
             conexiones += vtnActual.getImagenesCliente().codigoGraphviz();
-            // if (actual.getSiguiente() != null) {         
-            // }
             subgraph += conexiones;
             subgraph += "}";
             dot.append(subgraph);    
@@ -213,7 +211,6 @@ public class ListaVentanillas {
             actual=actual.getSiguiente();
         }
         
-        // dot.append("rankdir=LR;\n");
         dot.append("} \n");    
         
         return dot.toString();
