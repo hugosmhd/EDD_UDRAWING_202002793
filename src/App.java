@@ -167,10 +167,9 @@ public class App {
                             switch(opcionParametros) {
                                 case 1:
                                     listaClientesAtendidos.topCincoMayorImgColor();
-                                    // listaClientesAtendidos.visualizar();
                                     break;
                                 case 2:
-                                                                 
+                                    listaClientesAtendidos.topCincoMenosImgBW();                                                                 
                                     break;
                                 case 3:
                                     

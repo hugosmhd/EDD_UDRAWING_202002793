@@ -149,7 +149,7 @@ public class ListaClientesAtendidos {
     }
 
     public void ordenamientoBurbujaImgColor() {
-        Cliente aux;    // menor tiene el indice del elemento menor, no el valor
+        Cliente aux;
         int contadorUno = 0, contadorDos = 0;
         NodoSimple actualRecorrido = this.primero;
         while(actualRecorrido != null && contadorUno<(this.cantidadClientes-1)){
@@ -172,12 +172,12 @@ public class ListaClientesAtendidos {
     }
 
     public void ordenamientoBurbujaImgBw() {
-        Cliente aux;    // menor tiene el indice del elemento menor, no el valor
-        int contadorUno = 0, contadorDos = 0;
+        Cliente aux;
+        int contadorUno = 0;
         NodoSimple actualRecorrido = this.primero;
         while(actualRecorrido != null && contadorUno<this.cantidadClientes-1){
-
-            NodoSimple actualRecorridoDos = actualRecorrido;
+            NodoSimple actualRecorridoDos = this.primero;
+            int contadorDos = 0;
             while(actualRecorridoDos != null && contadorDos < (this.cantidadClientes-contadorUno-1)){
                 Cliente clienteEvaluar = (Cliente) actualRecorridoDos.getData();
                 Cliente clienteEvaluarDos = (Cliente) actualRecorridoDos.getSiguiente().getData();
@@ -197,6 +197,29 @@ public class ListaClientesAtendidos {
 
     public void topCincoMayorImgColor() {
         this.ordenamientoBurbujaImgColor();
+        NodoSimple actual= this.primero;
+        int contador = 0;
+
+        while(actual != null && contador < 5){
+            Cliente aux = (Cliente) actual.getData();
+            if(aux.isTerminoImpresion()) {
+                System.out.println("--------- CLIENTE " + (contador + 1) + "--------------");
+                System.out.println("ID: " + aux.getIdCliente());                
+                System.out.println("Nombre: " + aux.getNombre());                
+                System.out.println("Ventanilla atencion: " + aux.getVentanillaAtencion());                
+                System.out.println("A Color: " + aux.getCantidadColor());                
+                System.out.println("A Blanco y Negro: " +aux.getCantidadBW());
+                System.out.println("Total imagenes: " +aux.getTotalImagenes());
+                System.out.println("Cantidad total de pasos: " + aux.getTotalPasos());
+                contador += 1;
+            }
+            actual=actual.getSiguiente();
+        }
+
+    }
+
+    public void topCincoMenosImgBW() {
+        this.ordenamientoBurbujaImgBw();
         NodoSimple actual= this.primero;
         int contador = 0;
 
