@@ -2,6 +2,7 @@
 package edd_udrawing_fase2_202002793;
 
 import estructuras.ArbolBB;
+import estructuras.ListaDoble;
 
 
 public class App {
@@ -30,6 +31,14 @@ public class App {
         //RECORRIDO POST
         System.out.println("RECORRIDO EN POSTORDEN");
         arbolito.postOrden();
+        
+        ListaDoble listaD = new ListaDoble();
+        listaD.insertarF("Ana");
+        listaD.insertarF("Pedro");
+        listaD.insertarF("Sofia");
+        listaD.insertarF("Julio");
+        System.out.println("LISTA DOBLEMENTE ENLAZADA");
+        listaD.imprimir();
     }
     
 }
