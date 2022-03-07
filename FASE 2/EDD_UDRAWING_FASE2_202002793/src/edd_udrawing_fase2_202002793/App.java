@@ -21,7 +21,15 @@ public class App {
         arbolito.insertar(17);
         arbolito.insertar(16);
         arbolito.insertar(28);
+        //RECORRIDO PREODEN
+        System.out.println("RECORRIDO EN PREORDEN");
         arbolito.preOrden();
+        //RECORRIDO INORDEN
+        System.out.println("RECORRIDO EN INORDEN");
+        arbolito.inOrden();
+        //RECORRIDO POST
+        System.out.println("RECORRIDO EN POSTORDEN");
+        arbolito.postOrden();
     }
     
 }

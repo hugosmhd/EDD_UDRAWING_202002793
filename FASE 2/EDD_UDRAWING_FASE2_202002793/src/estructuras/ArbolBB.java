@@ -35,4 +35,28 @@ public class ArbolBB <E extends Comparable<E>>{
             preOrden(raiz.getDer());
         }
     }
+    
+    public void inOrden(){
+        inOrden(this.raiz);
+    }
+
+    private void inOrden(NodoABB raiz){
+        if(raiz != null){
+            inOrden(raiz.getIzq());
+            System.out.println(raiz.getData());
+            inOrden(raiz.getDer());
+        }
+    }
+    
+    public void postOrden(){
+        postOrden(this.raiz);
+    }
+
+    private void postOrden(NodoABB raiz){
+        if(raiz != null){
+            postOrden(raiz.getIzq());
+            postOrden(raiz.getDer());
+            System.out.println(raiz.getData());
+        }
+    }
 }
