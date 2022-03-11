@@ -3,12 +3,16 @@ package edd_udrawing_fase2_202002793;
 
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
+import funciones.CargaMasiva;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class App {
 
     public static void main(String[] args) {
-        ArbolBB arbolito = new ArbolBB();
+        /*ArbolBB arbolito = new ArbolBB();
 
         arbolito.insertar(10);
         arbolito.insertar(5);
@@ -39,6 +43,14 @@ public class App {
         listaD.insertarF("Julio");
         System.out.println("LISTA DOBLEMENTE ENLAZADA");
         listaD.imprimir();
+        */
+        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\prueba.json";
+        try {
+            CargaMasiva.cargarCapas(ruta);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }
