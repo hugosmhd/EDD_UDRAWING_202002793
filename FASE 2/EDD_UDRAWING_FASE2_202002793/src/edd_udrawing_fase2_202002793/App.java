@@ -4,6 +4,7 @@ package edd_udrawing_fase2_202002793;
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
 import funciones.CargaMasiva;
+import gui.InicioAdmin;
 import gui.Login;
 import gui.Registro;
 import java.io.IOException;
@@ -15,9 +16,13 @@ public class App {
 
     public static void main(String[] args) {
         
-        Login login = new Login();
+        InicioAdmin login = new InicioAdmin();
          login.setVisible(true);
         login.setLocationRelativeTo(null);
+        
+        /*Login login = new Login();
+         login.setVisible(true);
+        login.setLocationRelativeTo(null);*/
         /*ArbolBB arbolito = new ArbolBB();
 
         arbolito.insertar(10);
