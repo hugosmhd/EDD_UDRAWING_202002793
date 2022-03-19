@@ -51,8 +51,8 @@ public class App {
         arbolito.insertar(28);
         //RECORRIDO PREODEN
         System.out.println("RECORRIDO EN PREORDEN");
-        arbolito.preOrden();
-        //RECORRIDO INORDEN
+        arbolito.preOrden();*/
+        /*//RECORRIDO INORDEN
         System.out.println("RECORRIDO EN INORDEN");
         arbolito.inOrden();
         //RECORRIDO POST
@@ -67,12 +67,12 @@ public class App {
         System.out.println("LISTA DOBLEMENTE ENLAZADA");
         listaD.imprimir();
         */
-        /*String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\prueba.json";
+        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\prueba.json";
         try {
             CargaMasiva.cargarCapas(ruta);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
         
     }
     

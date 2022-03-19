@@ -28,7 +28,7 @@ public class ArbolBB <E extends Comparable<E>>{
         preOrden(this.raiz);
     }
 
-    private void preOrden(NodoABB raiz){
+    private void preOrden(NodoABB<E> raiz){
         if(raiz != null){
             System.out.println(raiz.getData());
             preOrden(raiz.getIzq());
@@ -40,7 +40,7 @@ public class ArbolBB <E extends Comparable<E>>{
         inOrden(this.raiz);
     }
 
-    private void inOrden(NodoABB raiz){
+    private void inOrden(NodoABB<E> raiz){
         if(raiz != null){
             inOrden(raiz.getIzq());
             System.out.println(raiz.getData());
@@ -52,7 +52,7 @@ public class ArbolBB <E extends Comparable<E>>{
         postOrden(this.raiz);
     }
 
-    private void postOrden(NodoABB raiz){
+    private void postOrden(NodoABB<E> raiz){
         if(raiz != null){
             postOrden(raiz.getIzq());
             postOrden(raiz.getDer());

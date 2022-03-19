@@ -123,7 +123,19 @@ public class MatrizDispersa {
         }
     }
     
-    
+    public void imprimir(){
+        NodoMD actual=raiz;
+        while(actual !=null){
+            System.out.print("["+actual.getData() +"  "+ actual.getColumna() +"  "+actual.getFila()+"]");
+            NodoMD actual2=actual.getSiguiente();
+            while(actual2!=null){
+                System.out.print("["+actual2.getData() +"  "+actual2.getColumna() +"  "+actual2.getFila()+"]");
+                actual2=actual2.getSiguiente();
+            }
+            System.out.println("");
+            actual=actual.getInferior();
+        }
+    }
     
     
     
