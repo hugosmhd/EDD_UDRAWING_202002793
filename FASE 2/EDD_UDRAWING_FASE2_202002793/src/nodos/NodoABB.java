@@ -1,38 +1,40 @@
 
 package nodos;
 
-public class NodoABB<E> {
-    E data;
-    NodoABB<E> izq;
-    NodoABB<E> der;
+import objetos.Capa;
+
+public class NodoABB {
+    Capa data;
+    NodoABB izq;
+    NodoABB der;
     
-    public NodoABB(E data) {
+    public NodoABB(Capa data) {
         this.data = data;
         this.izq = null;
         this.der = null;
     }
 
-    public E getData() {
+    public Capa getData() {
         return data;
     }
 
-    public void setData(E data) {
+    public void setData(Capa data) {
         this.data = data;
     }
 
-    public NodoABB<E> getIzq() {
+    public NodoABB getIzq() {
         return izq;
     }
 
-    public void setIzq(NodoABB<E> izq) {
+    public void setIzq(NodoABB izq) {
         this.izq = izq;
     }
 
-    public NodoABB<E> getDer() {
+    public NodoABB getDer() {
         return der;
     }
 
-    public void setDer(NodoABB<E> der) {
+    public void setDer(NodoABB der) {
         this.der = der;
     }
     

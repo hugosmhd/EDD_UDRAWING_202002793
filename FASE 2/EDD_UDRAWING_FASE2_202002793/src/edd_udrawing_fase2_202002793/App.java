@@ -1,6 +1,7 @@
 
 package edd_udrawing_fase2_202002793;
 
+import estructuras.ArbolAVL;
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
 import estructuras.MatrizDispersa;
@@ -16,15 +17,25 @@ import java.util.logging.Logger;
 public class App {
 
     public static void main(String[] args) {
-
-        MatrizDispersa matriz = new MatrizDispersa();
+        /*ArbolAVL arbolito = new ArbolAVL();
+        arbolito.add(5);arbolito.add(10);
+        arbolito.add(20);arbolito.add(25);
+		arbolito.add(30);arbolito.add(35);              
+        arbolito.add(40);
+		arbolito.preorder(arbolito.root);
+		System.out.println();
+		arbolito.enorder(arbolito.root);
+		System.out.println();
+		arbolito.postorder(arbolito.root);*/
+	
+        /*MatrizDispersa matriz = new MatrizDispersa();
         matriz.insertNodo("a", 9, 5);
         matriz.insertNodo("b", 0, 4);
         matriz.insertNodo("c", 8, 9);
         matriz.insertNodo("d", 8, 10);
         matriz.insertNodo("e", 5, 4);
         matriz.insertNodo("f", 5, 9);
-        matriz.imprimir();
+        matriz.imprimir();*/
         // matriz.imprimirFila(matriz.getRaiz());
         // matriz.imprimirColumna(matriz.getRaiz());
         
@@ -67,12 +78,23 @@ public class App {
         System.out.println("LISTA DOBLEMENTE ENLAZADA");
         listaD.imprimir();
         */
+        ArbolBB arbolitoBB = new ArbolBB();
         String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\prueba.json";
         try {
-            CargaMasiva.cargarCapas(ruta);
+            CargaMasiva.cargarCapas(ruta, arbolitoBB);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // arbolito.inOrden();
+        ArbolAVL arbolitoAVL = new ArbolAVL();
+        String rutaImg = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\sonic.json";
+        try {
+            CargaMasiva.cargarImagenes(rutaImg, arbolitoAVL, arbolitoBB);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("YA LLEGO AL AVL");
+        arbolitoAVL.enorder(arbolitoAVL.root);;
         
     }
     

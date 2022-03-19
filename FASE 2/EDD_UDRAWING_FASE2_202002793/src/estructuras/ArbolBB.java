@@ -2,33 +2,48 @@
 package estructuras;
 
 import nodos.NodoABB;
+import objetos.Capa;
 
-public class ArbolBB <E extends Comparable<E>>{
-    NodoABB<E> raiz;
+public class ArbolBB {
+    NodoABB raiz;
     
     public ArbolBB(){
         this.raiz=null;
     }
     
-    public void insertar(E data) {
+    public void insertar(Capa data) {
         raiz = insertar(raiz, data);
     }
     
-    private NodoABB<E> insertar(NodoABB<E> raiz, E data){
+    private NodoABB insertar(NodoABB raiz, Capa data){
+        // Capa capaNueva = (Capa) data;
+        // Capa raizData = (Capa) raiz.getData();
         if (raiz == null)
-            raiz = new NodoABB<E>(data);
-        else if (data.compareTo(raiz.getData())< 0)
+            raiz = new NodoABB(data);
+        else if (data.getIdCapa() < raiz.getData().getIdCapa())
             raiz.setIzq(insertar(raiz.getIzq(), data));
-        else if(data.compareTo(raiz.getData())> 0)
+        else if(data.getIdCapa() > raiz.getData().getIdCapa())
             raiz.setDer(insertar(raiz.getDer(), data));
         return raiz;
+    }
+
+    public Capa buscar(int dato){
+        return buscar(this.raiz,dato);
+    }
+
+    private Capa buscar(NodoABB raiz, int dato){
+        if (raiz ==  null) return null;
+        else if (dato == raiz.getData().getIdCapa()) return raiz.getData();
+        else if(dato < raiz.getData().getIdCapa()) return buscar(raiz.getIzq(), dato);
+        else return buscar(raiz.getDer(), dato);
+
     }
     
     public void preOrden(){
         preOrden(this.raiz);
     }
 
-    private void preOrden(NodoABB<E> raiz){
+    private void preOrden(NodoABB raiz){
         if(raiz != null){
             System.out.println(raiz.getData());
             preOrden(raiz.getIzq());
@@ -40,10 +55,10 @@ public class ArbolBB <E extends Comparable<E>>{
         inOrden(this.raiz);
     }
 
-    private void inOrden(NodoABB<E> raiz){
+    private void inOrden(NodoABB raiz){
         if(raiz != null){
             inOrden(raiz.getIzq());
-            System.out.println(raiz.getData());
+            System.out.println(raiz.getData().getIdCapa());
             inOrden(raiz.getDer());
         }
     }
@@ -52,7 +67,7 @@ public class ArbolBB <E extends Comparable<E>>{
         postOrden(this.raiz);
     }
 
-    private void postOrden(NodoABB<E> raiz){
+    private void postOrden(NodoABB raiz){
         if(raiz != null){
             postOrden(raiz.getIzq());
             postOrden(raiz.getDer());
