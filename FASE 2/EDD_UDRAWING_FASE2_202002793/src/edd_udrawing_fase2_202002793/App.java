@@ -3,6 +3,7 @@ package edd_udrawing_fase2_202002793;
 
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
+import estructuras.MatrizDispersa;
 import funciones.CargaMasiva;
 import gui.InicioAdmin;
 import gui.Login;
@@ -15,10 +16,21 @@ import java.util.logging.Logger;
 public class App {
 
     public static void main(String[] args) {
+
+        MatrizDispersa matriz = new MatrizDispersa();
+        matriz.insertNodo("a", 9, 5);
+        matriz.insertNodo("b", 0, 4);
+        matriz.insertNodo("c", 8, 9);
+        matriz.insertNodo("d", 8, 10);
+        matriz.insertNodo("e", 5, 4);
+        matriz.insertNodo("f", 5, 9);
+        matriz.imprimir();
+        // matriz.imprimirFila(matriz.getRaiz());
+        // matriz.imprimirColumna(matriz.getRaiz());
         
-        InicioAdmin login = new InicioAdmin();
+        /*InicioAdmin login = new InicioAdmin();
          login.setVisible(true);
-        login.setLocationRelativeTo(null);
+        login.setLocationRelativeTo(null);*/
         
         /*Login login = new Login();
          login.setVisible(true);
