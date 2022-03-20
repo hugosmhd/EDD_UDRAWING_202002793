@@ -94,7 +94,7 @@ public class App {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("YA LLEGO AL AVL");
-        arbolitoAVL.enorder(arbolitoAVL.root);;
+        arbolitoAVL.enorder(arbolitoAVL.root);
         
     }
     

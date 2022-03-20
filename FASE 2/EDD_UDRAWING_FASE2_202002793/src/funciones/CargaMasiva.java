@@ -62,11 +62,6 @@ public class CargaMasiva {
         catch(IOException e) { }
         catch(ParseException e) { }
         
-    
-        /*JSONArray jsonDocument =
-                (JSONArray)JSONValue
-                        .parse(new FileReader(new File(ruta)));
-        System.out.println(jsonDocument);*/
     }
 
     public static void cargarImagenes(String ruta, ArbolAVL arbolitoVL, ArbolBB arbolitoBB) throws FileNotFoundException, IOException {
@@ -84,19 +79,21 @@ public class CargaMasiva {
                 // System.out.println("JSON LEIDO: " + jsonObject1);
                 
                 // System.out.println("DATOS DEL USUARIO: " + i);
-                System.out.println("ID: " + jsonObject1.get("id"));
+                System.out.println("ID DE IMAGENES: " + jsonObject1.get("id"));
                 Long idImg =  (Long) jsonObject1.get("id");     
                 // MatrizDispersa matriz = new MatrizDispersa();
                 ArbolBB arbolCapas = new ArbolBB();
                 
                 JSONArray arrayCapas = (JSONArray) jsonObject1.get("capas");
                 for(int j = 0 ; j < arrayCapas.size() ; j++) {
-                    System.out.println("CAPA: " + arrayCapas.get(j));
+                    // System.out.println("CAPA: " + arrayCapas.get(j));
                     Long idCapa = (Long)arrayCapas.get(j);
                     Capa capaEncontrada = arbolitoBB.buscar(idCapa.intValue());
-                    System.out.println("CAPA ENCONTRADA: " + capaEncontrada.getIdCapa());
+                    // System.out.println("CAPA ENCONTRADA: " + capaEncontrada.getIdCapa());
                     arbolCapas.insertar(capaEncontrada);                             
                 }
+                arbolCapas.inOrden();
+                arbolCapas.agregarAMatrizDispersa();
                 Imagen imgNueva = new Imagen(idImg.intValue(), arbolCapas);
                 arbolitoVL.add(imgNueva);
                 // matriz.imprimir();

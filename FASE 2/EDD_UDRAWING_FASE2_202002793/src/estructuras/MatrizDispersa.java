@@ -126,10 +126,27 @@ public class MatrizDispersa {
     public void imprimir(){
         NodoMD actual=raiz;
         while(actual !=null){
-            System.out.print("["+actual.getData() +"  "+ actual.getColumna() +"  "+actual.getFila()+"]");
+            System.out.print("["+actual.getData() +"  "+ actual.getColumna() +"  "+actual.getFila()+"]");            
+            NodoMD actual2=actual.getSiguiente();
+            while(actual2!=null){                
+                System.out.print("["+actual2.getData() +"  "+actual2.getColumna() +"  "+actual2.getFila()+"]");                
+                actual2=actual2.getSiguiente();
+            }
+            System.out.println("");
+            actual=actual.getInferior();
+        }
+    }
+
+    public void recorrerMatriz(MatrizDispersa matriz){
+        NodoMD actual=raiz.getInferior();
+        while(actual !=null){
             NodoMD actual2=actual.getSiguiente();
             while(actual2!=null){
+                
                 System.out.print("["+actual2.getData() +"  "+actual2.getColumna() +"  "+actual2.getFila()+"]");
+                matriz.insertNodo(actual2.getData(), actual2.getColumna(), actual2.getFila());
+
+                
                 actual2=actual2.getSiguiente();
             }
             System.out.println("");
