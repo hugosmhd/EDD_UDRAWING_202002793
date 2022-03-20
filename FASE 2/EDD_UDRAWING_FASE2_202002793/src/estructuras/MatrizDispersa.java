@@ -137,19 +137,67 @@ public class MatrizDispersa {
         }
     }
 
+    public void generarTabla() {
+        String graphviz = "digraph G {\n" +
+            "node [shape=plaintext];\n" +
+            "some_node [\n" +
+            "label=<\n" +
+            "<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
+        String graphvizNodos = "digraph G {\n" +
+            "node [shape=box]\n" +
+            "Mt[ label = \"raiz\", width = 0.75, group = 1 ];\n";
+        int totalCol = 0;
+        
+        NodoMD actual=raiz;
+        while(actual !=null){
+            int colActual = 0;
+            String tRow = "<tr>\n";
+            String tData = "";
+            NodoMD actual2=actual.getSiguiente();
+            while(actual2!=null){
+                if (actual2.getFila() == -1) {
+                    totalCol++;
+                    actual2=actual2.getSiguiente();                  
+                } else {                    
+                    while (colActual < actual2.getColumna()) {
+                        tData += "<td bgcolor=\"white\" width=\"1\" height=\"1\"></td>\n";     
+                        colActual++;        
+                    }
+                    tData += "<td bgcolor=\"" + actual2.getData() + "\" width=\"1\" height=\"1\"></td>\n";                   
+                    actual2=actual2.getSiguiente();
+                    colActual++;                    
+                }                
+            }
+            while (colActual < totalCol && actual.getFila() != -1) {
+                tData += "<td bgcolor=\"white\" width=\"1\" height=\"1\"></td>\n";     
+                colActual++;        
+            }
+            tRow += tData;
+            tRow += "</tr>\n";
+            // System.out.println(tRow);
+            if(actual.getFila() != -1) {
+                graphviz += tRow;
+            }
+            //System.out.println(totalCol);
+            //System.out.println(totalCol);
+            actual=actual.getInferior();
+        }
+        graphviz += "</table>>\n" +
+            "];\n" +
+            "}";
+        System.out.println(graphviz);
+    }
+
     public void recorrerMatriz(MatrizDispersa matriz){
         NodoMD actual=raiz.getInferior();
         while(actual !=null){
             NodoMD actual2=actual.getSiguiente();
-            while(actual2!=null){
-                
-                System.out.print("["+actual2.getData() +"  "+actual2.getColumna() +"  "+actual2.getFila()+"]");
-                matriz.insertNodo(actual2.getData(), actual2.getColumna(), actual2.getFila());
-
-                
+            while(actual2!=null){                
+                // System.out.print("["+actual2.getData() +"  "+actual2.getColumna() +"  "+actual2.getFila()+"]");
+                matriz.insertNodo(actual2.getData(), actual2.getColumna(), actual2.getFila());                
                 actual2=actual2.getSiguiente();
             }
-            System.out.println("");
+            // System.out.println("");
             actual=actual.getInferior();
         }
     }

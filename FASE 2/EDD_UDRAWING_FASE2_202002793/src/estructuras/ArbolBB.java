@@ -80,13 +80,14 @@ public class ArbolBB {
         MatrizDispersa matriz = new MatrizDispersa();
         agregarAMatrizDispersa(this.raiz, matriz);
         System.out.println("MATRIZ DISPERSA UNIFICADA");
-        matriz.imprimir();
+        // matriz.imprimir();
+        matriz.generarTabla();
     }
 
     private void agregarAMatrizDispersa(NodoABB raiz, MatrizDispersa matriz) {
         if(raiz != null){
             agregarAMatrizDispersa(raiz.getIzq(), matriz);
-            System.out.println(raiz.getData().getIdCapa());
+            // System.out.println(raiz.getData().getIdCapa());
             raiz.getData().getPixeles().recorrerMatriz(matriz);
             agregarAMatrizDispersa(raiz.getDer(), matriz);
         }
