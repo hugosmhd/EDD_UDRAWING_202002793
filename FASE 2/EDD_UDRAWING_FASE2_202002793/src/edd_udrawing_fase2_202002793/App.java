@@ -78,7 +78,9 @@ public class App {
         System.out.println("LISTA DOBLEMENTE ENLAZADA");
         listaD.imprimir();
         */
-        ArbolBB arbolitoBB = new ArbolBB();
+        
+        
+        /*ArbolBB arbolitoBB = new ArbolBB();
         String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\prueba.json";
         try {
             CargaMasiva.cargarCapas(ruta, arbolitoBB);
@@ -94,7 +96,7 @@ public class App {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("YA LLEGO AL AVL");
-        arbolitoAVL.enorder(arbolitoAVL.root);
+        arbolitoAVL.enorder(arbolitoAVL.root);*/
         
     }
     

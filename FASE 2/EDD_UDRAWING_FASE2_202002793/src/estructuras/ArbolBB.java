@@ -82,6 +82,7 @@ public class ArbolBB {
         System.out.println("MATRIZ DISPERSA UNIFICADA");
         // matriz.imprimir();
         matriz.generarTabla();
+        // matriz.generarGraphvizLogico();
     }
 
     private void agregarAMatrizDispersa(NodoABB raiz, MatrizDispersa matriz) {

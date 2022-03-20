@@ -87,6 +87,24 @@ public class MatrizDispersa {
         }
         return null;
     }
+
+    public Object buscarRepetidos(int fila, int columna) {
+        NodoMD actual = raiz;
+        while (actual != null) {
+            if (actual.getFila() == fila) {
+                NodoMD actual2=actual.getSiguiente();
+                while (actual2 != null) {
+                    if (actual2.getColumna() == columna) {
+                        return actual.getData();
+                    }
+                    actual2 = actual2.getSiguiente();
+                }
+                break;
+            }
+            actual = actual.getInferior();
+        }
+        return null;
+    }
     
     public NodoMD crearColumna(int columna){
         return insertEnFila(new NodoMD("Col", columna, -1), raiz);
@@ -97,29 +115,32 @@ public class MatrizDispersa {
     }
     
     public void insertNodo(Object data, int col, int fil){
-        NodoMD nuevo= new NodoMD(data, col, fil);
-        
-        NodoMD columna= encontrarColumna(col);
-        NodoMD fila= encontrarFila(fil);
-        
-        
-        if (columna == null && fila == null){
-            columna=crearColumna(col);
-            fila=crearFila(fil);
+        Object repetido = buscarRepetidos(fil, col);
+        if (repetido == null) {            
+            NodoMD nuevo= new NodoMD(data, col, fil);
             
-            nuevo= insertEnFila(nuevo, fila);
-            nuevo=insertEnColumna(nuevo, columna);
-        }else if(columna != null && fila ==null){
-            fila=crearFila(fil);
-            nuevo=insertEnFila(nuevo, fila);
-            nuevo=insertEnColumna(nuevo, columna);
-        }else if(columna==null && fila!=null){
-            columna=crearColumna(col);
-            nuevo=insertEnFila(nuevo, fila);
-            nuevo=insertEnColumna(nuevo, columna);
-        }else{
-            nuevo=insertEnFila(nuevo, fila);
-            nuevo=insertEnColumna(nuevo, columna);
+            NodoMD columna= encontrarColumna(col);
+            NodoMD fila= encontrarFila(fil);
+            
+            
+            if (columna == null && fila == null){
+                columna=crearColumna(col);
+                fila=crearFila(fil);
+                
+                nuevo= insertEnFila(nuevo, fila);
+                nuevo=insertEnColumna(nuevo, columna);
+            }else if(columna != null && fila ==null){
+                fila=crearFila(fil);
+                nuevo=insertEnFila(nuevo, fila);
+                nuevo=insertEnColumna(nuevo, columna);
+            }else if(columna==null && fila!=null){
+                columna=crearColumna(col);
+                nuevo=insertEnFila(nuevo, fila);
+                nuevo=insertEnColumna(nuevo, columna);
+            }else{
+                nuevo=insertEnFila(nuevo, fila);
+                nuevo=insertEnColumna(nuevo, columna);
+            }
         }
     }
     
@@ -137,15 +158,56 @@ public class MatrizDispersa {
         }
     }
 
+    public void generarGraphvizLogico(){
+        String graphvizNodos = "digraph G {\n" +
+            "node [shape=box]\n";
+        
+        String nodos = "";
+        String relaciones = "";
+        String rankDir = "";
+        NodoMD actual=raiz;
+        nodos += "";
+        while(actual !=null){
+            nodos += actual.hashCode()+"[label = \"" + actual.getFila() + "\"  width = 1.3, height=1.3, group = " + (actual.getColumna() + 2) + " ];\n";
+                    
+            rankDir += "{ rank = same; " + actual.hashCode() + "; ";
+            if (actual.getInferior() != null) {
+                relaciones += actual.hashCode() + " ->" + actual.getInferior().hashCode() + ";\n";
+            }
+            NodoMD actual2=actual.getSiguiente();
+            while(actual2!=null){ 
+                if (actual2.getFila() == -1) {
+                    nodos += actual2.hashCode()+"[label = \"" + actual2.getColumna() + "\"  width = 1.3, height=1.3, group = " + (actual2.getColumna() + 2) + " ];\n";
+                    relaciones += actual2.getAnterior().hashCode() + " ->" + actual2.hashCode() + ";";
+                    relaciones += actual2.hashCode() + " ->" + actual2.getAnterior().hashCode() + ";\n";
+                    
+                } else {
+                    nodos += actual2.hashCode() + "[label=\"\" style = filled, fillcolor = \"" + actual2.getData() + "\", width = 1.3, height=1.3, group = " + (actual2.getColumna() + 2) + " ];\n";
+                    relaciones += actual2.getAnterior().hashCode() + " ->" + actual2.hashCode() + ";";
+                    relaciones += actual2.hashCode() + " ->" + actual2.getAnterior().hashCode() + ";";
+                    relaciones += actual2.getSuperior().hashCode() + " ->" + actual2.hashCode() + ";";                    
+                    // relaciones += actual2.hashCode() + " ->" + actual2.getSuperior().hashCode() + ";";
+                }
+                rankDir += actual2.hashCode() + "; ";
+                //nodos += actual2.hashCode()+"[label = \"" + actual2.getFila() + "\"  width = 0.8, height=0.8, group = " + (actual2.getColumna() + 1) + " ];\n";
+                actual2=actual2.getSiguiente();
+            }
+            rankDir += " } \n";
+            // System.out.println("");
+            actual=actual.getInferior();
+        }
+        System.out.println(nodos);
+        System.out.println(relaciones);
+        System.out.println(rankDir);
+    }
+
     public void generarTabla() {
         String graphviz = "digraph G {\n" +
             "node [shape=plaintext];\n" +
             "some_node [\n" +
             "label=<\n" +
             "<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n";
-        String graphvizNodos = "digraph G {\n" +
-            "node [shape=box]\n" +
-            "Mt[ label = \"raiz\", width = 0.75, group = 1 ];\n";
+        
         int totalCol = 0;
         
         NodoMD actual=raiz;
