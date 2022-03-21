@@ -1,6 +1,10 @@
 
 package estructuras;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import nodos.NodoMD;
 
 public class MatrizDispersa {
@@ -201,6 +205,25 @@ public class MatrizDispersa {
         System.out.println(rankDir);
     }
 
+    private void escribirArchivo(String ruta, String contenido) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+            pw.write(contenido);
+            pw.close();
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(pw != null) {
+                pw.close();
+            }            
+        }
+    }
+
     public void generarTabla() {
         String graphviz = "digraph G {\n" +
             "node [shape=plaintext];\n" +
@@ -236,18 +259,23 @@ public class MatrizDispersa {
             }
             tRow += tData;
             tRow += "</tr>\n";
-            // System.out.println(tRow);
             if(actual.getFila() != -1) {
                 graphviz += tRow;
             }
-            //System.out.println(totalCol);
-            //System.out.println(totalCol);
             actual=actual.getInferior();
         }
         graphviz += "</table>>\n" +
             "];\n" +
             "}";
-        System.out.println(graphviz);
+        // System.out.println(graphviz);
+        escribirArchivo("./prueba.dot", graphviz);
+
+        try {
+            Runtime.getRuntime().exec("dot" + " -Tpng " + "./prueba" + ".dot -o " + "prueba" + ".png ").waitFor();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        
     }
 
     public void recorrerMatriz(MatrizDispersa matriz){

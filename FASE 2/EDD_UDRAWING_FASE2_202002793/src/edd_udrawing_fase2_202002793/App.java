@@ -7,6 +7,7 @@ import estructuras.ListaDoble;
 import estructuras.MatrizDispersa;
 import funciones.CargaMasiva;
 import gui.InicioAdmin;
+import gui.InicioUsuario;
 import gui.Login;
 import gui.Registro;
 import java.io.IOException;
@@ -17,6 +18,12 @@ import java.util.logging.Logger;
 public class App {
 
     public static void main(String[] args) {
+        ArbolAVL arbolitoAVL = new ArbolAVL();
+        ArbolBB arbolitoBB = new ArbolBB();
+        
+        InicioUsuario user = new InicioUsuario(arbolitoAVL, arbolitoBB);
+        user.setVisible(true);
+        user.setLocationRelativeTo(null);
         /*ArbolAVL arbolito = new ArbolAVL();
         arbolito.add(5);arbolito.add(10);
         arbolito.add(20);arbolito.add(25);
@@ -97,6 +104,16 @@ public class App {
         }
         System.out.println("YA LLEGO AL AVL");
         arbolitoAVL.enorder(arbolitoAVL.root);*/
+        
+        /*ArbolBB arbolitoBB = new ArbolBB();
+        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\prueba.json";
+        try {
+            CargaMasiva.cargarCapas(ruta, arbolitoBB);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        arbolitoBB.inOrden(2);*/
+        
         
     }
     

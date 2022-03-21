@@ -97,4 +97,15 @@ public class ArbolAVL {
 			System.out.print(tmp.getImg().getId()+" ");			
 		}
 	}
+
+    public NodoAVL buscar(int dato){
+        return buscar(this.root, dato);
+    }
+
+    private NodoAVL buscar(NodoAVL raiz, int dato){
+        if (raiz ==  null) return null;
+        else if (dato == raiz.getImg().getId()) return raiz;
+        else if(dato < raiz.getImg().getId()) return buscar(raiz.getIzq(), dato);
+        else return buscar(raiz.getDer(), dato);
+    }
 }

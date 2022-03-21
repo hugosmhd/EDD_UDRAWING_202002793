@@ -92,8 +92,8 @@ public class CargaMasiva {
                     // System.out.println("CAPA ENCONTRADA: " + capaEncontrada.getIdCapa());
                     arbolCapas.insertar(capaEncontrada);                             
                 }
-                arbolCapas.inOrden();
-                arbolCapas.agregarAMatrizDispersa();
+                // arbolCapas.inOrden();
+                // arbolCapas.agregarAMatrizDispersa();
                 Imagen imgNueva = new Imagen(idImg.intValue(), arbolCapas);
                 arbolitoVL.add(imgNueva);
                 // matriz.imprimir();

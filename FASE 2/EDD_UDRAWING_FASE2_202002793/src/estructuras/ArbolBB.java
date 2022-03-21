@@ -6,9 +6,11 @@ import objetos.Capa;
 
 public class ArbolBB {
     NodoABB raiz;
+    int contador;
     
     public ArbolBB(){
         this.raiz=null;
+        contador = 0;
     }
     
     public void insertar(Capa data) {
@@ -39,47 +41,106 @@ public class ArbolBB {
 
     }
     
-    public void preOrden(){
-        preOrden(this.raiz);
+    public void preOrden(int n){
+        this.contador = 0;
+        MatrizDispersa matriz = new MatrizDispersa();
+        preOrden(this.raiz, n, matriz);
+        // System.out.println("MATRIZ DISPERSA UNIFICADA");
+        // matriz.imprimir();
+        matriz.generarTabla();
+        // matriz.generarGraphvizLogico();
+        // preOrden(this.raiz, n);
     }
 
-    private void preOrden(NodoABB raiz){
-        if(raiz != null){
-            System.out.println(raiz.getData());
-            preOrden(raiz.getIzq());
-            preOrden(raiz.getDer());
+    private void preOrden(NodoABB raiz, int n, MatrizDispersa matriz){
+        if(raiz != null && this.contador < n){
+            raiz.getData().getPixeles().recorrerMatriz(matriz);
+            // System.out.println(raiz.getData().getIdCapa());
+            this.contador++;
+            preOrden(raiz.getIzq(), n, matriz);
+            preOrden(raiz.getDer(), n, matriz);
         }
     }
     
-    public void inOrden(){
-        inOrden(this.raiz);
+    public void inOrden(int n){
+        this.contador = 0;
+        MatrizDispersa matriz = new MatrizDispersa();
+        inOrden(this.raiz, n, matriz);
+        // System.out.println("MATRIZ DISPERSA UNIFICADA");
+        // matriz.imprimir();
+        matriz.generarTabla();
+        // matriz.generarGraphvizLogico();
+        // inOrden(this.raiz, n);
     }
 
-    private void inOrden(NodoABB raiz){
-        if(raiz != null){
-            inOrden(raiz.getIzq());
-            System.out.println(raiz.getData().getIdCapa());
-            // raiz.getData().getPixeles().imprimir();
-            inOrden(raiz.getDer());
+    private void inOrden(NodoABB raiz, int n, MatrizDispersa matriz){
+        if(raiz != null && this.contador <= n){
+            inOrden(raiz.getIzq(), n, matriz);
+            this.contador++;
+            if (this.contador <= n) {
+                raiz.getData().getPixeles().recorrerMatriz(matriz);
+            }
+            inOrden(raiz.getDer(), n, matriz);
         }
     }
     
-    public void postOrden(){
-        postOrden(this.raiz);
+    public void postOrden(int n){
+        this.contador = 0;
+        MatrizDispersa matriz = new MatrizDispersa();
+        postOrden(this.raiz, n, matriz);
+        // System.out.println("MATRIZ DISPERSA UNIFICADA");
+        // matriz.imprimir();
+        matriz.generarTabla();
+        // matriz.generarGraphvizLogico();
+        // postOrden(this.raiz, n);
     }
 
-    private void postOrden(NodoABB raiz){
-        if(raiz != null){
-            postOrden(raiz.getIzq());
-            postOrden(raiz.getDer());
-            System.out.println(raiz.getData());
+    private void postOrden(NodoABB raiz, int n, MatrizDispersa matriz){
+        if(raiz != null && this.contador < n){
+            postOrden(raiz.getIzq(), n, matriz);
+            postOrden(raiz.getDer(), n, matriz);
+            this.contador++;
+            if (this.contador <= n) {
+                raiz.getData().getPixeles().recorrerMatriz(matriz);
+                // System.out.println(raiz.getData().getIdCapa());                
+            }
         }
     }
+
+    public void amplitud() {
+        amplitud(this.raiz);
+    }
+
+    private void amplitud(NodoABB root) {
+        if (root == null)
+          return;
+
+        Cola q = new Cola();      
+        q.encolar(root);      
+        q.encolar(null);
+      
+        while (!q.estaVacia()) {      
+            NodoABB curr = q.desencolar();    
+            if (curr == null) {
+                if (!q.estaVacia()) {
+                    q.encolar(null);
+                // System.out.println();
+                }
+            } else {
+                if (curr.getIzq() != null)
+                    q.encolar(curr.getIzq());        
+                if (curr.getDer() != null)
+                    q.encolar(curr.getDer());
+        
+                // System.out.print(curr.getData().getIdCapa() + " ");
+            }
+        }
+      }
 
     public void agregarAMatrizDispersa() {
         MatrizDispersa matriz = new MatrizDispersa();
         agregarAMatrizDispersa(this.raiz, matriz);
-        System.out.println("MATRIZ DISPERSA UNIFICADA");
+        // System.out.println("MATRIZ DISPERSA UNIFICADA");
         // matriz.imprimir();
         matriz.generarTabla();
         // matriz.generarGraphvizLogico();
