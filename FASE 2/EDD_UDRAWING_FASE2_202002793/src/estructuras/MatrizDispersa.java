@@ -164,45 +164,63 @@ public class MatrizDispersa {
 
     public void generarGraphvizLogico(){
         String graphvizNodos = "digraph G {\n" +
-            "node [shape=box]\n";
-        
+            "node[shape=box, width=1, height=1];\n" +
+            "edge[dir = \"both\"];\n";
         String nodos = "";
-        String relaciones = "";
+        String columnas = "";
+        String relacionesFilas = "";
+        String relacionesFilasH = "";
         String rankDir = "";
-        NodoMD actual=raiz;
-        nodos += "";
+        NodoMD actual=this.raiz;
         while(actual !=null){
-            nodos += actual.hashCode()+"[label = \"" + actual.getFila() + "\"  width = 1.3, height=1.3, group = " + (actual.getColumna() + 2) + " ];\n";
-                    
-            rankDir += "{ rank = same; " + actual.hashCode() + "; ";
-            if (actual.getInferior() != null) {
-                relaciones += actual.hashCode() + " ->" + actual.getInferior().hashCode() + ";\n";
+            if (actual.getFila() == -1 && actual.getColumna() == -1)
+                columnas += "nodo" + actual.hashCode()+"[label =RAIZ" + ", group = " + (actual.getColumna()) + " ];\n";                
+            else {
+                nodos += "nodo" + actual.hashCode()+"[label =fila" + actual.getFila() + ", group = " + (actual.getColumna()) + " ];\n";
+                relacionesFilasH += "nodo" + actual.getSuperior().hashCode() + " -> nodo" + actual.hashCode() + ";\n";  
             }
+                    
+            /*if (actual.getInferior() != null) {
+                relaciones += actual.hashCode() + " ->" + actual.getInferior().hashCode() + ";\n";
+            }*/
             NodoMD actual2=actual.getSiguiente();
             while(actual2!=null){ 
                 if (actual2.getFila() == -1) {
-                    nodos += actual2.hashCode()+"[label = \"" + actual2.getColumna() + "\"  width = 1.3, height=1.3, group = " + (actual2.getColumna() + 2) + " ];\n";
-                    relaciones += actual2.getAnterior().hashCode() + " ->" + actual2.hashCode() + ";";
-                    relaciones += actual2.hashCode() + " ->" + actual2.getAnterior().hashCode() + ";\n";
+                    columnas += "nodo" + actual2.hashCode()+"[label =Columna" + actual2.getColumna() + ", style=filled, fillcolor=\"white\" ,  group = " + (actual2.getColumna()) + " ];\n";
+                    // relaciones += actual2.hashCode() + " ->" + actual2.getAnterior().hashCode() + ";\n";
                     
                 } else {
-                    nodos += actual2.hashCode() + "[label=\"\" style = filled, fillcolor = \"" + actual2.getData() + "\", width = 1.3, height=1.3, group = " + (actual2.getColumna() + 2) + " ];\n";
-                    relaciones += actual2.getAnterior().hashCode() + " ->" + actual2.hashCode() + ";";
-                    relaciones += actual2.hashCode() + " ->" + actual2.getAnterior().hashCode() + ";";
-                    relaciones += actual2.getSuperior().hashCode() + " ->" + actual2.hashCode() + ";";                    
-                    // relaciones += actual2.hashCode() + " ->" + actual2.getSuperior().hashCode() + ";";
+                    nodos += "nodo" + actual2.hashCode() + "[label=\"\", style = filled, fillcolor = \"" + actual2.getData() + "\", group = " + (actual2.getColumna()) + " ];\n";
+                    relacionesFilas += "nodo" + actual2.getSuperior().hashCode() + " -> nodo" + actual2.hashCode() + ";\n";  
                 }
-                rankDir += actual2.hashCode() + "; ";
-                //nodos += actual2.hashCode()+"[label = \"" + actual2.getFila() + "\"  width = 0.8, height=0.8, group = " + (actual2.getColumna() + 1) + " ];\n";
+                rankDir += "{rank=same nodo" + actual2.getAnterior().hashCode() + "-> nodo" + actual2.hashCode() + "; }\n";
                 actual2=actual2.getSiguiente();
             }
-            rankDir += " } \n";
-            // System.out.println("");
             actual=actual.getInferior();
         }
-        System.out.println(nodos);
-        System.out.println(relaciones);
-        System.out.println(rankDir);
+        // System.out.println(columnas);
+        // System.out.println(nodos);
+        // System.out.println(rankDir);
+        // System.out.println(nodos);
+        // System.out.println(relaciones);
+        // System.out.println(rankDir);
+        graphvizNodos += columnas;
+        graphvizNodos += nodos;
+        graphvizNodos += rankDir;
+        graphvizNodos += relacionesFilasH;
+        graphvizNodos += relacionesFilas;
+        // graphvizNodos += nodos;
+        // graphvizNodos += relaciones;
+        // graphvizNodos += rankDir;
+        graphvizNodos += "}";
+        // System.out.println(graphvizNodos);
+        escribirArchivo("reporte.txt", graphvizNodos);
+        try {
+            Runtime.getRuntime().exec("dot" + " -Tpng " + "./reporte" + ".txt -o " + "reporte" + ".png ").waitFor();
+        } catch (Exception e) {
+            System.out.println("Error " + e);
+            //TODO: handle exception
+        }
     }
 
     private void escribirArchivo(String ruta, String contenido) {

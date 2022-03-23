@@ -20,8 +20,9 @@ public class App {
     public static void main(String[] args) {
         ArbolAVL arbolitoAVL = new ArbolAVL();
         ArbolBB arbolitoBB = new ArbolBB();
+        ListaDoble listaAlbumes = new ListaDoble();
         
-        InicioUsuario user = new InicioUsuario(arbolitoAVL, arbolitoBB);
+        InicioUsuario user = new InicioUsuario(arbolitoAVL, arbolitoBB, listaAlbumes);
         user.setVisible(true);
         user.setLocationRelativeTo(null);
         /*ArbolAVL arbolito = new ArbolAVL();

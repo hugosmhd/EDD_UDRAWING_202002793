@@ -1,0 +1,7 @@
+digraph G { 
+labelloc="t";
+label="Albumes";
+node[shape=box, color=red];
+fontsize = 40;
+{ rank = same;  }
+} 

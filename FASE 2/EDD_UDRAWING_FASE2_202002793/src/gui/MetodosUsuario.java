@@ -3,6 +3,7 @@ package gui;
 
 import estructuras.ArbolAVL;
 import estructuras.ArbolBB;
+import estructuras.ListaDoble;
 import funciones.CargaMasiva;
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,7 +48,7 @@ public class MetodosUsuario {
         return false;
     }
     
-    public void openFile(String text, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB){
+    public void openFile(String text, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB, ListaDoble listaAlbumes){
         StringBuffer content = new StringBuffer();
         
         JFileChooser openFile = new JFileChooser();
@@ -68,11 +69,13 @@ public class MetodosUsuario {
                     CargaMasiva.cargarCapas(this.filePath, arbolitoBB);
                 } else if(text.equalsIgnoreCase("img")) {
                     CargaMasiva.cargarImagenes(this.filePath, arbolitoAVL, arbolitoBB);
+                } else if(text.equalsIgnoreCase("albumes")) {
+                    CargaMasiva.cargarAlbumes(this.filePath, arbolitoAVL, listaAlbumes);
                 }
                 JOptionPane.showMessageDialog(null, "Carga con éxito");
                 
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Error reading file");
+                JOptionPane.showMessageDialog(null, "Error en la lectura verifique su entrada");
             }
         }
     }

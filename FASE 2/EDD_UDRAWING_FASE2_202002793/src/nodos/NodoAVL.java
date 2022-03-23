@@ -8,9 +8,10 @@ public class NodoAVL {
 	NodoAVL der;
     int alt;
 	
-	public NodoAVL(Imagen img){
+	public NodoAVL(Imagen img, NodoAVL izq, NodoAVL der){
 		this.img = img;
-		this.izq = der = null;
+		this.izq = izq;
+		this.der = der;
         alt = 0;
 	}
 

@@ -1,12 +1,19 @@
 
 package estructuras;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import nodos.NodoABB;
+import nodos.NodoAVL;
 import objetos.Capa;
 
 public class ArbolBB {
     NodoABB raiz;
     int contador;
+    String graphviz = "";
+    String nodos = "";
+    String relaciones = "";
     
     public ArbolBB(){
         this.raiz=null;
@@ -154,5 +161,64 @@ public class ArbolBB {
             agregarAMatrizDispersa(raiz.getDer(), matriz);
         }
     }
+
+    private void escribirArchivo(String ruta, String contenido) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+            pw.write(contenido);
+            pw.close();
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(pw != null) {
+                pw.close();
+            }            
+        }
+    }
+
+    public String generarABB(boolean generar, NodoAVL imagen) {
+        this.graphviz = this.nodos = this.relaciones = "";
+        this.graphviz = "graph \"\" {\n";
+        generarABB(this.raiz);
+        this.graphviz += this.nodos;
+        if (imagen != null) {
+            this.relaciones += imagen.hashCode() + " -- " + this.raiz.hashCode() + ";\n";
+        }
+        this.graphviz += this.relaciones;
+        this.graphviz += "\n}";
+        // System.out.println(this.graphviz);
+        if (generar) {
+            escribirArchivo("./reporte.dot", this.graphviz);
+            try {
+                Runtime.getRuntime().exec("dot" + " -Tpng " + "./reporte" + ".dot -o " + "reporte" + ".png ").waitFor();
+            } catch (Exception e) {
+                //TODO: handle exception
+            }
+            return null;
+        }
+        
+        return nodos + relaciones;
+    }
+
+    private void generarABB(NodoABB raiz) {
+        if (raiz != null) {            
+            System.out.print(raiz.getData().getIdCapa()+" ");
+            this.nodos += raiz.hashCode() + "[label=\"" + raiz.getData().getIdCapa() + "\"];\n";
+            if (raiz.getIzq() != null) {
+                this.relaciones += raiz.hashCode() + " -- " + raiz.getIzq().hashCode() + ";\n";
+            }
+            if (raiz.getDer() != null) {
+                this.relaciones += raiz.hashCode() + " -- " + raiz.getDer().hashCode() + ";\n";
+            }
+            generarABB(raiz.getIzq());
+            generarABB(raiz.getDer());
+        }
+    }
+    
     
 }

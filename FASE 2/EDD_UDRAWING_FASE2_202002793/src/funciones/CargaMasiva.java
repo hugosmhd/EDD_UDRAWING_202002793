@@ -17,7 +17,10 @@ import org.json.simple.parser.ParseException;
 
 import estructuras.ArbolAVL;
 import estructuras.ArbolBB;
+import estructuras.ListaDoble;
+import estructuras.ListaSimple;
 import estructuras.MatrizDispersa;
+import objetos.Album;
 import objetos.Capa;
 import objetos.Imagen;
 
@@ -70,16 +73,14 @@ public class CargaMasiva {
         try {
             
             Object obj = parser.parse(new FileReader(ruta));
-            JSONArray array = (JSONArray) obj;
-            
-            
+            JSONArray array = (JSONArray) obj;         
             
             for(int i = 0 ; i < array.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
                 // System.out.println("JSON LEIDO: " + jsonObject1);
                 
                 // System.out.println("DATOS DEL USUARIO: " + i);
-                System.out.println("ID DE IMAGENES: " + jsonObject1.get("id"));
+                // System.out.println("ID DE IMAGENES: " + jsonObject1.get("id"));
                 Long idImg =  (Long) jsonObject1.get("id");     
                 // MatrizDispersa matriz = new MatrizDispersa();
                 ArbolBB arbolCapas = new ArbolBB();
@@ -95,7 +96,53 @@ public class CargaMasiva {
                 // arbolCapas.inOrden();
                 // arbolCapas.agregarAMatrizDispersa();
                 Imagen imgNueva = new Imagen(idImg.intValue(), arbolCapas);
-                arbolitoVL.add(imgNueva);
+                arbolitoVL.insert(imgNueva);
+                // matriz.imprimir();
+                // Capa nuevaCapa = new Capa(idCapa.intValue(), matriz);
+                // arbolito.add(nuevaCapa);
+                
+            }
+            
+        } catch(FileNotFoundException e) { }
+        catch(IOException e) { }
+        catch(ParseException e) { }
+        
+    }
+
+    public static void cargarAlbumes(String ruta, ArbolAVL arbolitoVL, ListaDoble listaAlbumes) throws FileNotFoundException, IOException {
+        JSONParser parser = new JSONParser();
+        
+        try {
+            
+            Object obj = parser.parse(new FileReader(ruta));
+            JSONArray array = (JSONArray) obj;         
+            
+            for(int i = 0 ; i < array.size() ; i++) {
+                JSONObject jsonObject1 = (JSONObject) array.get(i);
+                // System.out.println("JSON LEIDO: " + jsonObject1);
+                
+                
+                String nombreAlbum =  (String) jsonObject1.get("nombre_album"); 
+                System.out.println("NOMBRE " + nombreAlbum);
+                // MatrizDispersa matriz = new MatrizDispersa();
+                ListaSimple imgs = new ListaSimple();
+                
+                JSONArray arrayImgs = (JSONArray) jsonObject1.get("imgs");
+                System.out.println("IMGAGENES");
+                for(int j = 0 ; j < arrayImgs.size() ; j++) {
+                    // System.out.println("CAPA: " + arrayCapas.get(j));
+                    Long idImg = (Long)arrayImgs.get(j);
+                    System.out.println(idImg);
+                    Imagen imagenEncontrada = arbolitoVL.buscar(idImg.intValue()).getImg();
+                    // System.out.println("CAPA ENCONTRADA: " + capaEncontrada.getIdCapa());
+                    imgs.insertarAlFinal(imagenEncontrada);                             
+                }
+                // arbolCapas.inOrden();
+                // arbolCapas.agregarAMatrizDispersa();
+                Album albumNuevo = new Album(nombreAlbum, imgs);
+                listaAlbumes.insertarF(albumNuevo);
+                
+                // arbolitoVL.add(albumNuevo);
                 // matriz.imprimir();
                 // Capa nuevaCapa = new Capa(idCapa.intValue(), matriz);
                 // arbolito.add(nuevaCapa);
