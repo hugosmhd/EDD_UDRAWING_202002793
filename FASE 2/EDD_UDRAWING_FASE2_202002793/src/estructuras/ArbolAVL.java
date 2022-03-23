@@ -103,7 +103,7 @@ public class ArbolAVL {
         return t==null?-1:t.getAlt();
     }
 
-    public void remove(int x )
+    public void remove(int x)
     {
         root = remove( x, root );
     }

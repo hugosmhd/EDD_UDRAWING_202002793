@@ -1,7 +1,7 @@
-digraph G { 
-labelloc="t";
-label="Albumes";
-node[shape=box, color=red];
-fontsize = 40;
-{ rank = same;  }
-} 
+graph "" {
+node [shape=box]
+114103378[label="6"];
+1656671133[label="9"];
+114103378 -- 1656671133;
+
+}

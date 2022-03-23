@@ -899,6 +899,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
         // TODO add your handling code here:
         try {
+            this.listaAlbumes.eliminarImagen(Integer.parseInt(this.txtIdImgEliminar.getText().trim()));
             this.arbolitoAVL.remove(Integer.parseInt(this.txtIdImgEliminar.getText().trim()));
             this.pintarImagen(this.lblEstructura, "reporte.png");
         } catch (Exception e) {

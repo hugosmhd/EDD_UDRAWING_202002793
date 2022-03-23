@@ -110,4 +110,16 @@ public class ListaDoble {
         }
     }
 
+    public void eliminarImagen(int idImagen){
+        NodoLD actual= this.primero;
+
+        while( actual!= null){
+            Album albumActual = (Album) actual.getData();
+            albumActual.getImgs().eliminarImagen(idImagen);
+            actual=actual.getSiguiente();
+        }
+            
+    }
+
+
 }

@@ -28,6 +28,30 @@ public class ListaSimple {
         }
     }
 
+    public void eliminarImagen(int idImagen) {
+        NodoSimple actual= this.primero;
+        boolean encontrado = false;
+        NodoSimple anterior = null;
+
+        while(actual!= null && !encontrado){            
+            Imagen imgActual = (Imagen) actual.getData();            
+            if (imgActual.getId() == idImagen)  {
+                encontrado = true;
+                break;
+            } else
+                anterior = actual;
+            actual=actual.getSiguiente();
+        }
+
+        if (anterior == null && encontrado == true) {
+            this.primero = actual.getSiguiente();
+            actual.setSiguiente(null); 
+        } else if(encontrado == true) {
+            anterior.setSiguiente(actual.getSiguiente());
+            actual.setSiguiente(null);            
+        }
+    }
+
     public String codigoGraphviz(int grupo, NodoLD album) {
         StringBuilder dot = new StringBuilder(); 
         
