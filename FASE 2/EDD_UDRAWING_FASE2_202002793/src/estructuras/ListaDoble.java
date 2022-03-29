@@ -4,6 +4,9 @@ package estructuras;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 import nodos.NodoLD;
 import objetos.Album;
 
@@ -99,7 +102,6 @@ public class ListaDoble {
         dot.append("{ rank = same; " + nodosRank + " }\n");
 
         dot.append("} \n");  
-        System.out.println(dot.toString());  
         
         
         escribirArchivo("./reporte.dot", dot.toString());
@@ -121,5 +123,19 @@ public class ListaDoble {
             
     }
 
+    public void listarAlbumes(DefaultTableModel modelo, JLabel label) {
+        NodoLD actual= this.primero;
+        int cantidadAlbumes = 0;
+
+        while( actual!= null){
+            Album album = (Album) actual.getData();
+            Object[] datosPFila =  {album.getNombre(), album.getImgs().imagenes(), album.getImgs().cantidadNodos};
+            modelo.addRow(datosPFila);
+            cantidadAlbumes++;
+            actual=actual.getSiguiente();
+        }
+
+        label.setText("Total de albumes: " + cantidadAlbumes);
+    }
 
 }

@@ -2,7 +2,6 @@
 package estructuras;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import nodos.NodoMD;
@@ -92,14 +91,14 @@ public class MatrizDispersa {
         return null;
     }
 
-    public Object buscarRepetidos(int fila, int columna) {
+    public NodoMD buscarRepetidos(int fila, int columna) {
         NodoMD actual = raiz;
         while (actual != null) {
             if (actual.getFila() == fila) {
                 NodoMD actual2=actual.getSiguiente();
                 while (actual2 != null) {
                     if (actual2.getColumna() == columna) {
-                        return actual.getData();
+                        return actual;
                     }
                     actual2 = actual2.getSiguiente();
                 }
@@ -119,7 +118,7 @@ public class MatrizDispersa {
     }
     
     public void insertNodo(Object data, int col, int fil){
-        Object repetido = buscarRepetidos(fil, col);
+        NodoMD repetido = buscarRepetidos(fil, col);
         if (repetido == null) {            
             NodoMD nuevo= new NodoMD(data, col, fil);
             
@@ -145,6 +144,8 @@ public class MatrizDispersa {
                 nuevo=insertEnFila(nuevo, fila);
                 nuevo=insertEnColumna(nuevo, columna);
             }
+        } else {
+            repetido.setData(data);
         }
     }
     
@@ -164,8 +165,7 @@ public class MatrizDispersa {
 
     public void generarGraphvizLogico(){
         String graphvizNodos = "digraph G {\n" +
-            "node[shape=box, width=1, height=1];\n" +
-            "edge[dir = \"both\"];\n";
+            "node[shape=box, width=1, height=1];\n";
         String nodos = "";
         String columnas = "";
         String relacionesFilas = "";
@@ -192,18 +192,14 @@ public class MatrizDispersa {
                 } else {
                     nodos += "nodo" + actual2.hashCode() + "[label=\"\", style = filled, fillcolor = \"" + actual2.getData() + "\", group = " + (actual2.getColumna()) + " ];\n";
                     relacionesFilas += "nodo" + actual2.getSuperior().hashCode() + " -> nodo" + actual2.hashCode() + ";\n";  
+                    relacionesFilas += "nodo" +  actual2.hashCode() + " -> nodo" + actual2.getSuperior().hashCode() + ";\n";  
+                    relacionesFilas += "nodo" +  actual2.hashCode() + " -> nodo" + actual2.getAnterior().hashCode() + ";\n";  
                 }
                 rankDir += "{rank=same nodo" + actual2.getAnterior().hashCode() + "-> nodo" + actual2.hashCode() + "; }\n";
                 actual2=actual2.getSiguiente();
             }
             actual=actual.getInferior();
         }
-        // System.out.println(columnas);
-        // System.out.println(nodos);
-        // System.out.println(rankDir);
-        // System.out.println(nodos);
-        // System.out.println(relaciones);
-        // System.out.println(rankDir);
         graphvizNodos += columnas;
         graphvizNodos += nodos;
         graphvizNodos += rankDir;
@@ -213,7 +209,6 @@ public class MatrizDispersa {
         // graphvizNodos += relaciones;
         // graphvizNodos += rankDir;
         graphvizNodos += "}";
-        // System.out.println(graphvizNodos);
         escribirArchivo("reporte.txt", graphvizNodos);
         try {
             Runtime.getRuntime().exec("dot" + " -Tpng " + "./reporte" + ".txt -o " + "reporte" + ".png ").waitFor();
@@ -285,7 +280,6 @@ public class MatrizDispersa {
         graphviz += "</table>>\n" +
             "];\n" +
             "}";
-        // System.out.println(graphviz);
         escribirArchivo("./prueba.dot", graphviz);
 
         try {

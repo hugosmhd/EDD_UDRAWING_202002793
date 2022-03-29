@@ -3,132 +3,128 @@ package estructuras;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
-import javafx.scene.image.Image;
-import nodos.NodoABB;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 import nodos.NodoAVL;
 import objetos.Imagen;
 
 public class ArbolAVL {
-    public NodoAVL root = null;
+    public NodoAVL raiz = null;
     String graphviz = "";
     String nodos = "";
     String relaciones = "";
     String capas = "";
-    private static final int HEIGHT_DIFFERENCE=1;
+    int totalImagenes = 0;
+    int totalImgs = 0;
+    private static final int ALT_DIFERENCIA=1;
 
 	
-    public void insert(Imagen data){
+    public void insertar(Imagen data){
         if (data==null){
             throw new IllegalArgumentException("Los datos están vacíos");
         }
-         root= insert(data, this.root);
+         raiz= insertar(data, this.raiz);
     }
 
-    private NodoAVL insert(Imagen data,NodoAVL t){
-        if (t==null){
+    private NodoAVL insertar(Imagen data, NodoAVL temporal){
+        if (temporal==null){
+            totalImgs++;
             return new NodoAVL(data,null,null);
         }
         
-        if (data.getId() < t.getImg().getId()){
-            t.setIzq(insert(data,t.getIzq()));
-        }else if (data.getId() > t.getImg().getId()){
-            t.setDer(insert(data,t.getDer()));
+        if (data.getId() < temporal.getImg().getId()){
+            temporal.setIzq(insertar(data,temporal.getIzq()));
+        }else if (data.getId() > temporal.getImg().getId()){
+            temporal.setDer(insertar(data,temporal.getDer()));
         }else {
             ;
         }
-        return balance(t);
+        return balancear(temporal);
     }
 
-    private NodoAVL rotateRight(NodoAVL node){
-        NodoAVL left=node.getIzq();
-        node.setIzq(left.getDer());
-        left.setDer(node);
-        node.setAlt(Math.max(height(node.getIzq()),height(node.getDer()))+1);
-        left.setAlt(Math.max(height(node.getIzq()),node.getAlt())+1);
-        return left;
+    public int getTotalImg() {
+        return totalImgs;
     }
 
-    private NodoAVL rotateLeft(NodoAVL node){
-        NodoAVL right=node.getDer();
-        node.setDer(right.getIzq());
-        right.setIzq(node);
-        node.setAlt(Math.max(height(node.getIzq()),height(node.getDer()))+1);
-        right.setAlt(Math.max(node.getAlt(),height(right.getDer()))+1);
-        return right;
+    private NodoAVL rotacionDerecha(NodoAVL nodo){
+        NodoAVL izq=nodo.getIzq();
+        nodo.setIzq(izq.getDer());
+        izq.setDer(nodo);
+        nodo.setAlt(Math.max(altura(nodo.getIzq()),altura(nodo.getDer()))+1);
+        izq.setAlt(Math.max(altura(nodo.getIzq()),nodo.getAlt())+1);
+        return izq;
     }
 
-    private NodoAVL doubleLeftAndRight(NodoAVL node){
-        node.setIzq(rotateLeft(node.getIzq()));
-        return rotateRight(node);
+    private NodoAVL rotacionIzquierda(NodoAVL nodo){
+        NodoAVL der=nodo.getDer();
+        nodo.setDer(der.getIzq());
+        der.setIzq(nodo);
+        nodo.setAlt(Math.max(altura(nodo.getIzq()),altura(nodo.getDer()))+1);
+        der.setAlt(Math.max(nodo.getAlt(),altura(der.getDer()))+1);
+        return der;
     }
 
-    private NodoAVL doubleRightAndLeft(NodoAVL node){
-        node.setDer(rotateRight(node.getDer()));
-        return rotateLeft(node);
+    private NodoAVL dobleIzqDer(NodoAVL nodo){
+        nodo.setIzq(rotacionIzquierda(nodo.getIzq()));
+        return rotacionDerecha(nodo);
     }
 
-    private NodoAVL balance(NodoAVL t) {
-        if (t==null){
+    private NodoAVL dobleDerIzq(NodoAVL nodo){
+        nodo.setDer(rotacionDerecha(nodo.getDer()));
+        return rotacionIzquierda(nodo);
+    }
+
+    private NodoAVL balancear(NodoAVL temporal) {
+        if (temporal==null){
             return null;
         }
-        if (height(t.getIzq())-height(t.getDer())>HEIGHT_DIFFERENCE){
-            // arriba a la izquierda
-            if (height(t.getIzq().getIzq())>=height(t.getIzq().getDer())){
-                 // La altura del subárbol izquierdo del subárbol izquierdo
-                // Este es el caso 1, inserte un elemento en el subárbol izquierdo del subárbol izquierdo y gírelo directamente
-                t=rotateRight(t);
+        if (altura(temporal.getIzq())-altura(temporal.getDer())>ALT_DIFERENCIA){
+            if (altura(temporal.getIzq().getIzq())>=altura(temporal.getIzq().getDer())){
+                temporal=rotacionDerecha(temporal);
             }else {
-                // La altura del subárbol derecho del subárbol izquierdo
-                // Este es el caso 2, un elemento se inserta en el subárbol derecho del subárbol izquierdo, primero gira a la izquierda y luego a la derecha
-                t=doubleLeftAndRight(t);
+                temporal=dobleIzqDer(temporal);
             }
 
-        }else if (height(t.getDer())-height(t.getIzq())>HEIGHT_DIFFERENCE){
-            // Alta derecha
-            if (height(t.getDer().getIzq())>height(t.getDer().getDer())){
-                // El subárbol izquierdo del subárbol derecho es más alto
-                // Este es el caso 3, un elemento se inserta en el subárbol izquierdo del subárbol derecho, primero gira a la derecha y luego a la izquierda
-                t=doubleRightAndLeft(t);
+        }else if (altura(temporal.getDer())-altura(temporal.getIzq())>ALT_DIFERENCIA){
+            if (altura(temporal.getDer().getIzq())>altura(temporal.getDer().getDer())){
+                temporal=dobleDerIzq(temporal);
             }else {
-                // La altura del subárbol derecho del subárbol derecho
-                // Este es el caso 4, se inserta un elemento en el subárbol derecho del subárbol derecho y se gira directamente hacia la izquierda
-                t=rotateLeft(t);
+                temporal=rotacionIzquierda(temporal);
             }
         }
-        // Recalcula la altura del nodo
-        t.setAlt(Math.max(height(t.getIzq()),height(t.getDer()))+1);
-        return t;
+        temporal.setAlt(Math.max(altura(temporal.getIzq()),altura(temporal.getDer()))+1);
+        return temporal;
     }
-     private int height(NodoAVL t){
-        return t==null?-1:t.getAlt();
+    
+    private int altura(NodoAVL temporal){
+        return temporal==null?-1:temporal.getAlt();
     }
 
-    public void remove(int x)
+    public void eliminar(int x)
     {
-        root = remove( x, root );
+        raiz = eliminar( x, raiz );
     }
-    private NodoAVL remove(int data, NodoAVL root){
+    
+    private NodoAVL eliminar(int data, NodoAVL raiz){
 
-        if (root==null){
+        if (raiz==null){
             return null;
         }
-        if (data < root.getImg().getId()){
-            root.setIzq(remove(data,root.getIzq()));
-        }else if (data > root.getImg().getId()){
-            root.setDer(remove(data,root.getDer()));
-        }else if (root.getIzq()!=null&&root.getDer()!=null){
-            // El nodo a eliminar tiene dos hijos
-            root.setImg(findMin(root.getDer()).getImg());
-            root.setDer(remove(root.getImg().getId(),root.getDer()));
+        if (data < raiz.getImg().getId()){
+            raiz.setIzq(eliminar(data,raiz.getIzq()));
+        }else if (data > raiz.getImg().getId()){
+            raiz.setDer(eliminar(data,raiz.getDer()));
+        }else if (raiz.getIzq()!=null&&raiz.getDer()!=null){
+            raiz.setImg(encontrarMenor(raiz.getDer()).getImg());
+            raiz.setDer(eliminar(raiz.getImg().getId(),raiz.getDer()));
         }else {
-            // El nodo a eliminar no tiene o tiene un hijo
-            root=root.getIzq()==null?root.getDer():root.getIzq();
+            raiz=raiz.getIzq()==null?raiz.getDer():raiz.getIzq();
         }
-        // reequilibrar el árbol
-        return balance(root);
+        return balancear(raiz);
     }
 
-    public NodoAVL findMin(NodoAVL raiz){
+    public NodoAVL encontrarMenor(NodoAVL raiz){
         while (raiz.getIzq()!=null){
             raiz=raiz.getIzq();
         }
@@ -158,7 +154,7 @@ public class ArbolAVL {
         this.graphviz = this.nodos = this.relaciones = "";
         this.graphviz = "graph \"\" {\n" +
             "node [shape=box]\n";
-        generarAVL(this.root);
+        generarAVL(this.raiz);
         this.graphviz += this.nodos;
         this.graphviz += this.relaciones;
         this.graphviz += "\n}";
@@ -173,7 +169,6 @@ public class ArbolAVL {
 
     private void generarAVL(NodoAVL raiz) {
         if (raiz != null) {            
-            System.out.print(raiz.getImg().getId()+" ");
             this.nodos += raiz.hashCode() + "[label=\"" + raiz.getImg().getId() + "\"];\n";
             if (raiz.getIzq() != null) {
                 this.relaciones += raiz.hashCode() + " -- " + raiz.getIzq().hashCode() + ";\n";
@@ -189,13 +184,11 @@ public class ArbolAVL {
     public void generarAVLCapa(int idImagen) {
         this.graphviz = this.nodos = this.relaciones = this.capas = "";
         this.graphviz = "graph \"\" {\n";
-        generarAVLCapa(this.root, idImagen);
+        generarAVLCapa(this.raiz, idImagen);
         this.graphviz += this.nodos;
         this.graphviz += this.relaciones;
         this.graphviz += this.capas;
-        System.out.println(this.capas);
         this.graphviz += "\n}";
-        System.out.println(this.graphviz);
         escribirArchivo("./reporte.dot", this.graphviz);
         try {
             Runtime.getRuntime().exec("dot" + " -Tpng " + "./reporte" + ".dot -o " + "reporte" + ".png ").waitFor();
@@ -206,10 +199,8 @@ public class ArbolAVL {
 
     private void generarAVLCapa(NodoAVL raiz, int idImagen) {
         if (raiz != null) {            
-            System.out.print(raiz.getImg().getId()+" ");
             this.nodos += raiz.hashCode() + "[label=\"" + raiz.getImg().getId() + "\", shape=box];\n";
             if (idImagen == raiz.getImg().getId()) {
-                System.out.println("Encontro la imagen");
                 this.capas = raiz.getImg().getCapas().generarABB(false, raiz);
             }
             if (raiz.getIzq() != null) {
@@ -225,7 +216,6 @@ public class ArbolAVL {
 
     public void preorder(NodoAVL tmp) {
 		if (tmp != null) {
-			System.out.print(tmp.getImg().getId()+" ");
 			preorder(tmp.getIzq());
 			preorder(tmp.getDer());
 		}
@@ -234,7 +224,6 @@ public class ArbolAVL {
 	public void enorder(NodoAVL tmp) {
 		if (tmp != null) {			
 			enorder(tmp.getIzq());
-			System.out.print(tmp.getImg().getId()+" ");
 			enorder(tmp.getDer());
 		}
 	}
@@ -243,12 +232,11 @@ public class ArbolAVL {
 		if (tmp != null) {			
 			postorder(tmp.getIzq());
 			postorder(tmp.getDer());
-			System.out.print(tmp.getImg().getId()+" ");			
 		}
 	}
 
     public NodoAVL buscar(int dato){
-        return buscar(this.root, dato);
+        return buscar(this.raiz, dato);
     }
 
     private NodoAVL buscar(NodoAVL raiz, int dato){
@@ -257,6 +245,39 @@ public class ArbolAVL {
         else if(dato < raiz.getImg().getId()) return buscar(raiz.getIzq(), dato);
         else return buscar(raiz.getDer(), dato);
     }
+
+    public ListaSimple top5MasCapas() {
+        ListaSimple capas = new ListaSimple();
+        this.top5MasCapas(this.raiz, capas);
+        capas.ordenarMasCapas();
+        capas.visualizar();
+        return capas;
+    }
+
+    public void top5MasCapas(NodoAVL raiz, ListaSimple capas) {
+        if (raiz != null) {
+			// System.out.print(raiz.getImg().getId()+" ");
+            capas.insertarAlFinal(raiz.getImg());
+			top5MasCapas(raiz.getIzq(), capas);
+			top5MasCapas(raiz.getDer(), capas);
+		}
+    }
+
+    public void listarImagenes(DefaultTableModel modelo, JLabel label) {
+        this.totalImagenes = 0;
+        this.listarImagenes(this.raiz, modelo);
+        label.setText("Total de imagenes: " + this.totalImagenes);
+    }
+
+    private void listarImagenes(NodoAVL tmp, DefaultTableModel modelo) {
+		if (tmp != null) {
+            this.totalImagenes++;
+            Object[] datosPFila =  {tmp.getImg().getId(), tmp.getImg().getCapas().devolverCapas()};
+            modelo.addRow(datosPFila);
+			listarImagenes(tmp.getIzq(), modelo);
+			listarImagenes(tmp.getDer(), modelo);
+		}
+	}
 
 
 }

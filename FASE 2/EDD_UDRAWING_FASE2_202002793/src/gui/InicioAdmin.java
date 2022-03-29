@@ -5,6 +5,28 @@
  */
 package gui;
 
+import estructuras.ArbolAVL;
+import estructuras.ArbolB;
+import estructuras.ArbolBB;
+import estructuras.ListaDoble;
+import estructuras.ListaSimple;
+import java.awt.Desktop;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import objetos.Cliente;
+
 /**
  *
  * @author hugom
@@ -14,8 +36,35 @@ public class InicioAdmin extends javax.swing.JFrame {
     /**
      * Creates new form InicioAdmin
      */
-    public InicioAdmin() {
+    private ImageIcon imagen;
+    private Icon icono;
+    private MetodosAdmin metodos;
+    private ArbolB arbolitoB;
+    private JScrollPane sp;
+    private JTable t;
+    private JScrollPane spAlbumes;
+    private JTable tAlbumes;
+    private JLabel totalAlbumes;
+    private JScrollPane spImgs;
+    private JTable tImgs;
+    private JLabel totalImgs;
+    private JScrollPane spCapas;
+    private JTable tCapas;
+    private JLabel totalCapas;
+    private JScrollPane spClientesNiveles;
+    private JTable tClientesNiveles;
+    private JLabel totalClientesNiveles;
+    private JScrollPane spClientesNivelesDos;
+    private JTable tClientesNivelesDos;
+    private JLabel totalClientesNivelesDos;
+    
+    public InicioAdmin(ArbolB arbolitoB) {
         initComponents();
+        this.pintarImagen(this.lblCargarUsuarios, getClass().getResource("/image/grupo.png"));
+        metodos = new MetodosAdmin();
+        this.arbolitoB = arbolitoB;
+        this.jPanel2.add(cargarClientesDos(this.arbolitoB));
+        this.jPanel2.updateUI();
     }
 
     /**
@@ -29,113 +78,967 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        lblCargarUsuarios = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtNombreN = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtDPIN = new javax.swing.JTextField();
+        txtPasswordN = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtNombreE = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtDPIE = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        txtPasswordE = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtDPIBuscar = new javax.swing.JTextField();
+        btnBuscarCliente = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnListarClientes = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        lblArbolB = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel4.setText("Carga Masiva de usuarios");
+
+        lblCargarUsuarios.setText(".");
+        lblCargarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCargarUsuariosMouseClicked(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel6.setText("Usuarios");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(620, 620, 620)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(751, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(28, 28, 28)
+                .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(213, 213, 213))
         );
 
-        jTabbedPane1.addTab("Arbol B (Usuarios)", jPanel1);
+        jTabbedPane1.addTab("Carga masiva ", jPanel1);
 
-        jLabel1.setText("USUARIOS");
+        lblUsuarios.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        lblUsuarios.setText("Usuarios");
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel5.setText("Insertar Usuario");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("Nombre");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("DPI");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Password");
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel10.setText("Editar usuario");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setText("Nombre");
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("DPI");
+
+        txtDPIE.setEditable(false);
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setText("Password");
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton4.setText("Modificar");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton5.setText("Insertar");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addComponent(jLabel1)
-                .addContainerGap(399, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(375, 375, 375))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9)
+                                    .addComponent(txtPasswordN, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(txtDPIN, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txtNombreN)))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel13)
+                                    .addComponent(txtPasswordE, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                    .addComponent(jLabel11)
+                                    .addComponent(txtNombreE, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                    .addComponent(jLabel12)
+                                    .addComponent(txtDPIE, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(176, 176, 176)))
+                        .addGap(199, 199, 199))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jLabel1)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUsuarios)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreN, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPasswordN, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDPIE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPasswordE, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Usuarios", jPanel2);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel2.setText("Buscar usuario");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("DPI del usuario");
+
+        btnBuscarCliente.setBackground(new java.awt.Color(204, 204, 204));
+        btnBuscarCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBuscarCliente.setText("Buscar");
+        btnBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarClienteMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel3.setText("Listar clientes por niveles");
+
+        btnListarClientes.setBackground(new java.awt.Color(204, 204, 204));
+        btnListarClientes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnListarClientes.setText("Listar");
+        btnListarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnListarClientesMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDPIBuscar)
+                                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)))
+                .addContainerGap(1186, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 389, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtDPIBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jLabel3)
+                .addGap(28, 28, 28)
+                .addComponent(btnListarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Sesion", jPanel3);
+        jTabbedPane1.addTab("Reportes", jPanel3);
+
+        jButton2.setBackground(new java.awt.Color(204, 204, 204));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setText("Generar Arbol B");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jButton3.setBackground(new java.awt.Color(204, 204, 204));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setText("Abrir imagen");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        lblArbolB.setText("jLabel5");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(lblArbolB, javax.swing.GroupLayout.PREFERRED_SIZE, 1156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(174, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(lblArbolB, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
+        );
+
+        jTabbedPane1.addTab("Arbol B", jPanel4);
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Cerrar Sesion");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(413, 413, 413)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(658, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(264, 264, 264)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(330, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Sesion", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblCargarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarUsuariosMouseClicked
+        // TODO add your handling code here:
+        try {
+            this.metodos.openFile("usuarios", arbolitoB);
+            this.jPanel2.remove(this.spClientesNivelesDos);
+            this.jPanel2.updateUI();
+            this.jPanel2.add(cargarClientesDos(this.arbolitoB));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_lblCargarUsuariosMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarClienteMouseClicked
+        // TODO add your handling code here:
+        try {
+            if(this.spClientesNiveles != null)
+                this.jPanel3.remove(this.spClientesNiveles);  
+            this.jPanel3.updateUI();
+            Long dpi = Long.parseLong(this.txtDPIBuscar.getText().trim());
+            Cliente cliente = this.arbolitoB.buscar(dpi);
+            this.jPanel3.add(this.cargarCliente(cliente));
+            this.jPanel3.add(this.cargarAlbumes(cliente.getListaAlbumes()));
+            this.jPanel3.add(this.cargarImagenes(cliente.getArbolitoAVL()));
+            this.jPanel3.add(this.cargarCapas(cliente.getArbolitoBB()));
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btnBuscarClienteMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        try {
+            this.dispose();
+            Login login = new Login(this.arbolitoB);
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);            
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btnListarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarClientesMouseClicked
+        // TODO add your handling code here:
+        
+        try {
+            // this.arbolitoB.listarClientesAmpli();
+            if(this.sp != null) {
+                this.jPanel3.remove(sp);
+                this.jPanel3.remove(spAlbumes);
+                this.jPanel3.remove(spCapas);
+                this.jPanel3.remove(spImgs);
+                this.jPanel3.remove(this.totalAlbumes);
+                this.jPanel3.remove(this.totalImgs);
+                this.jPanel3.remove(this.totalCapas);
+                this.jPanel3.updateUI();
+            }
+            this.jPanel3.add(this.cargarClientes(this.arbolitoB));
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btnListarClientesMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        try {
+            this.arbolitoB.preOrden();
+            this.pintarImagen(this.lblArbolB, "reporte.png");            
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        String dpi = this.txtDPIN.getText();
+        String nombre = this.txtNombreN.getText();
+        String password = this.txtPasswordN.getText();
+        
+        if(!dpi.equals("") && !nombre.equals("") && !password.equals("")) {
+            Long dpiN = Long.parseLong(dpi.trim());
+            Cliente nuevoCliente = new Cliente(dpiN, nombre, password);
+            this.arbolitoB.insertar(nuevoCliente);
+            this.jPanel2.remove(this.spClientesNivelesDos);
+            this.jPanel2.updateUI();
+            this.jPanel2.add(cargarClientesDos(this.arbolitoB));
+        } else {
+            
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        try {
+            Long dpi = Long.parseLong(this.txtDPIE.getText());
+            Cliente clienteEncontrado = this.arbolitoB.buscar(dpi);
+            clienteEncontrado.setNombreCliente(this.txtNombreE.getText());
+            clienteEncontrado.setPassword(this.txtPasswordE.getText());
+            this.jPanel2.remove(this.spClientesNivelesDos);
+            this.jPanel2.updateUI();
+            this.jPanel2.add(cargarClientesDos(this.arbolitoB));
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        try {
+
+            File objetofile = new File ("reporte.png");
+            Desktop.getDesktop().open(objetofile);
+
+        }catch (IOException ex) {
+            System.out.println(ex);
+
+        }
+        
+    }//GEN-LAST:event_jButton3MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    
+    private void setEventoMouseClicked(JTable tbl) {
+        tbl.addMouseListener(new java.awt.event.MouseAdapter() {
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new InicioAdmin().setVisible(true);
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tblMouseClicked(e);
             }
         });
     }
+    
+    private void tblMouseClicked(java.awt.event.MouseEvent evt) {
+
+        String cadena = "";
+        String dpi, nombre, password;
+
+        int row = tClientesNivelesDos.rowAtPoint(evt.getPoint());
+        if (row >= 0 && tClientesNivelesDos.isEnabled()) {
+            dpi = tClientesNivelesDos.getValueAt(row, 1).toString();
+            nombre = tClientesNivelesDos.getValueAt(row, 0).toString();
+            password = tClientesNivelesDos.getValueAt(row, 2).toString();
+            System.out.println("Codigo " + dpi);
+            this.txtDPIE.setText(dpi);
+            this.txtNombreE.setText(nombre);
+            this.txtPasswordE.setText(password);
+            /*profeSelec = Proyecto1_202002793.buscarProfesor(codigo);
+            for (int i = 0; i < t.getColumnCount(); i++) {
+                cadena = cadena + " " + t.getValueAt(row, i).toString();
+            }*/
+        }
+
+//        JOptionPane.showMessageDialog(null, cadena);
+    }
+    
+    public JScrollPane cargarTabla() {
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+        JScrollPane falso = new JScrollPane(this.t);
+
+        if (datos != null) {
+            String[] columnas = {"DPI", "Nombre", "Password"};
+            this.t = new JTable(datos, columnas);
+
+            sp = new JScrollPane(this.t);
+            sp.setBounds(20, this.lblUsuarios.getY() + 60, 400, 450);
+            sp.setVisible(true);
+            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+
+//        t.setEnabled(false);
+            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
+            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
+            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
+            // setEventoMouseClicked(this.tblUsuarios);
+
+//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JTableHeader jtableHeader = this.t.getTableHeader();
+            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
+            this.t.setTableHeader(jtableHeader);
+//        panelProfesores.updateUI();
+            return sp;
+        }
+
+        return falso;
+
+    }
+    
+    public JScrollPane cargarCliente(Cliente cliente) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {cliente.getDpi(), cliente.getNombreCliente(), cliente.getPassword()},};
+
+
+        if (datos != null) {
+            String[] columnas = {"DPI", "Nombre", "Password"};
+            this.t = new JTable(datos, columnas);
+
+            sp = new JScrollPane(this.t);
+            sp.setBounds(this.txtDPIBuscar.getX() + this.txtDPIBuscar.getWidth() + 100, this.txtDPIBuscar.getY() - 20, 400, 50);
+            sp.setVisible(true);
+            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+
+//        t.setEnabled(false);
+            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
+            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
+            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
+            // setEventoMouseClicked(this.tblUsuarios);
+
+//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JTableHeader jtableHeader = this.t.getTableHeader();
+            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
+            this.t.setTableHeader(jtableHeader);
+//        panelProfesores.updateUI();
+            return sp;
+        }
+
+        return null;
+
+    }
+
+    public JScrollPane cargarAlbumes(ListaDoble albumes) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+
+        if (datos != null) {
+            String[] columnas = {"Nombre", "Imagenes", "Total de imagenes"};
+            this.tAlbumes = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tAlbumes.setModel(modelo);   
+            this.totalAlbumes = new JLabel();
+            this.jPanel3.add(totalAlbumes);
+            albumes.listarAlbumes(modelo, this.totalAlbumes);;
+            // labelTitulo.setBounds(600, 350, 180, 23);
+            
+            
+            // this.agregarDatos(modelo);
+            
+            // this.t = new JTable(datos, columnas);
+
+            spAlbumes = new JScrollPane(this.tAlbumes);
+            spAlbumes.setBounds(this.sp.getX() + this.sp.getWidth() + 50, this.sp.getY(), 400, 100);
+            totalAlbumes.setBounds(this.spAlbumes.getX(), this.sp.getY() - 20, 180, 23);
+            spAlbumes.setVisible(true);
+            // labelTitulo.setBounds(20, 5, 180, 23);
+            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
+            /*DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+
+//        t.setEnabled(false);
+            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
+            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
+            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
+            // setEventoMouseClicked(this.tblUsuarios);
+
+//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JTableHeader jtableHeader = this.t.getTableHeader();
+            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
+            this.t.setTableHeader(jtableHeader);
+//        panelProfesores.updateUI();*/
+            return spAlbumes;
+        }
+
+        return null;
+
+    }
+    
+    public JScrollPane cargarClientesDos(ArbolB clientes) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+
+        if (datos != null) {
+            String[] columnas = {"Nombre", "DPI", "Password"};
+            this.tClientesNivelesDos = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tClientesNivelesDos.setModel(modelo);   
+            this.totalClientesNiveles = new JLabel();
+            // this.jPanel3.add(totalClientesNiveles);
+            clientes.listarClientesAmpliPass(modelo);
+            // albumes.listarAlbumes(modelo, this.totalAlbumes);;
+            // labelTitulo.setBounds(600, 350, 180, 23);
+            
+            
+            // this.agregarDatos(modelo);
+            
+            // this.t = new JTable(datos, columnas);
+
+            spClientesNivelesDos = new JScrollPane(this.tClientesNivelesDos);
+            spClientesNivelesDos.setBounds(50, 85, 600, 300);
+            totalClientesNiveles.setBounds(this.spClientesNivelesDos.getX(), this.spClientesNivelesDos.getY() - 20, 180, 23);
+            spClientesNivelesDos.setVisible(true);
+            // labelTitulo.setBounds(20, 5, 180, 23);
+            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
+            /*DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+
+//        t.setEnabled(false);
+            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
+            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
+            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
+            // setEventoMouseClicked(this.tblUsuarios);
+
+//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JTableHeader jtableHeader = this.t.getTableHeader();
+            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
+            this.t.setTableHeader(jtableHeader);
+//        panelProfesores.updateUI();*/
+            setEventoMouseClicked(tClientesNivelesDos);
+            return spClientesNivelesDos;
+        }
+
+        return null;
+
+    }
+    
+    
+    public JScrollPane cargarClientes(ArbolB clientes) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+
+        if (datos != null) {
+            String[] columnas = {"Nombre", "DPI", "Total de imagenes"};
+            this.tClientesNiveles = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tClientesNiveles.setModel(modelo);   
+            this.totalClientesNiveles = new JLabel();
+            this.jPanel3.add(totalClientesNiveles);
+            clientes.listarClientesAmpli(modelo, this.totalClientesNiveles);
+            // albumes.listarAlbumes(modelo, this.totalAlbumes);;
+            // labelTitulo.setBounds(600, 350, 180, 23);
+            
+            
+            // this.agregarDatos(modelo);
+            
+            // this.t = new JTable(datos, columnas);
+
+            spClientesNiveles = new JScrollPane(this.tClientesNiveles);
+            spClientesNiveles.setBounds(this.txtDPIBuscar.getX() + this.txtDPIBuscar.getWidth() + 200, this.txtDPIBuscar.getY() - 20, 600, 300);
+            totalClientesNiveles.setBounds(this.spClientesNiveles.getX(), this.spClientesNiveles.getY() - 20, 180, 23);
+            spClientesNiveles.setVisible(true);
+            // labelTitulo.setBounds(20, 5, 180, 23);
+            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
+            /*DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+
+//        t.setEnabled(false);
+            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
+            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
+            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
+            // setEventoMouseClicked(this.tblUsuarios);
+
+//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JTableHeader jtableHeader = this.t.getTableHeader();
+            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
+            this.t.setTableHeader(jtableHeader);
+//        panelProfesores.updateUI();*/
+            return spClientesNiveles;
+        }
+
+        return null;
+
+    }
+    
+    public JScrollPane cargarImagenes(ArbolAVL imagenes) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+
+        if (datos != null) {
+            String[] columnas = {"ID imagen", "Capas imagen"};
+            this.tImgs = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tImgs.setModel(modelo);   
+            this.totalImgs = new JLabel();
+            this.jPanel3.add(totalImgs);
+            imagenes.listarImagenes(modelo, this.totalImgs);
+            // labelTitulo.setBounds(600, 350, 180, 23);
+            
+            
+            // this.agregarDatos(modelo);
+            
+            // this.t = new JTable(datos, columnas);
+
+            spImgs = new JScrollPane(this.tImgs);
+            spImgs.setBounds(this.sp.getX(), this.sp.getY() + this.spAlbumes.getHeight() + 60, 400, 100);
+            totalImgs.setBounds(this.spImgs.getX(), this.spImgs.getY() - 20, 180, 23);
+            spImgs.setVisible(true);
+            // labelTitulo.setBounds(20, 5, 180, 23);
+            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
+            /*DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
+            tcr.setHorizontalAlignment(SwingConstants.CENTER);
+            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
+            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+
+//        t.setEnabled(false);
+            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
+            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
+            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
+            // setEventoMouseClicked(this.tblUsuarios);
+
+//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JTableHeader jtableHeader = this.t.getTableHeader();
+            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
+            this.t.setTableHeader(jtableHeader);
+//        panelProfesores.updateUI();*/
+            return spImgs;
+        }
+
+        return null;
+
+    }
+    
+    public JScrollPane cargarCapas(ArbolBB capas) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+
+        if (datos != null) {
+            String[] columnas = {"Numero de capa", "ID capa"};
+            this.tCapas = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tCapas.setModel(modelo);   
+            this.totalCapas = new JLabel();
+            this.jPanel3.add(totalCapas);
+            capas.listarCapasAmpliDos(modelo, this.totalCapas);
+            // labelTitulo.setBounds(600, 350, 180, 23);
+            
+            
+            // this.agregarDatos(modelo);
+            
+            // this.t = new JTable(datos, columnas);
+
+            spCapas = new JScrollPane(this.tCapas);
+            spCapas.setBounds(this.spAlbumes.getX(), this.sp.getY() + this.spAlbumes.getHeight() + 60, 400, 100);
+            totalCapas.setBounds(this.spCapas.getX(), this.spCapas.getY() - 20, 180, 23);
+            spCapas.setVisible(true);
+            return spCapas;
+        }
+
+        return null;
+
+    }
+    
+    
+    private void pintarImagen(JLabel lbl, URL ruta){
+        this.imagen = new ImageIcon(ruta);
+        System.out.println(ruta);
+        this.icono = new ImageIcon(
+                this.imagen.getImage().getScaledInstance(
+                        lbl.getWidth(), 
+                        lbl.getHeight(), 
+                        Image.SCALE_DEFAULT
+                )
+        );
+        lbl.setIcon(this.icono);
+        this.repaint();
+        
+    }
+    
+    private void pintarImagen(JLabel lbl, String ruta){
+        this.imagen = new ImageIcon(ruta);
+        System.out.println(ruta);
+        this.icono = new ImageIcon(
+                this.imagen.getImage().getScaledInstance(
+                        lbl.getWidth(), 
+                        lbl.getHeight(), 
+                        Image.SCALE_DEFAULT
+                )
+        );
+        lbl.setIcon(this.icono);
+        this.repaint();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarCliente;
+    private javax.swing.JButton btnListarClientes;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblArbolB;
+    private javax.swing.JLabel lblCargarUsuarios;
+    private javax.swing.JLabel lblUsuarios;
+    private javax.swing.JTextField txtDPIBuscar;
+    private javax.swing.JTextField txtDPIE;
+    private javax.swing.JTextField txtDPIN;
+    private javax.swing.JTextField txtNombreE;
+    private javax.swing.JTextField txtNombreN;
+    private javax.swing.JTextField txtPasswordE;
+    private javax.swing.JTextField txtPasswordN;
     // End of variables declaration//GEN-END:variables
 }

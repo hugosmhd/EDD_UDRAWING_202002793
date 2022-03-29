@@ -1,7 +1,6 @@
 package objetos;
 
 import estructuras.ArbolBB;
-import estructuras.MatrizDispersa;
 
 public class Imagen {
     int id;

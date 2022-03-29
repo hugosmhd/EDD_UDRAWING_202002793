@@ -1,27 +1,23 @@
 
 package funciones;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import estructuras.ArbolAVL;
+import estructuras.ArbolB;
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
 import estructuras.ListaSimple;
 import estructuras.MatrizDispersa;
 import objetos.Album;
 import objetos.Capa;
+import objetos.Cliente;
 import objetos.Imagen;
 
 public class CargaMasiva {
@@ -37,25 +33,17 @@ public class CargaMasiva {
             
             for(int i = 0 ; i < array.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
-                // System.out.println("JSON LEIDO: " + jsonObject1);
-                
-                // System.out.println("DATOS DEL USUARIO: " + i);
-                // System.out.println("ID: DESDE AQUI" + jsonObject1.get("id_capa"));
                 Long idCapa =  (Long) jsonObject1.get("id_capa");     
                 MatrizDispersa matriz = new MatrizDispersa();
                 
                 JSONArray arrayPix = (JSONArray) jsonObject1.get("pixeles");
                 for(int j = 0 ; j < arrayPix.size() ; j++) {
                     JSONObject jsonObject2 = (JSONObject) arrayPix.get(j);
-                    // System.out.println("FILA: " + jsonObject2.get("fila"));                                        
                     Long fila =  (Long) jsonObject2.get("fila");                                        
-                    // System.out.println("COLUMNA: " + jsonObject2.get("columna"));      
                     Long columna =  (Long) jsonObject2.get("columna");                                    
-                    // System.out.println("COLOR: " + jsonObject2.get("color"));   
                     String color =  (String) jsonObject2.get("color");      
                     matriz.insertNodo(color, columna.intValue(), fila.intValue());                                
                 }
-                // matriz.imprimir();
                 Capa nuevaCapa = new Capa(idCapa.intValue(), matriz);
                 arbolito.insertar(nuevaCapa);
                 
@@ -77,29 +65,17 @@ public class CargaMasiva {
             
             for(int i = 0 ; i < array.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
-                // System.out.println("JSON LEIDO: " + jsonObject1);
-                
-                // System.out.println("DATOS DEL USUARIO: " + i);
-                // System.out.println("ID DE IMAGENES: " + jsonObject1.get("id"));
                 Long idImg =  (Long) jsonObject1.get("id");     
-                // MatrizDispersa matriz = new MatrizDispersa();
                 ArbolBB arbolCapas = new ArbolBB();
                 
                 JSONArray arrayCapas = (JSONArray) jsonObject1.get("capas");
                 for(int j = 0 ; j < arrayCapas.size() ; j++) {
-                    // System.out.println("CAPA: " + arrayCapas.get(j));
                     Long idCapa = (Long)arrayCapas.get(j);
                     Capa capaEncontrada = arbolitoBB.buscar(idCapa.intValue());
-                    // System.out.println("CAPA ENCONTRADA: " + capaEncontrada.getIdCapa());
                     arbolCapas.insertar(capaEncontrada);                             
                 }
-                // arbolCapas.inOrden();
-                // arbolCapas.agregarAMatrizDispersa();
                 Imagen imgNueva = new Imagen(idImg.intValue(), arbolCapas);
-                arbolitoVL.insert(imgNueva);
-                // matriz.imprimir();
-                // Capa nuevaCapa = new Capa(idCapa.intValue(), matriz);
-                // arbolito.add(nuevaCapa);
+                arbolitoVL.insertar(imgNueva);
                 
             }
             
@@ -119,33 +95,46 @@ public class CargaMasiva {
             
             for(int i = 0 ; i < array.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
-                // System.out.println("JSON LEIDO: " + jsonObject1);
                 
                 
                 String nombreAlbum =  (String) jsonObject1.get("nombre_album"); 
-                System.out.println("NOMBRE " + nombreAlbum);
-                // MatrizDispersa matriz = new MatrizDispersa();
                 ListaSimple imgs = new ListaSimple();
                 
                 JSONArray arrayImgs = (JSONArray) jsonObject1.get("imgs");
-                System.out.println("IMGAGENES");
                 for(int j = 0 ; j < arrayImgs.size() ; j++) {
-                    // System.out.println("CAPA: " + arrayCapas.get(j));
                     Long idImg = (Long)arrayImgs.get(j);
-                    System.out.println(idImg);
                     Imagen imagenEncontrada = arbolitoVL.buscar(idImg.intValue()).getImg();
-                    // System.out.println("CAPA ENCONTRADA: " + capaEncontrada.getIdCapa());
                     imgs.insertarAlFinal(imagenEncontrada);                             
                 }
-                // arbolCapas.inOrden();
-                // arbolCapas.agregarAMatrizDispersa();
                 Album albumNuevo = new Album(nombreAlbum, imgs);
                 listaAlbumes.insertarF(albumNuevo);
                 
-                // arbolitoVL.add(albumNuevo);
-                // matriz.imprimir();
-                // Capa nuevaCapa = new Capa(idCapa.intValue(), matriz);
-                // arbolito.add(nuevaCapa);
+            }
+            
+        } catch(FileNotFoundException e) { }
+        catch(IOException e) { }
+        catch(ParseException e) { }
+        
+    }
+
+    public static void cargarClientes(String ruta, ArbolB arbolitoB) throws FileNotFoundException, IOException {
+        JSONParser parser = new JSONParser();
+        
+        try {
+            
+            Object obj = parser.parse(new FileReader(ruta));
+            JSONArray array = (JSONArray) obj;         
+            
+            for(int i = 0 ; i < array.size() ; i++) {
+                JSONObject jsonObject1 = (JSONObject) array.get(i);
+                
+                
+                String dpi =  (String) jsonObject1.get("dpi"); 
+                Long dpiN = Long.parseLong(dpi.trim());
+                String nombreCliente =  (String) jsonObject1.get("nombre_cliente"); 
+                String password =  (String) jsonObject1.get("password"); 
+                Cliente nuevoCliente = new Cliente(dpiN, nombreCliente, password);
+                arbolitoB.insertar(nuevoCliente);
                 
             }
             

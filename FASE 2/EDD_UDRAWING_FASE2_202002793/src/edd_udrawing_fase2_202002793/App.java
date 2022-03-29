@@ -1,30 +1,69 @@
 
 package edd_udrawing_fase2_202002793;
 
-import estructuras.ArbolAVL;
-import estructuras.ArbolBB;
-import estructuras.ListaDoble;
-import estructuras.MatrizDispersa;
-import funciones.CargaMasiva;
-import gui.InicioAdmin;
-import gui.InicioUsuario;
+import estructuras.ArbolB;
 import gui.Login;
-import gui.Registro;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class App {
 
     public static void main(String[] args) {
-        ArbolAVL arbolitoAVL = new ArbolAVL();
+        ArbolB arbolitoB = new ArbolB();
+        System.out.println("");
+        /*InicioAdmin admin = new InicioAdmin(arbolitoB);
+        admin.setVisible(true);
+        admin.setLocationRelativeTo(null);*/
+        /*ArbolB arbolitoB = new ArbolB();
+        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 2\\EDD_UDRAWING_FASE2_202002793\\clientes.json";
+        try {
+            CargaMasiva.cargarClientes(ruta, arbolitoB);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        arbolitoB.preOrden();
+        Long dpi = 6999062130101L;
+        Cliente clienteEncontrado = arbolitoB.buscar(dpi);
+        if (clienteEncontrado != null) {
+            System.out.println(clienteEncontrado.getNombreCliente());            
+        } else {
+            System.out.println("Cliente no encontrado");
+        }*/
+
+        // arbolB.insertar(75);
+        // arbolB.insertar(40);
+        // arbolB.insertar(23);
+        // arbolB.insertar(8);
+        // arbolB.insertar(6);
+        // arbolB.insertar(37);
+        // arbolB.insertar(32);
+        // arbolB.insertar(45);
+        // arbolB.insertar(25);
+        // arbolB.insertar(1);
+        // arbolB.insertar(88);
+        // arbolB.insertar(29);
+        // arbolB.insertar(4);
+        // arbolB.insertar(11);
+        // arbolB.insertar(39);
+        // arbolB.insertar(14);
+        // arbolB.insertar(66);
+        // arbolB.insertar(57);
+        // arbolB.insertar(90);
+        // arbolB.insertar(24);
+        // arbolB.insertar(12);
+        // arbolB.insertar(7);
+        // arbolB.preOrden();
+
+
+       /*ArbolAVL arbolitoAVL = new ArbolAVL();
         ArbolBB arbolitoBB = new ArbolBB();
         ListaDoble listaAlbumes = new ListaDoble();
         
         InicioUsuario user = new InicioUsuario(arbolitoAVL, arbolitoBB, listaAlbumes);
         user.setVisible(true);
-        user.setLocationRelativeTo(null);
+        user.setLocationRelativeTo(null);*/
+
+
         /*ArbolAVL arbolito = new ArbolAVL();
         arbolito.add(5);arbolito.add(10);
         arbolito.add(20);arbolito.add(25);
@@ -51,9 +90,9 @@ public class App {
          login.setVisible(true);
         login.setLocationRelativeTo(null);*/
         
-        /*Login login = new Login();
+        Login login = new Login(arbolitoB);
          login.setVisible(true);
-        login.setLocationRelativeTo(null);*/
+        login.setLocationRelativeTo(null);
         /*ArbolBB arbolito = new ArbolBB();
 
         arbolito.insertar(10);
