@@ -1431,7 +1431,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             this.jPanel5.add(labelTitulo);
             hojas.listarCapasAmpli(modelo, this.labelTitulo);;
             // labelTitulo.setBounds(600, 350, 180, 23);
-            labelTitulo.setBounds(this.btnTop5Capas.getX() + this.btnTop5Capas.getWidth() + 300, this.btnTop5Capas.getY(), 180, 23);
+            labelTitulo.setBounds(this.btnTop5Capas.getX() + this.btnTop5Capas.getWidth() + 300, this.btnTop5Capas.getY(), 300, 23);
             
             // this.agregarDatos(modelo);
             

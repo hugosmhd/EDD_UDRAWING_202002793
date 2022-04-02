@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gui;
 
 import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
-import estructuras.ListaSimple;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -27,15 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import objetos.Cliente;
 
-/**
- *
- * @author hugom
- */
 public class InicioAdmin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioAdmin
-     */
     private ImageIcon imagen;
     private Icon icono;
     private MetodosAdmin metodos;
