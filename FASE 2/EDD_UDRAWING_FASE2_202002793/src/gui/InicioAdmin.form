@@ -440,6 +440,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnListarClientesMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnListarClientesMouseEntered"/>
               </Events>
             </Component>
           </SubComponents>
@@ -519,7 +520,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblArbolB">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel5"/>
+                <Property name="text" type="java.lang.String" value="."/>
               </Properties>
             </Component>
           </SubComponents>

@@ -1,5 +1,6 @@
 package nodos;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import estructuras.ArbolB;
@@ -25,7 +26,7 @@ public class Pagina {
             NodoB auxiliar = primero;
             while (auxiliar != null) {
                 if (String.valueOf(auxiliar.getData().getDpi()).equals(String.valueOf(nuevo.getData().getDpi())) ) {//------------->ya existe en el arbol
-                    // System.out.println("El ID " + nuevo.getData().getDpi() + " ya existe");
+                    JOptionPane.showMessageDialog(null, "El cliente con el DPI " + auxiliar.getData().getDpi() + " ya existe.");
                     break;
                 } else {
                     if (auxiliar.getData().getDpi() > nuevo.getData().getDpi()) {
@@ -146,7 +147,6 @@ public class Pagina {
     public void visualizar(DefaultTableModel modelo){     
         NodoB aux=this.primero;
         while(aux != null){
-            System.out.print(aux.getData().getDpi() + ", "); 
             Object[] datosPFila =  {aux.getData().getNombreCliente(), aux.getData().getDpi(), aux.getData().getArbolitoAVL().getTotalImg()};
             modelo.addRow(datosPFila);            
             // contador++;
@@ -157,7 +157,6 @@ public class Pagina {
     public void visualizarPass(DefaultTableModel modelo){     
         NodoB aux=this.primero;
         while(aux != null){
-            System.out.print(aux.getData().getDpi() + ", "); 
             Object[] datosPFila =  {aux.getData().getNombreCliente(), aux.getData().getDpi(), aux.getData().getPassword()};
             modelo.addRow(datosPFila);            
             // contador++;

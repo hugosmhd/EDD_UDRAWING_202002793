@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import nodos.NodoABB;
@@ -41,7 +42,7 @@ public class ArbolBB {
         else if(data.getIdCapa() > raiz.getData().getIdCapa())
             raiz.setDer(insertar(raiz.getDer(), data));
         else {
-            ;
+            JOptionPane.showMessageDialog(null, "La capa con el ID " + data.getIdCapa() + " ya existe.");
         }
         return raiz;
     }
@@ -70,7 +71,6 @@ public class ArbolBB {
     private void preOrden(NodoABB raiz, int n, MatrizDispersa matriz){
         if(raiz != null && this.contador < n){
             raiz.getData().getPixeles().recorrerMatriz(matriz);
-            // System.out.println(raiz.getData().getIdCapa());
             this.recorrido += raiz.getData().getIdCapa() + " | ";
             this.contador++;
             preOrden(raiz.getIzq(), n, matriz);
@@ -83,12 +83,8 @@ public class ArbolBB {
         this.recorrido = "";
         MatrizDispersa matriz = new MatrizDispersa();
         inOrden(this.raiz, n, matriz);
-        // System.out.println("MATRIZ DISPERSA UNIFICADA");
-        // matriz.imprimir();
         matriz.generarTabla();
         return this.recorrido;
-        // matriz.generarGraphvizLogico();
-        // inOrden(this.raiz, n);
     }
 
     private void inOrden(NodoABB raiz, int n, MatrizDispersa matriz){
@@ -108,12 +104,8 @@ public class ArbolBB {
         this.recorrido = "";
         MatrizDispersa matriz = new MatrizDispersa();
         postOrden(this.raiz, n, matriz);
-        // System.out.println("MATRIZ DISPERSA UNIFICADA");
-        // matriz.imprimir();
         matriz.generarTabla();
         return this.recorrido;
-        // matriz.generarGraphvizLogico();
-        // postOrden(this.raiz, n);
     }
 
     private void postOrden(NodoABB raiz, int n, MatrizDispersa matriz){
@@ -124,7 +116,6 @@ public class ArbolBB {
             if (this.contador <= n) {
                 raiz.getData().getPixeles().recorrerMatriz(matriz);
                 this.recorrido += raiz.getData().getIdCapa() + " | ";
-                // System.out.println(raiz.getData().getIdCapa());                
             }
         }
     }
@@ -148,7 +139,6 @@ public class ArbolBB {
             if (curr == null) {
                 if (!q.estaVacia()) {
                     q.encolar(null);
-                // System.out.println();
                 }
             } else {
                 if (curr.getIzq() != null)
@@ -157,7 +147,6 @@ public class ArbolBB {
                     q.encolar(curr.getDer());
                 curr.getData().getPixeles().recorrerMatriz(matriz);
                 this.recorrido += curr.getData().getIdCapa() + " | ";
-                // System.out.print(curr.getData().getIdCapa() + " ");
             }
         }
 
@@ -167,16 +156,12 @@ public class ArbolBB {
     public void agregarAMatrizDispersa() {
         MatrizDispersa matriz = new MatrizDispersa();
         agregarAMatrizDispersa(this.raiz, matriz);
-        // System.out.println("MATRIZ DISPERSA UNIFICADA");
-        // matriz.imprimir();
         matriz.generarTabla();
-        // matriz.generarGraphvizLogico();
     }
 
     private void agregarAMatrizDispersa(NodoABB raiz, MatrizDispersa matriz) {
         if(raiz != null){
             agregarAMatrizDispersa(raiz.getIzq(), matriz);
-            // System.out.println(raiz.getData().getIdCapa());
             raiz.getData().getPixeles().recorrerMatriz(matriz);
             agregarAMatrizDispersa(raiz.getDer(), matriz);
         }
@@ -211,7 +196,6 @@ public class ArbolBB {
         }
         this.graphviz += this.relaciones;
         this.graphviz += "\n}";
-        // System.out.println(this.graphviz);
         if (generar) {
             
             escribirArchivo("./reporte.dot", this.graphviz);
@@ -356,7 +340,6 @@ public class ArbolBB {
             if (curr == null) {
                 if (!q.estaVacia()) {
                     q.encolar(null);
-                // System.out.println();
                 }
                 this.profundidad++;
                 this.contador++;
@@ -383,7 +366,6 @@ public class ArbolBB {
     private void devolverCapas(NodoABB raiz){
         if(raiz != null){
             this.capas += raiz.getData().getIdCapa() + ", ";
-            // System.out.println(raiz.getData().getIdCapa());
             devolverCapas(raiz.getIzq());
             devolverCapas(raiz.getDer());
         }

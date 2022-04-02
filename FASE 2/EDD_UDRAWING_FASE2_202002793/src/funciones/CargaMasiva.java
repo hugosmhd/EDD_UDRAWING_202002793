@@ -72,7 +72,8 @@ public class CargaMasiva {
                 for(int j = 0 ; j < arrayCapas.size() ; j++) {
                     Long idCapa = (Long)arrayCapas.get(j);
                     Capa capaEncontrada = arbolitoBB.buscar(idCapa.intValue());
-                    arbolCapas.insertar(capaEncontrada);                             
+                    if (capaEncontrada != null)
+                        arbolCapas.insertar(capaEncontrada);                             
                 }
                 Imagen imgNueva = new Imagen(idImg.intValue(), arbolCapas);
                 arbolitoVL.insertar(imgNueva);
@@ -103,8 +104,16 @@ public class CargaMasiva {
                 JSONArray arrayImgs = (JSONArray) jsonObject1.get("imgs");
                 for(int j = 0 ; j < arrayImgs.size() ; j++) {
                     Long idImg = (Long)arrayImgs.get(j);
-                    Imagen imagenEncontrada = arbolitoVL.buscar(idImg.intValue()).getImg();
-                    imgs.insertarAlFinal(imagenEncontrada);                             
+                    try {
+                        Imagen imagenEncontrada = arbolitoVL.buscar(idImg.intValue()).getImg();
+                        if (imagenEncontrada != null) {
+                            System.out.println(imagenEncontrada);
+                            imgs.insertarAlFinal(imagenEncontrada);
+    
+                        }
+                    } catch(Exception e) {
+                        System.out.println(e);
+                    }
                 }
                 Album albumNuevo = new Album(nombreAlbum, imgs);
                 listaAlbumes.insertarF(albumNuevo);

@@ -310,6 +310,9 @@ public class InicioAdmin extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnListarClientesMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnListarClientesMouseEntered(evt);
+            }
         });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -372,7 +375,7 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
-        lblArbolB.setText("jLabel5");
+        lblArbolB.setText(".");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -471,7 +474,17 @@ public class InicioAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             if(this.spClientesNiveles != null)
-                this.jPanel3.remove(this.spClientesNiveles);  
+                this.jPanel3.remove(this.spClientesNiveles);
+            if(this.sp != null) {
+                this.jPanel3.remove(sp);
+                this.jPanel3.remove(spAlbumes);
+                this.jPanel3.remove(spCapas);
+                this.jPanel3.remove(spImgs);
+                this.jPanel3.remove(this.totalAlbumes);
+                this.jPanel3.remove(this.totalImgs);
+                this.jPanel3.remove(this.totalCapas);
+                this.jPanel3.updateUI();
+            }
             this.jPanel3.updateUI();
             Long dpi = Long.parseLong(this.txtDPIBuscar.getText().trim());
             Cliente cliente = this.arbolitoB.buscar(dpi);
@@ -581,6 +594,10 @@ public class InicioAdmin extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void btnListarClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarClientesMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListarClientesMouseEntered
 
     /**
      * @param args the command line arguments

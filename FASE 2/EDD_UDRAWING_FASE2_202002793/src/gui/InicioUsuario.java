@@ -320,7 +320,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
-        lblImagen.setText("jLabel13");
+        lblImagen.setText(".");
 
         lblRecorrido.setEditable(false);
         lblRecorrido.setColumns(20);
@@ -462,7 +462,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             }
         });
 
-        lblEstructura.setText("jLabel13");
+        lblEstructura.setText(".");
 
         jButton4.setBackground(new java.awt.Color(153, 255, 153));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

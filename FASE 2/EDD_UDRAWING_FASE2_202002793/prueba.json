@@ -60673,5 +60673,1435 @@
                 "color": "#424242"
             }
         ]
+    },
+    {
+        "id_capa": 12,
+        "pixeles": [
+            {
+                "fila": 117,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 118,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 119,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 120,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 125,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 126,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 127,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 128,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 13,
+                "color": "#424242"
+            },
+            {
+                "fila": 117,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 118,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 119,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 120,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 125,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 126,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 127,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 128,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 14,
+                "color": "#424242"
+            },
+            {
+                "fila": 117,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 118,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 119,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 120,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 125,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 126,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 127,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 128,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 15,
+                "color": "#424242"
+            },
+            {
+                "fila": 117,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 118,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 119,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 120,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 125,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 126,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 127,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 128,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 16,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 17,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 18,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 19,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 129,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 20,
+                "color": "#424242"
+            },
+            {
+                "fila": 109,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 110,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 111,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 112,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 21,
+                "color": "#424242"
+            },
+            {
+                "fila": 109,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 110,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 111,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 112,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 22,
+                "color": "#424242"
+            },
+            {
+                "fila": 109,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 110,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 111,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 112,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 23,
+                "color": "#424242"
+            },
+            {
+                "fila": 109,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 110,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 111,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 112,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 24,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 25,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 25,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 25,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 25,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 26,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 26,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 26,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 26,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 27,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 27,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 27,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 27,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 28,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 28,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 28,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 28,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 29,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 29,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 29,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 29,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 30,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 30,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 30,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 30,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 31,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 31,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 31,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 31,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 32,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 33,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 34,
+                "color": "#424242"
+            },
+            {
+                "fila": 113,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 114,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 115,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 116,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 133,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 134,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 135,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 136,
+                "columna": 35,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 36,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 36,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 36,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 36,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 37,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 37,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 37,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 37,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 38,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 38,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 38,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 38,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 39,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 39,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 39,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 39,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 40,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 40,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 40,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 40,
+                "color": "#424242"
+            },
+            {
+                "fila": 17,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 18,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 19,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 20,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 21,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 22,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 23,
+                "columna": 54,
+                "color": "#424242"
+            },
+            {
+                "fila": 17,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 18,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 19,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 20,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 21,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 22,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 23,
+                "columna": 55,
+                "color": "#424242"
+            },
+            {
+                "fila": 17,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 18,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 19,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 20,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 21,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 22,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 23,
+                "columna": 56,
+                "color": "#424242"
+            },
+            {
+                "fila": 17,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 18,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 19,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 20,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 21,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 22,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 23,
+                "columna": 57,
+                "color": "#424242"
+            },
+            {
+                "fila": 13,
+                "columna": 58,
+                "color": "#424242"
+            },
+            {
+                "fila": 14,
+                "columna": 58,
+                "color": "#424242"
+            },
+            {
+                "fila": 15,
+                "columna": 58,
+                "color": "#424242"
+            },
+            {
+                "fila": 16,
+                "columna": 58,
+                "color": "#424242"
+            },
+            {
+                "fila": 13,
+                "columna": 59,
+                "color": "#424242"
+            },
+            {
+                "fila": 14,
+                "columna": 59,
+                "color": "#424242"
+            },
+            {
+                "fila": 15,
+                "columna": 59,
+                "color": "#424242"
+            },
+            {
+                "fila": 16,
+                "columna": 59,
+                "color": "#424242"
+            },
+            {
+                "fila": 13,
+                "columna": 60,
+                "color": "#424242"
+            },
+            {
+                "fila": 14,
+                "columna": 60,
+                "color": "#424242"
+            },
+            {
+                "fila": 15,
+                "columna": 60,
+                "color": "#424242"
+            },
+            {
+                "fila": 16,
+                "columna": 60,
+                "color": "#424242"
+            },
+            {
+                "fila": 13,
+                "columna": 61,
+                "color": "#424242"
+            },
+            {
+                "fila": 14,
+                "columna": 61,
+                "color": "#424242"
+            },
+            {
+                "fila": 15,
+                "columna": 61,
+                "color": "#424242"
+            },
+            {
+                "fila": 16,
+                "columna": 61,
+                "color": "#424242"
+            },
+            {
+                "fila": 13,
+                "columna": 62,
+                "color": "#424242"
+            },
+            {
+                "fila": 14,
+                "columna": 62,
+                "color": "#424242"
+            },
+            {
+                "fila": 15,
+                "columna": 62,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 84,
+                "color": "#424242"
+            },
+            {
+                "fila": 121,
+                "columna": 85,
+                "color": "#424242"
+            },
+            {
+                "fila": 122,
+                "columna": 85,
+                "color": "#424242"
+            },
+            {
+                "fila": 123,
+                "columna": 85,
+                "color": "#424242"
+            },
+            {
+                "fila": 124,
+                "columna": 85,
+                "color": "#424242"
+            },
+            {
+                "fila": 130,
+                "columna": 85,
+                "color": "#424242"
+            },
+            {
+                "fila": 131,
+                "columna": 85,
+                "color": "#424242"
+            },
+            {
+                "fila": 132,
+                "columna": 85,
+                "color": "#424242"
+            }
+        ]
     }
 ]

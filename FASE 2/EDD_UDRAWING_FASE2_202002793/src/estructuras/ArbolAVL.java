@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import nodos.NodoAVL;
@@ -38,7 +39,7 @@ public class ArbolAVL {
         }else if (data.getId() > temporal.getImg().getId()){
             temporal.setDer(insertar(data,temporal.getDer()));
         }else {
-            ;
+            JOptionPane.showMessageDialog(null, "La imagen con el ID " + data.getId() + " ya existe.");
         }
         return balancear(temporal);
     }

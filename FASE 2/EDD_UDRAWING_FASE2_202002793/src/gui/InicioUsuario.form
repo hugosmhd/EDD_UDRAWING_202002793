@@ -448,7 +448,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblImagen">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel13"/>
+                <Property name="text" type="java.lang.String" value="."/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -599,7 +599,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblEstructura">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel13"/>
+                <Property name="text" type="java.lang.String" value="."/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">

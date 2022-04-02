@@ -295,11 +295,9 @@ public class MatrizDispersa {
         while(actual !=null){
             NodoMD actual2=actual.getSiguiente();
             while(actual2!=null){                
-                // System.out.print("["+actual2.getData() +"  "+actual2.getColumna() +"  "+actual2.getFila()+"]");
                 matriz.insertNodo(actual2.getData(), actual2.getColumna(), actual2.getFila());                
                 actual2=actual2.getSiguiente();
             }
-            // System.out.println("");
             actual=actual.getInferior();
         }
     }

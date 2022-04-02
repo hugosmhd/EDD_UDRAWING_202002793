@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 import nodos.NodoB;
 import nodos.Pagina;
@@ -46,6 +47,7 @@ public class ArbolB {
             NodoB temp = rama.getPrimero();
             do {
                 if (String.valueOf(nodo.getData().getDpi()).equals(String.valueOf(temp.getData().getDpi()))) {
+                    JOptionPane.showMessageDialog(null, "El cliente con el DPI " + nodo.getData().getDpi() + " ya existe.");
                     return null;
                 } else if (nodo.getData().getDpi() < temp.getData().getDpi()) {
                     NodoB obj = insertarEnRama(nodo, temp.getIzquierda());
