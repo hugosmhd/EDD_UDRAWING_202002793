@@ -52,7 +52,9 @@ public class App {
 
         String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\mensajeros.json";
         try {
-            CargaMasiva.cargarMensajeros(ruta);
+            TablaHash tablaMensajeros = new TablaHash();
+            CargaMasiva.cargarMensajeros(ruta, tablaMensajeros);
+            tablaMensajeros.imprimir();
         } catch (IOException ex) {
             
         }

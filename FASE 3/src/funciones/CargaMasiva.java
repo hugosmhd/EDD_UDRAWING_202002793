@@ -15,6 +15,7 @@ import estructuras.ArbolBB;
 import estructuras.ListaDoble;
 import estructuras.ListaSimple;
 import estructuras.MatrizDispersa;
+import estructuras.TablaHash;
 import objetos.Album;
 import objetos.Capa;
 import objetos.Cliente;
@@ -160,9 +161,9 @@ public class CargaMasiva {
         
     }
 
-    public static void cargarMensajeros(String ruta) throws FileNotFoundException, IOException {
+    public static void cargarMensajeros(String ruta, TablaHash tablaMensajeros) throws FileNotFoundException, IOException {
         JSONParser parser = new JSONParser();
-        System.out.println("Hola gola");
+        // System.out.println("Hola gola");
         
         try {
             
@@ -181,16 +182,17 @@ public class CargaMasiva {
                 String genero =  (String) jsonObject1.get("genero"); 
                 String telefono =  (String) jsonObject1.get("telefono"); 
                 String direccion =  (String) jsonObject1.get("direccion");   
-                System.out.println("MENSAJERO");
-                System.out.println(dpi);              
-                System.out.println(nombres);              
-                System.out.println(apellidos);              
-                System.out.println(tipoLicencia);              
-                System.out.println(genero);              
-                System.out.println(telefono);              
-                System.out.println(direccion);    
-                System.out.println();          
+                // System.out.println("MENSAJERO");
+                // System.out.println(dpi);              
+                // System.out.println(nombres);              
+                // System.out.println(apellidos);              
+                // System.out.println(tipoLicencia);              
+                // System.out.println(genero);              
+                // System.out.println(telefono);              
+                // System.out.println(direccion);    
+                // System.out.println();          
                 Mensajero nuevoMensajero = new Mensajero(dpiN, nombres, apellidos, tipoLicencia, genero, telefono, direccion);
+                tablaMensajeros.insertar(nuevoMensajero);
                 // arbolitoB.insertar(nuevoCliente);
                 
             }
