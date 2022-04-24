@@ -1,0 +1,38 @@
+[
+    {
+        "dpi":"2070707090118",
+        "nombres":"Devona",
+        "apellidos":"Dovey",
+        "tipo_licencia":"A",
+        "genero":"Female",
+        "telefono":"45568921",
+        "direccion":"Maple Alley"
+    },
+    {
+        "dpi":"3090804090160",
+        "nombres":"Ulberto",
+        "apellidos":"Goodsell",
+        "tipo_licencia":"B",
+        "genero":"Male",
+        "telefono":"45568922",
+        "direccion":"Nothfield  Hill"
+    },
+    {
+        "dpi":"3198805030910",
+        "nombres":"Burnaby",
+        "apellidos":"Coviello",
+        "tipo_licencia":"C",
+        "genero":"Male",
+        "telefono":"45568923",
+        "direccion":"Dixon Center"
+    },
+    {
+        "dpi":"4298805030910",
+        "nombres":"Rebeca",
+        "apellidos":"Diemand",
+        "tipo_licencia":"B",
+        "genero":"Female",
+        "telefono":"45568924",
+        "direccion":"New York"
+    }
+]

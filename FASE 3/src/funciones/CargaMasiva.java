@@ -19,6 +19,7 @@ import objetos.Album;
 import objetos.Capa;
 import objetos.Cliente;
 import objetos.Imagen;
+import objetos.Mensajero;
 
 public class CargaMasiva {
     public static void cargarCapas(String ruta, ArbolBB arbolito) throws FileNotFoundException, IOException {
@@ -150,6 +151,47 @@ public class CargaMasiva {
                 int idMunicipioN = Integer.parseInt(idMunicipio.trim());
                 Cliente nuevoCliente = new Cliente(dpiN, nombreCliente, username, correo, password, telefono, direccion, idMunicipioN);
                 arbolitoB.insertar(nuevoCliente);
+                
+            }
+            
+        } catch(FileNotFoundException e) { }
+        catch(IOException e) { }
+        catch(ParseException e) { }
+        
+    }
+
+    public static void cargarMensajeros(String ruta) throws FileNotFoundException, IOException {
+        JSONParser parser = new JSONParser();
+        System.out.println("Hola gola");
+        
+        try {
+            
+            Object obj = parser.parse(new FileReader(ruta));
+            JSONArray array = (JSONArray) obj;         
+            
+            for(int i = 0 ; i < array.size() ; i++) {
+                JSONObject jsonObject1 = (JSONObject) array.get(i);
+                
+                
+                String dpi =  (String) jsonObject1.get("dpi"); 
+                Long dpiN = Long.parseLong(dpi.trim());
+                String nombres =  (String) jsonObject1.get("nombres"); 
+                String apellidos =  (String) jsonObject1.get("apellidos");
+                String tipoLicencia =  (String) jsonObject1.get("tipo_licencia");
+                String genero =  (String) jsonObject1.get("genero"); 
+                String telefono =  (String) jsonObject1.get("telefono"); 
+                String direccion =  (String) jsonObject1.get("direccion");   
+                System.out.println("MENSAJERO");
+                System.out.println(dpi);              
+                System.out.println(nombres);              
+                System.out.println(apellidos);              
+                System.out.println(tipoLicencia);              
+                System.out.println(genero);              
+                System.out.println(telefono);              
+                System.out.println(direccion);    
+                System.out.println();          
+                Mensajero nuevoMensajero = new Mensajero(dpiN, nombres, apellidos, tipoLicencia, genero, telefono, direccion);
+                // arbolitoB.insertar(nuevoCliente);
                 
             }
             
