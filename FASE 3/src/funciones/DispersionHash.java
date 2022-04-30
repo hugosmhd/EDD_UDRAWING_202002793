@@ -15,10 +15,12 @@ public class DispersionHash {
     }
 
     public static int dispersion(long x, int M) {
-        double t;
-        int v;
-        t = R*x-Math.floor(R*x);
-        v=(int)(M*t);
+        // double t;
+        // int v;
+        // t = R*x-Math.floor(R*x);
+        // v=(int)(M*t);
+        long aux = x%M;
+        int v= Math.toIntExact(aux);
         return v;
     }
 }

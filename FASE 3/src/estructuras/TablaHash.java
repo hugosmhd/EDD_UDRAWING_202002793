@@ -33,8 +33,8 @@ public class TablaHash {
 
     public void insertar(Mensajero mensajero) {
         int posicion = indice(mensajero.getDpi());
-        if (tabla[posicion] != null && String.valueOf(mensajero.getDpi()).equals(String.valueOf(tabla[posicion].getDpi())))
-            posicion = pruebaLineal(posicion, mensajero.getDpi());
+        if (tabla[posicion] != null && !(String.valueOf(mensajero.getDpi()).equals(String.valueOf(tabla[posicion].getDpi()))))
+            posicion = dobleDispersion(posicion, mensajero.getDpi());
         tabla[posicion] = mensajero;
         noElementos++;
         validarFactorCarga();
@@ -52,9 +52,11 @@ public class TablaHash {
         }
     }
 
-    public int pruebaLineal(int posicion, long clave) {
+    public int dobleDispersion(int posicion, long clave) {
+        int i = 1;
         while (tabla[posicion] != null) {
-            posicion++;
+            posicion = Math.toIntExact((clave % 7 + 1) * i);
+            i++;
             posicion=posicion%M;
         }
         return posicion;
