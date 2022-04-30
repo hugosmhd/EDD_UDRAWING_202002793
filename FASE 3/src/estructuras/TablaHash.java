@@ -4,8 +4,9 @@ import funciones.DispersionHash;
 import objetos.Mensajero;
 
 public class TablaHash {
-    static final int M = 37;
+    private int M = 37;
     private int noElementos;
+    private int carga = (int) Math.ceil((0.75) * M);
     private Mensajero []tabla;
     // Atributo de factor de carga
 
@@ -32,11 +33,23 @@ public class TablaHash {
 
     public void insertar(Mensajero mensajero) {
         int posicion = indice(mensajero.getDpi());
-        if (tabla[posicion] != null && !String.valueOf(mensajero.getDpi()).equals(String.valueOf(tabla[posicion].getDpi())))
-        posicion = pruebaLineal(posicion, mensajero.getDpi());
+        if (tabla[posicion] != null && String.valueOf(mensajero.getDpi()).equals(String.valueOf(tabla[posicion].getDpi())))
+            posicion = pruebaLineal(posicion, mensajero.getDpi());
         tabla[posicion] = mensajero;
         noElementos++;
+        validarFactorCarga();
+
         // validar el factor de carga y crecimiento del arreglo
+    }
+
+    private void validarFactorCarga() {
+        if(this.noElementos == this.carga) {
+            Mensajero []tablaAux = this.tabla.clone();
+            this.tabla = new Mensajero[this.M * 2];
+            this.M = M *2;
+            this.carga = (int) Math.ceil((0.75) * this.M);
+            System.arraycopy(tablaAux, 0, this.tabla, 0, tablaAux.length);
+        }
     }
 
     public int pruebaLineal(int posicion, long clave) {
