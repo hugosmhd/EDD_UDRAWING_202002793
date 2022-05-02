@@ -60,10 +60,20 @@ public class App {
             
         // }
         String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_lugares.json";
+        ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
         try {
             // TablaHash tablaMensajeros = new TablaHash();
-            ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
             CargaMasiva.cargarLugares(ruta, listaAdyacencia);
+            // listaAdyacencia.imprimir();
+            // tablaMensajeros.imprimir();
+        } catch (IOException ex) {
+            
+        }
+        String ruta2 = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_rutas.json";
+        try {
+            // TablaHash tablaMensajeros = new TablaHash();
+            // ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
+            CargaMasiva.cargarRutas(ruta2, listaAdyacencia);
             listaAdyacencia.imprimir();
             // tablaMensajeros.imprimir();
         } catch (IOException ex) {

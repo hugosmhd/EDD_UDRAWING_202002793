@@ -37,6 +37,14 @@ public class ListaAdyacencia {
         return actual;
     }
 
+    public Lugar buscar(int idLugar) {
+        NodoVector actual = this.primero;
+        while (actual != null && actual.getData().getId() != idLugar) {            
+            actual = actual.getSiguiente();
+        }
+        return actual.getData();
+    }
+
     public void conexion(Lugar inicio, Conexion conex) {
         NodoVector vertice = buscar(inicio);
         NodoGrafo actualGrafo = vertice.getAdyacencia();
@@ -60,15 +68,16 @@ public class ListaAdyacencia {
 
         while( actual != null) {
             // System.out.println("--------- VERTICE --------------");
-            System.out.println("ID: " + actual.getData().getId());                
+            System.out.print("ID: " + actual.getData().getId());                
             // System.out.println("DEPARTAMENTO: " + actual.getData().getDepartamento());                
             // System.out.println("NOMBRE: " + actual.getData().getNombre());                
             NodoGrafo actualGrafo = actual.getAdyacencia();
             while(actualGrafo != null) {
-                System.out.print(" -> " + actual.getData().getId());    
+                System.out.print(" -> " + actualGrafo.getData().getDestino().getId());    
                 actualGrafo = actualGrafo.getSiguiente();
             }                
             actual = actual.getSiguiente();
+            System.out.println("");
         }
     }
         

@@ -20,6 +20,7 @@ import estructuras.TablaHash;
 import objetos.Album;
 import objetos.Capa;
 import objetos.Cliente;
+import objetos.Conexion;
 import objetos.Imagen;
 import objetos.Lugar;
 import objetos.Mensajero;
@@ -232,6 +233,44 @@ public class CargaMasiva {
                 // System.out.println("-------------------------------");
                 Lugar nuevo = new Lugar(id.intValue(), departamento, nombre, sucursal);
                 listaAdyacencia.insertar(nuevo);
+            }            
+            
+        } catch(FileNotFoundException e) { }
+        catch(IOException e) { }
+        catch(ParseException e) { }
+        
+    }
+
+    public static void cargarRutas(String ruta, ListaAdyacencia listaAdyacencia) throws FileNotFoundException, IOException {
+        JSONParser parser = new JSONParser();
+        // System.out.println("Hola gola");
+        
+        try {
+            
+            Object obj = parser.parse(new FileReader(ruta));
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray array = (JSONArray) jsonObject.get("Grafo");  
+            
+            for(int i = 0 ; i < array.size() ; i++) {
+                JSONObject jsonObject1 = (JSONObject) array.get(i);
+                
+                // System.out.println("DATOS DEL LUGAR: " + i);
+                // System.out.println("ID: " + jsonObject1.get("id"));
+                Long inicio =  (Long) jsonObject1.get("inicio");  
+                Long fin =  (Long) jsonObject1.get("final");
+                Long peso =  (Long) jsonObject1.get("peso");
+                
+                Lugar inicioLugar = listaAdyacencia.buscar(inicio.intValue());
+                Lugar finLugar = listaAdyacencia.buscar(fin.intValue());
+
+                if (inicioLugar != null && finLugar != null) {
+                    Conexion nuevaConexion = new Conexion(finLugar, peso.intValue());
+                    listaAdyacencia.conexion(inicioLugar, nuevaConexion);
+                }
+
+
+                
+                
             }            
             
         } catch(FileNotFoundException e) { }
