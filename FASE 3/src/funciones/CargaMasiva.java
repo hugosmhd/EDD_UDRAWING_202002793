@@ -12,6 +12,7 @@ import org.json.simple.parser.ParseException;
 import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
+import estructuras.ListaAdyacencia;
 import estructuras.ListaDoble;
 import estructuras.ListaSimple;
 import estructuras.MatrizDispersa;
@@ -20,6 +21,7 @@ import objetos.Album;
 import objetos.Capa;
 import objetos.Cliente;
 import objetos.Imagen;
+import objetos.Lugar;
 import objetos.Mensajero;
 
 public class CargaMasiva {
@@ -203,7 +205,7 @@ public class CargaMasiva {
         
     }
 
-    public static void cargarLugares(String ruta) throws FileNotFoundException, IOException {
+    public static void cargarLugares(String ruta, ListaAdyacencia listaAdyacencia) throws FileNotFoundException, IOException {
         JSONParser parser = new JSONParser();
         // System.out.println("Hola gola");
         
@@ -216,40 +218,21 @@ public class CargaMasiva {
             for(int i = 0 ; i < array.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
                 
-                System.out.println("DATOS DEL LUGAR: " + i);
-                System.out.println("ID: " + jsonObject1.get("id"));
-                System.out.println("DEPARTAMENTO: " + jsonObject1.get("departamento"));
-                System.out.println("NOMBRE: " + jsonObject1.get("nombre"));
-                System.out.println("SUCURSAL: " + jsonObject1.get("sn_sucursal"));                
-                System.out.println("-------------------------------");
-            }
-            
-            // for(int i = 0 ; i < array.size() ; i++) {
-            //      = (JSONObject) array.get(i);
+                // System.out.println("DATOS DEL LUGAR: " + i);
+                // System.out.println("ID: " + jsonObject1.get("id"));
+                Long id =  (Long) jsonObject1.get("id");   
+                String departamento = (String) jsonObject1.get("departamento");
+                String nombre = (String) jsonObject1.get("nombre");
+                String sucursal_str = (String) jsonObject1.get("sn_sucursal");
+                Boolean sucursal = sucursal_str.equalsIgnoreCase("si") ? true : false;
                 
-                
-            //     String dpi =  (String) jsonObject1.get("dpi"); 
-            //     Long dpiN = Long.parseLong(dpi.trim());
-            //     String nombres =  (String) jsonObject1.get("nombres"); 
-            //     String apellidos =  (String) jsonObject1.get("apellidos");
-            //     String tipoLicencia =  (String) jsonObject1.get("tipo_licencia");
-            //     String genero =  (String) jsonObject1.get("genero"); 
-            //     String telefono =  (String) jsonObject1.get("telefono"); 
-            //     String direccion =  (String) jsonObject1.get("direccion");   
-            //     // System.out.println("MENSAJERO");
-            //     // System.out.println(dpi);              
-            //     // System.out.println(nombres);              
-            //     // System.out.println(apellidos);              
-            //     // System.out.println(tipoLicencia);              
-            //     // System.out.println(genero);              
-            //     // System.out.println(telefono);              
-            //     // System.out.println(direccion);    
-            //     // System.out.println();          
-            //     Mensajero nuevoMensajero = new Mensajero(dpiN, nombres, apellidos, tipoLicencia, genero, telefono, direccion);
-            //     tablaMensajeros.insertar(nuevoMensajero);
-            //     // arbolitoB.insertar(nuevoCliente);
-                
-            // }
+                // System.out.println("DEPARTAMENTO: " + jsonObject1.get("departamento"));
+                // System.out.println("NOMBRE: " + jsonObject1.get("nombre"));
+                // System.out.println("SUCURSAL: " + jsonObject1.get("sn_sucursal"));                
+                // System.out.println("-------------------------------");
+                Lugar nuevo = new Lugar(id.intValue(), departamento, nombre, sucursal);
+                listaAdyacencia.insertar(nuevo);
+            }            
             
         } catch(FileNotFoundException e) { }
         catch(IOException e) { }

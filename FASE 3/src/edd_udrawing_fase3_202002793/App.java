@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import estructuras.ArbolB;
+import estructuras.ListaAdyacencia;
 import estructuras.TablaHash;
 import funciones.CargaMasiva;
 import funciones.DispersionHash;
@@ -61,11 +62,34 @@ public class App {
         String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_lugares.json";
         try {
             // TablaHash tablaMensajeros = new TablaHash();
-            CargaMasiva.cargarLugares(ruta);
+            ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
+            CargaMasiva.cargarLugares(ruta, listaAdyacencia);
+            listaAdyacencia.imprimir();
             // tablaMensajeros.imprimir();
         } catch (IOException ex) {
             
         }
+
+        // ListaAdyacencia miLista=new ListaAdyacencia(7);
+        // ////lista
+        // miLista.insert("A", 0);
+        // miLista.insert("B", 1);
+        // miLista.insert("C", 2);
+        // miLista.insert("D", 3);
+        // miLista.insert("E", 4);
+        // miLista.insert("F", 5);
+        // miLista.insert("G", 6);
+        // ///conexiones
+        // miLista.conexion(0,1);
+        // miLista.conexion(1,2);
+        // miLista.conexion(1,4);
+        // miLista.conexion(1,5);
+        // miLista.conexion(2,4);
+        // miLista.conexion(3,2);
+        // miLista.conexion(4,1);
+        // miLista.conexion(4,3);
+        // miLista.conexion(5,6);
+        // miLista.imprimir();
         
     }
     

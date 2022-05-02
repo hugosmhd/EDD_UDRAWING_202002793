@@ -1,12 +1,12 @@
 package objetos;
 
-public class Lugares {
+public class Lugar {
     private int id;
     private String departamento;
     private String nombre;
     private boolean sucursal;
 
-    public Lugares(int id, String departamento, String nombre, boolean sucursal) {
+    public Lugar(int id, String departamento, String nombre, boolean sucursal) {
         this.id = id;
         this.departamento = departamento;
         this.nombre = nombre;
