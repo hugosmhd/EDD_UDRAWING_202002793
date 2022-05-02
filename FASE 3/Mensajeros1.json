@@ -1,0 +1,39 @@
+[
+    {
+        "dpi":"1",
+        "nombres":"Devonna",
+        "apellidos":"Dovey",
+        "tipo_licencia":"A",
+        "genero":"Female",
+        "direccion":"72329 Maple Alley",
+        "telefono":"54646454"
+    },
+    {
+        "dpi":"29",
+        "nombres":"Ulberto",
+        "apellidos":"Goodsell",
+        "tipo_licencia":"B",
+        "genero":"Male",
+        "direccion":"5 Northfield Hill",
+        "telefono":"84564655"
+    },
+    {
+        "dpi":"66",
+        "nombres":"Burnaby",
+        "apellidos":"Coviello",
+        "tipo_licencia":"C",
+        "genero":"Male",
+        "direccion":"3278 Dixon Center",
+        "telefono":"36582593"
+    },
+    {
+        "dpi":"103",
+        "nombres":"Burnaby",
+        "apellidos":"Coviello",
+        "tipo_licencia":"C",
+        "genero":"Male",
+        "direccion":"3278 Dixon Center",
+        "telefono":"36582593"
+    }
+
+]

@@ -43,6 +43,7 @@ public class TablaHash {
     }
 
     private void validarFactorCarga() {
+        // System.out.println("FACTOR CARGA " + this.carga);
         if(this.noElementos == this.carga) {
             Mensajero []tablaAux = this.tabla.clone();
             this.tabla = new Mensajero[this.M * 2];
@@ -55,7 +56,7 @@ public class TablaHash {
     public int dobleDispersion(int posicion, long clave) {
         int i = 1;
         while (tabla[posicion] != null) {
-            posicion = Math.toIntExact((clave % 7 + 1) * i);
+            posicion = Math.toIntExact(((clave % 7) + 1) * i);
             i++;
             posicion=posicion%M;
         }
@@ -80,6 +81,8 @@ public class TablaHash {
                 System.out.println(tabla[i].getTipoLicencia());
                 System.out.println(tabla[i].getDireccion());
                 System.out.println("------------------------------------------");
+            } else {
+                System.out.println(i + " NULL");
             }
         }
     }

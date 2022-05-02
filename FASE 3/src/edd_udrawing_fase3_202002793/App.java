@@ -50,11 +50,19 @@ public class App {
         System.out.println("--- Busqueda de elementos ---");*/
         // System.out.println(tabla.buscar("mundo"));
 
-        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\mensajeros.json";
+        // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\Mensajeroscopia2.json";
+        // try {
+        //     TablaHash tablaMensajeros = new TablaHash();
+        //     CargaMasiva.cargarMensajeros(ruta, tablaMensajeros);
+        //     tablaMensajeros.imprimir();
+        // } catch (IOException ex) {
+            
+        // }
+        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_lugares.json";
         try {
-            TablaHash tablaMensajeros = new TablaHash();
-            CargaMasiva.cargarMensajeros(ruta, tablaMensajeros);
-            tablaMensajeros.imprimir();
+            // TablaHash tablaMensajeros = new TablaHash();
+            CargaMasiva.cargarLugares(ruta);
+            // tablaMensajeros.imprimir();
         } catch (IOException ex) {
             
         }
