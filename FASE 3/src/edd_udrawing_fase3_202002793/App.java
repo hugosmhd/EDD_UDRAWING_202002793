@@ -11,6 +11,7 @@ import estructuras.TablaHash;
 import funciones.CargaMasiva;
 import funciones.DispersionHash;
 import gui.Login;
+import objetos.Lugar;
 
 public class App {
 
@@ -79,6 +80,11 @@ public class App {
         } catch (IOException ex) {
             
         }
+        Lugar inicio = listaAdyacencia.buscar(62);
+        Lugar fin = listaAdyacencia.buscar(54);
+        listaAdyacencia.dijkstra(inicio);
+        listaAdyacencia.camino(inicio, fin);
+
 
         // ListaAdyacencia miLista=new ListaAdyacencia(7);
         // ////lista

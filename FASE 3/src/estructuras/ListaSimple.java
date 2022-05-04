@@ -21,6 +21,19 @@ public class ListaSimple {
         return primero==null;
     }
 
+    public void insertarAlInicio(Object data) {
+        NodoSimple nuevo = new NodoSimple(data);
+        if (estaVacia()) {
+            this.primero = nuevo;
+            this.ultimo = nuevo;
+            this.cantidadNodos++;
+        } else {
+            nuevo.setSiguiente(this.primero);
+            this.primero = nuevo;
+            this.cantidadNodos++;
+        }
+    }
+
     public void insertarAlFinal(Object data) {
         NodoSimple nuevo = new NodoSimple(data);
         if (estaVacia()) {
