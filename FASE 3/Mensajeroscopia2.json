@@ -250,6 +250,22 @@
         "genero":"Female",
         "direccion":"72329 Maple Alley",
         "telefono":"78945612"
+    },{
+        "dpi":"74",
+        "nombres":"Hugo",
+        "apellidos":"Martinez",
+        "tipo_licencia":"C",
+        "genero":"Male",
+        "direccion":"72329 Maple Alley",
+        "telefono":"78945612"
+    }, {
+        "dpi":"73",
+        "nombres":"Alisson",
+        "apellidos":"Bailon",
+        "tipo_licencia":"A",
+        "genero":"Female",
+        "direccion":"72329 Maple Alley",
+        "telefono":"78945612"
     }
 
 

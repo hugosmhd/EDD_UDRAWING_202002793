@@ -38,11 +38,11 @@ public class App {
         // new StopWatch(180);
         // System.out.println("StopWatch Started.");
         
-        TablaHash tablaMsj = new TablaHash();
-        ArbolB arbolitoB = new ArbolB();
-        Login login = new Login(arbolitoB, tablaMsj);
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
+        // TablaHash tablaMsj = new TablaHash();
+        // ArbolB arbolitoB = new ArbolB();
+        // Login login = new Login(arbolitoB, tablaMsj);
+        // login.setVisible(true);
+        // login.setLocationRelativeTo(null);
 
         // String clave;
         // long valor;
@@ -75,14 +75,14 @@ public class App {
         System.out.println("--- Busqueda de elementos ---");*/
         // System.out.println(tabla.buscar("mundo"));
 
-        // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\Mensajeroscopia2.json";
-        // try {
-        //     TablaHash tablaMensajeros = new TablaHash();
-        //     CargaMasiva.cargarMensajeros(ruta, tablaMensajeros);
-        //     tablaMensajeros.imprimir();
-        // } catch (IOException ex) {
+        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\Mensajeroscopia2.json";
+        try {
+            TablaHash tablaMensajeros = new TablaHash();
+            CargaMasiva.cargarMensajeros(ruta, tablaMensajeros);
+            tablaMensajeros.imprimir();
+        } catch (IOException ex) {
             
-        // }
+        }
 
 
 

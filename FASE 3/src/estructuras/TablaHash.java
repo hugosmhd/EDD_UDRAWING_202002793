@@ -55,11 +55,18 @@ public class TablaHash {
 
     public int dobleDispersion(int posicion, long clave) {
         int i = 1;
-        while (tabla[posicion] != null) {
-            posicion = Math.toIntExact(((clave % 7) + 1) * i);
+        int posAux = 0;
+        int posAuxDos = posicion;
+        while (tabla[posAuxDos] != null) {
+            posAux = Math.toIntExact(((clave % 7) + 1) * i);
+            posAuxDos = posicion + posAux;
+            posAuxDos=posAuxDos%M;
             i++;
-            posicion=posicion%M;
         }
+        System.out.println("CLAVE " + clave);
+        System.out.println(posicion);
+        posicion = posAuxDos + posAux;
+        posicion=posAuxDos%M;
         return posicion;
     }
 
@@ -74,12 +81,12 @@ public class TablaHash {
             if (tabla[i] != null) {
                 System.out.println(i + "\t" + "MENSAJERO");
                 System.out.println(tabla[i].getDpi());
-                System.out.println(tabla[i].getNombres());
-                System.out.println(tabla[i].getApellidos());
-                System.out.println(tabla[i].getGenero());
-                System.out.println(tabla[i].getTelefono());
-                System.out.println(tabla[i].getTipoLicencia());
-                System.out.println(tabla[i].getDireccion());
+                // System.out.println(tabla[i].getNombres());
+                // System.out.println(tabla[i].getApellidos());
+                // System.out.println(tabla[i].getGenero());
+                // System.out.println(tabla[i].getTelefono());
+                // System.out.println(tabla[i].getTipoLicencia());
+                // System.out.println(tabla[i].getDireccion());
                 System.out.println("------------------------------------------");
             } else {
                 System.out.println(i + " NULL");
