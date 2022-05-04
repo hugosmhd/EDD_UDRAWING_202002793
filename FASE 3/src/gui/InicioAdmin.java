@@ -5,6 +5,8 @@ import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
+import estructuras.TablaHash;
+
 import java.awt.Desktop;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
@@ -28,6 +30,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private Icon icono;
     private MetodosAdmin metodos;
     private ArbolB arbolitoB;
+    private TablaHash tablaMsj;
     private JScrollPane sp;
     private JTable t;
     private JScrollPane spAlbumes;
@@ -46,11 +49,13 @@ public class InicioAdmin extends javax.swing.JFrame {
     private JTable tClientesNivelesDos;
     private JLabel totalClientesNivelesDos;
     
-    public InicioAdmin(ArbolB arbolitoB) {
+    public InicioAdmin(ArbolB arbolitoB, TablaHash tablaMsj) {
         initComponents();
         this.pintarImagen(this.lblCargarUsuarios, getClass().getResource("/image/grupo.png"));
+        this.pintarImagen(this.lblCargarMensajeros, getClass().getResource("/image/mensajero.png"));
         metodos = new MetodosAdmin();
         this.arbolitoB = arbolitoB;
+        this.tablaMsj = tablaMsj;
         this.jPanel2.add(cargarClientesDos(this.arbolitoB));
         this.jPanel2.updateUI();
     }
@@ -69,6 +74,8 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblCargarUsuarios = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        lblCargarMensajeros = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblUsuarios = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -98,13 +105,14 @@ public class InicioAdmin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         lblArbolB = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
-        jLabel4.setText("Carga Masiva de usuarios");
+        jLabel4.setText("Carga Masiva");
 
         lblCargarUsuarios.setText(".");
         lblCargarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,32 +124,58 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel6.setText("Usuarios");
 
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel14.setText("Mensajeros");
+
+        lblCargarMensajeros.setText(".");
+        lblCargarMensajeros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCargarMensajerosMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 562, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(620, 620, 620)
+                        .addGap(254, 254, 254)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(751, Short.MAX_VALUE))
+                            .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblCargarMensajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(28, 28, 28))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
+                                .addComponent(jLabel14)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(887, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(28, 28, 28)
-                .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(213, 213, 213))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel14))
+                        .addGap(28, 28, 28)
+                        .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(lblCargarMensajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(208, 208, 208))
         );
 
         jTabbedPane1.addTab("Carga masiva ", jPanel1);
@@ -407,6 +441,19 @@ public class InicioAdmin extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Arbol B", jPanel4);
 
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1459, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 652, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Fase 3", jPanel6);
+
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Cerrar Sesion");
@@ -457,7 +504,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void lblCargarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarUsuariosMouseClicked
         // TODO add your handling code here:
         try {
-            this.metodos.openFile("usuarios", arbolitoB);
+            this.metodos.openFile("usuarios", arbolitoB, tablaMsj);
             this.jPanel2.remove(this.spClientesNivelesDos);
             this.jPanel2.updateUI();
             this.jPanel2.add(cargarClientesDos(this.arbolitoB));
@@ -501,7 +548,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             this.dispose();
-            Login login = new Login(this.arbolitoB);
+            Login login = new Login(this.arbolitoB, this.tablaMsj);
             login.setVisible(true);
             login.setLocationRelativeTo(null);            
         } catch(Exception e) {
@@ -603,6 +650,15 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void btnListarClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnListarClientesMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btnListarClientesMouseEntered
+
+    private void lblCargarMensajerosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarMensajerosMouseClicked
+        // TODO add your handling code here:
+        try {
+            this.metodos.openFile("mensajeros", arbolitoB, tablaMsj);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_lblCargarMensajerosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1026,6 +1082,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1039,8 +1096,10 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblArbolB;
+    private javax.swing.JLabel lblCargarMensajeros;
     private javax.swing.JLabel lblCargarUsuarios;
     private javax.swing.JLabel lblUsuarios;
     private javax.swing.JTextField txtDPIBuscar;

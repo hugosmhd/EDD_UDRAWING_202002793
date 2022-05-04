@@ -9,6 +9,7 @@ import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
 import estructuras.ListaDoble;
+import estructuras.TablaHash;
 import funciones.CargaMasiva;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -26,7 +27,7 @@ public class MetodosAdmin {
         this.filePath = "";
     }
     
-    public void openFile(String text, ArbolB arbolitoB){
+    public void openFile(String text, ArbolB arbolitoB, TablaHash tablaMsj){
         StringBuffer content = new StringBuffer();
         
         JFileChooser openFile = new JFileChooser();
@@ -44,6 +45,9 @@ public class MetodosAdmin {
                 System.out.println(this.filePath);
                 if(text.equalsIgnoreCase("usuarios")) {
                     CargaMasiva.cargarClientes(this.filePath, arbolitoB);
+                } else if(text.equalsIgnoreCase("mensajeros")) {
+                    CargaMasiva.cargarMensajeros(this.filePath, tablaMsj);
+                    tablaMsj.imprimir();
                 } 
                 JOptionPane.showMessageDialog(null, "Carga con éxito");
                 

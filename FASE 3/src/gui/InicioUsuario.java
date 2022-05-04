@@ -11,6 +11,8 @@ import estructuras.ArbolBB;
 import estructuras.ListaDoble;
 import estructuras.ListaSimple;
 import estructuras.MatrizDispersa;
+import estructuras.TablaHash;
+
 import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -49,6 +51,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private ArbolAVL arbolitoAVL;
     private ListaDoble listaAlbumes;
     private ArbolB arbolitoB;
+    private TablaHash tablaMsj;
     private String recorrido = "";
     private String recorridoListaCapas = "";
     private JScrollPane sp;
@@ -56,7 +59,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     JLabel labelTitulo;
     JTable t;
     
-    public InicioUsuario(ArbolB arbolitoB, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB, ListaDoble listaAlbumes) {
+    public InicioUsuario(ArbolB arbolitoB, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB, ListaDoble listaAlbumes, TablaHash tablaMsj) {
         initComponents();
         // this.jPanel5.add(this.cargarTabla());
         
@@ -69,6 +72,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         this.arbolitoBB = arbolitoBB;
         this.listaAlbumes = listaAlbumes;
         this.arbolitoB = arbolitoB;
+        this.tablaMsj = tablaMsj;
     }
     
     
@@ -1230,7 +1234,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Login login = new Login(this.arbolitoB);
+        Login login = new Login(this.arbolitoB, tablaMsj);
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton11MouseClicked

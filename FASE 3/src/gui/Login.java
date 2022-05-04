@@ -6,6 +6,8 @@
 package gui;
 
 import estructuras.ArbolB;
+import estructuras.TablaHash;
+
 import java.awt.Image;
 import java.net.URL;
 import javax.swing.Icon;
@@ -26,10 +28,12 @@ public class Login extends javax.swing.JFrame {
     private ImageIcon imagen;
     private Icon icono;
     private ArbolB arbolitoB;
+    private TablaHash tablaMsj;
     
-    public Login(ArbolB arbolitoB) {
+    public Login(ArbolB arbolitoB, TablaHash tablaMsj) {
         initComponents();
         this.arbolitoB = arbolitoB;
+        this.tablaMsj = tablaMsj;
         
         this.pintarImagen(this.imgDTT, getClass().getResource("/image/ECYS.png"));
         this.pintarImagen(this.imgUser, getClass().getResource("/image/usuario.png"));
@@ -151,7 +155,7 @@ public class Login extends javax.swing.JFrame {
     private void lblRegistrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarUsuarioMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Registro registro = new Registro(this.arbolitoB);
+        Registro registro = new Registro(this.arbolitoB, tablaMsj);
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
     }//GEN-LAST:event_lblRegistrarUsuarioMouseClicked
@@ -162,7 +166,7 @@ public class Login extends javax.swing.JFrame {
         String password = passwordString(this.txtPassword.getPassword());
         if(username.equals("admin") && password.equals("EDD2022")){
             this.dispose();
-            InicioAdmin admin = new InicioAdmin(this.arbolitoB);
+            InicioAdmin admin = new InicioAdmin(this.arbolitoB, this.tablaMsj);
             admin.setVisible(true);
             admin.setLocationRelativeTo(null);
         } else {
@@ -172,7 +176,7 @@ public class Login extends javax.swing.JFrame {
                     if(password.equals(clienteEncontrado.getPassword())) {
                         this.dispose();
                         InicioUsuario user = new InicioUsuario(this.arbolitoB, clienteEncontrado.getArbolitoAVL(), clienteEncontrado.getArbolitoBB(), 
-                                clienteEncontrado.getListaAlbumes());
+                                clienteEncontrado.getListaAlbumes(), tablaMsj);
                         user.setVisible(true);
                         user.setLocationRelativeTo(null);
                     } else {

@@ -37,9 +37,10 @@ public class App {
         // }
         // new StopWatch(180);
         // System.out.println("StopWatch Started.");
-
+        
+        TablaHash tablaMsj = new TablaHash();
         ArbolB arbolitoB = new ArbolB();
-        Login login = new Login(arbolitoB);
+        Login login = new Login(arbolitoB, tablaMsj);
         login.setVisible(true);
         login.setLocationRelativeTo(null);
 
