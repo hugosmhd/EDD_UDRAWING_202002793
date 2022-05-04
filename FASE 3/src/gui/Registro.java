@@ -6,6 +6,7 @@
 package gui;
 
 import estructuras.ArbolB;
+import estructuras.ListaAdyacencia;
 import estructuras.TablaHash;
 
 import java.awt.Font;
@@ -30,11 +31,13 @@ public class Registro extends javax.swing.JFrame {
     private Icon icono;
     private ArbolB arbolitoB;
     private TablaHash tablaMsj;
+    private ListaAdyacencia listaAdyacencia;
     
-    public Registro(ArbolB arbolitoB, TablaHash tablaMsj) {
+    public Registro(ArbolB arbolitoB, TablaHash tablaMsj, ListaAdyacencia listaAdyacencia) {
         initComponents();
         this.arbolitoB = arbolitoB;
         this.tablaMsj = tablaMsj;
+        this.listaAdyacencia = listaAdyacencia;
         
         this.jLabel1.setFont(new Font("Serif", Font.BOLD, 30));
         this.pintarImagen(this.imgRegistro, getClass().getResource("/image/registro.png"));
@@ -215,7 +218,7 @@ public class Registro extends javax.swing.JFrame {
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Login login = new Login(this.arbolitoB, tablaMsj);
+        Login login = new Login(this.arbolitoB, tablaMsj, listaAdyacencia);
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegresarMouseClicked

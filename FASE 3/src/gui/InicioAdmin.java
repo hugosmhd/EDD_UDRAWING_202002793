@@ -4,6 +4,7 @@ package gui;
 import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
+import estructuras.ListaAdyacencia;
 import estructuras.ListaDoble;
 import estructuras.TablaHash;
 
@@ -31,6 +32,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private MetodosAdmin metodos;
     private ArbolB arbolitoB;
     private TablaHash tablaMsj;
+    private ListaAdyacencia listaAdyacencia;
     private JScrollPane sp;
     private JTable t;
     private JScrollPane spAlbumes;
@@ -49,13 +51,16 @@ public class InicioAdmin extends javax.swing.JFrame {
     private JTable tClientesNivelesDos;
     private JLabel totalClientesNivelesDos;
     
-    public InicioAdmin(ArbolB arbolitoB, TablaHash tablaMsj) {
+    public InicioAdmin(ArbolB arbolitoB, TablaHash tablaMsj, ListaAdyacencia listaAdyacencia) {
         initComponents();
         this.pintarImagen(this.lblCargarUsuarios, getClass().getResource("/image/grupo.png"));
         this.pintarImagen(this.lblCargarMensajeros, getClass().getResource("/image/mensajero.png"));
+        this.pintarImagen(this.lblCargarLugares, getClass().getResource("/image/marcador-de-posicion.png"));
+        this.pintarImagen(this.lblCargarRutas, getClass().getResource("/image/ruta.png"));
         metodos = new MetodosAdmin();
         this.arbolitoB = arbolitoB;
         this.tablaMsj = tablaMsj;
+        this.listaAdyacencia = listaAdyacencia;
         this.jPanel2.add(cargarClientesDos(this.arbolitoB));
         this.jPanel2.updateUI();
     }
@@ -76,6 +81,10 @@ public class InicioAdmin extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         lblCargarMensajeros = new javax.swing.JLabel();
+        lblCargarLugares = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        lblCargarRutas = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblUsuarios = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -134,6 +143,26 @@ public class InicioAdmin extends javax.swing.JFrame {
             }
         });
 
+        lblCargarLugares.setText(".");
+        lblCargarLugares.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCargarLugaresMouseClicked(evt);
+            }
+        });
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel15.setText("Lugares");
+
+        lblCargarRutas.setText(".");
+        lblCargarRutas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCargarRutasMouseClicked(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel16.setText("Rutas");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -157,11 +186,21 @@ public class InicioAdmin extends javax.swing.JFrame {
                                 .addGap(105, 105, 105)
                                 .addComponent(jLabel14)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(887, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCargarLugares, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCargarRutas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(564, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
@@ -169,12 +208,17 @@ public class InicioAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel14))
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel16))
                         .addGap(28, 28, 28)
                         .addComponent(lblCargarUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(lblCargarMensajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblCargarRutas, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCargarMensajeros, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCargarLugares, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(208, 208, 208))
         );
 
@@ -504,7 +548,7 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void lblCargarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarUsuariosMouseClicked
         // TODO add your handling code here:
         try {
-            this.metodos.openFile("usuarios", arbolitoB, tablaMsj);
+            this.metodos.openFile("usuarios", arbolitoB, tablaMsj, listaAdyacencia);
             this.jPanel2.remove(this.spClientesNivelesDos);
             this.jPanel2.updateUI();
             this.jPanel2.add(cargarClientesDos(this.arbolitoB));
@@ -548,7 +592,7 @@ public class InicioAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             this.dispose();
-            Login login = new Login(this.arbolitoB, this.tablaMsj);
+            Login login = new Login(this.arbolitoB, this.tablaMsj, this.listaAdyacencia);
             login.setVisible(true);
             login.setLocationRelativeTo(null);            
         } catch(Exception e) {
@@ -654,11 +698,31 @@ public class InicioAdmin extends javax.swing.JFrame {
     private void lblCargarMensajerosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarMensajerosMouseClicked
         // TODO add your handling code here:
         try {
-            this.metodos.openFile("mensajeros", arbolitoB, tablaMsj);
+            this.metodos.openFile("mensajeros", arbolitoB, tablaMsj, listaAdyacencia);
         } catch (Exception e) {
             System.out.println(e);
         }
     }//GEN-LAST:event_lblCargarMensajerosMouseClicked
+
+    private void lblCargarLugaresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarLugaresMouseClicked
+        // TODO add your handling code here:
+        try {
+            this.metodos.openFile("lugares", arbolitoB, tablaMsj, listaAdyacencia);
+            listaAdyacencia.imprimir();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_lblCargarLugaresMouseClicked
+
+    private void lblCargarRutasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCargarRutasMouseClicked
+        // TODO add your handling code here:
+        try {
+            this.metodos.openFile("rutas", arbolitoB, tablaMsj, listaAdyacencia);
+            listaAdyacencia.imprimir();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_lblCargarRutasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1083,6 +1147,8 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1099,7 +1165,9 @@ public class InicioAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblArbolB;
+    private javax.swing.JLabel lblCargarLugares;
     private javax.swing.JLabel lblCargarMensajeros;
+    private javax.swing.JLabel lblCargarRutas;
     private javax.swing.JLabel lblCargarUsuarios;
     private javax.swing.JLabel lblUsuarios;
     private javax.swing.JTextField txtDPIBuscar;

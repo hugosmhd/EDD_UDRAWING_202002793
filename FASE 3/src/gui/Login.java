@@ -6,6 +6,7 @@
 package gui;
 
 import estructuras.ArbolB;
+import estructuras.ListaAdyacencia;
 import estructuras.TablaHash;
 
 import java.awt.Image;
@@ -29,11 +30,13 @@ public class Login extends javax.swing.JFrame {
     private Icon icono;
     private ArbolB arbolitoB;
     private TablaHash tablaMsj;
+    private ListaAdyacencia listaAdyacencia;
     
-    public Login(ArbolB arbolitoB, TablaHash tablaMsj) {
+    public Login(ArbolB arbolitoB, TablaHash tablaMsj, ListaAdyacencia listaAdyacencia) {
         initComponents();
         this.arbolitoB = arbolitoB;
         this.tablaMsj = tablaMsj;
+        this.listaAdyacencia = listaAdyacencia;
         
         this.pintarImagen(this.imgDTT, getClass().getResource("/image/ECYS.png"));
         this.pintarImagen(this.imgUser, getClass().getResource("/image/usuario.png"));
@@ -155,7 +158,7 @@ public class Login extends javax.swing.JFrame {
     private void lblRegistrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarUsuarioMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Registro registro = new Registro(this.arbolitoB, tablaMsj);
+        Registro registro = new Registro(this.arbolitoB, tablaMsj, listaAdyacencia);
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
     }//GEN-LAST:event_lblRegistrarUsuarioMouseClicked
@@ -166,7 +169,7 @@ public class Login extends javax.swing.JFrame {
         String password = passwordString(this.txtPassword.getPassword());
         if(username.equals("admin") && password.equals("EDD2022")){
             this.dispose();
-            InicioAdmin admin = new InicioAdmin(this.arbolitoB, this.tablaMsj);
+            InicioAdmin admin = new InicioAdmin(this.arbolitoB, this.tablaMsj, this.listaAdyacencia);
             admin.setVisible(true);
             admin.setLocationRelativeTo(null);
         } else {
@@ -176,7 +179,7 @@ public class Login extends javax.swing.JFrame {
                     if(password.equals(clienteEncontrado.getPassword())) {
                         this.dispose();
                         InicioUsuario user = new InicioUsuario(this.arbolitoB, clienteEncontrado.getArbolitoAVL(), clienteEncontrado.getArbolitoBB(), 
-                                clienteEncontrado.getListaAlbumes(), tablaMsj);
+                                clienteEncontrado.getListaAlbumes(), tablaMsj, this.listaAdyacencia);
                         user.setVisible(true);
                         user.setLocationRelativeTo(null);
                     } else {

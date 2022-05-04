@@ -8,6 +8,7 @@ package gui;
 import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
+import estructuras.ListaAdyacencia;
 import estructuras.ListaDoble;
 import estructuras.ListaSimple;
 import estructuras.MatrizDispersa;
@@ -52,6 +53,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private ListaDoble listaAlbumes;
     private ArbolB arbolitoB;
     private TablaHash tablaMsj;
+    private ListaAdyacencia listaAdyacencia;
     private String recorrido = "";
     private String recorridoListaCapas = "";
     private JScrollPane sp;
@@ -59,7 +61,8 @@ public class InicioUsuario extends javax.swing.JFrame {
     JLabel labelTitulo;
     JTable t;
     
-    public InicioUsuario(ArbolB arbolitoB, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB, ListaDoble listaAlbumes, TablaHash tablaMsj) {
+    public InicioUsuario(ArbolB arbolitoB, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB, ListaDoble listaAlbumes,
+    TablaHash tablaMsj, ListaAdyacencia listaAdyacencia) {
         initComponents();
         // this.jPanel5.add(this.cargarTabla());
         
@@ -73,6 +76,7 @@ public class InicioUsuario extends javax.swing.JFrame {
         this.listaAlbumes = listaAlbumes;
         this.arbolitoB = arbolitoB;
         this.tablaMsj = tablaMsj;
+        this.listaAdyacencia = listaAdyacencia;
     }
     
     
@@ -1234,7 +1238,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        Login login = new Login(this.arbolitoB, tablaMsj);
+        Login login = new Login(this.arbolitoB, this.tablaMsj, this.listaAdyacencia);
         login.setVisible(true);
         login.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton11MouseClicked

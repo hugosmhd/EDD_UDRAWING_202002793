@@ -8,6 +8,7 @@ package gui;
 import estructuras.ArbolAVL;
 import estructuras.ArbolB;
 import estructuras.ArbolBB;
+import estructuras.ListaAdyacencia;
 import estructuras.ListaDoble;
 import estructuras.TablaHash;
 import funciones.CargaMasiva;
@@ -27,7 +28,7 @@ public class MetodosAdmin {
         this.filePath = "";
     }
     
-    public void openFile(String text, ArbolB arbolitoB, TablaHash tablaMsj){
+    public void openFile(String text, ArbolB arbolitoB, TablaHash tablaMsj, ListaAdyacencia listaAdyacencia){
         StringBuffer content = new StringBuffer();
         
         JFileChooser openFile = new JFileChooser();
@@ -47,8 +48,14 @@ public class MetodosAdmin {
                     CargaMasiva.cargarClientes(this.filePath, arbolitoB);
                 } else if(text.equalsIgnoreCase("mensajeros")) {
                     CargaMasiva.cargarMensajeros(this.filePath, tablaMsj);
-                    tablaMsj.imprimir();
-                } 
+                    // tablaMsj.imprimir();
+                } else if(text.equalsIgnoreCase("lugares")) {
+                    CargaMasiva.cargarLugares(this.filePath, listaAdyacencia);
+                    // tablaMsj.imprimir();
+                } else if(text.equalsIgnoreCase("rutas")) {
+                    CargaMasiva.cargarRutas(this.filePath, listaAdyacencia);
+                    // tablaMsj.imprimir();
+                }
                 JOptionPane.showMessageDialog(null, "Carga con éxito");
                 
             }catch(Exception e){
