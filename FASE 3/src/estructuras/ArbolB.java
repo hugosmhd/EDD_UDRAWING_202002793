@@ -139,6 +139,71 @@ public class ArbolB {
 
     }
 
+    public Cliente buscarUsuario(String user) {
+        return buscarUsuario(this.raiz, user);
+        // listarClientesAmpli(this.raiz);
+        // this.contador = 0;
+    }
+
+    private Cliente buscarUsuario(Pagina root, String user) {
+        if (root == null)
+          return null;
+
+        Cola q = new Cola();      
+        q.encolar(root);      
+        q.encolar(null);
+        Cliente encontrado = null;
+        while (!q.estaVacia()) {      
+            Pagina curr = q.desencolarB();    
+            if (curr == null) {
+                if (!q.estaVacia()) {
+                    q.encolar(null);
+                }                
+            } else {
+                curr.encolar(q);
+                encontrado = curr.visualizarDos(user);
+                if (encontrado != null) 
+                    break;
+                                
+            }
+        }
+        return encontrado;
+        // System.out.println("------ CLIENTE ENCONTRADO ------ ");
+        // System.out.println(encontrado.getDpi());
+        // System.out.println(encontrado.getNombreCliente());
+        // System.out.println(encontrado.getUsername());
+    }
+
+
+    // public Cliente buscarUsuario(String usuario) {
+    //     return buscarUsuario(usuario, raiz);
+    // }
+
+    // public Cliente buscarUsuario(String usuario, Pagina rama) {
+    //     // System.out.println(usuario);
+    //     if (rama.getPrimero() != null) {
+    //         NodoB temp = rama.getPrimero();
+    //         do {            
+    //             System.out.println(temp.getData().getDpi());
+    //             if ((usuario).equals((temp.getData().getUsername()))) {
+    //                 return temp.getData();
+    //             } else if(temp.getSiguiente() != null && temp.getIzquierda() != null) {
+    //                 Cliente obj = buscarUsuario(usuario, temp.getIzquierda());
+    //                 return obj;
+    //             } else if (temp.getSiguiente() == null && temp.getDerecha() != null) {
+    //                 Cliente obj = buscarUsuario(usuario, temp.getDerecha());
+    //                 // return obj;
+    //             }
+
+
+    //             temp = (NodoB) temp.getSiguiente();
+    //             // return obj;
+    //         } while (temp != null);
+    //     }
+    //     return null;
+
+    // }
+
     private void escribirArchivo(String ruta, String contenido) {
         FileWriter fichero = null;
         PrintWriter pw = null;
@@ -157,6 +222,19 @@ public class ArbolB {
             }            
         }
     }
+
+    // public Cliente buscarUsuario(String user){
+    //     System.out.println("Hola");
+    //     return buscarUsuario(this.raiz, user);        
+    // }
+
+    // public Cliente buscarUsuario(Pagina raiz, String username){
+    //     Cliente user = null;
+    //     if(raiz != null){
+    //         user = raiz.imprimirB(this, username);
+    //     }
+    //     return user;
+    // }
 
     public void preOrden(){
         this.graphviz = "digraph G {\n" + "node[shape=record]\n";    

@@ -1,0 +1,14 @@
+digraph G {
+node[shape=record]
+nodo1372793472[label="<P0>|DPI: 509795043008\n Nombre: Xenos Rosettini|<P1>|DPI: 3774437342905\n Nombre: Aleen Agar|<P2>|DPI: 5832133962407\n Nombre: Luz Jessel|<P3>|DPI: 7395677397676\n Nombre: Bambie Demeter|<P4>"];
+nodo1372793472:P0 -> nodo337372872;
+nodo1372793472:P1 -> nodo218548056;
+nodo1372793472:P2 -> nodo797936313;
+nodo1372793472:P3 -> nodo1732260578;
+nodo1372793472:P4 -> nodo749118820;
+nodo337372872[label="<P0>|DPI: 202234796624\n Nombre: Eveleen Lode|<P1>|DPI: 380119641848\n Nombre: Flint Entwhistle|<P2>"];
+nodo218548056[label="<P0>|DPI: 2219710687028\n Nombre: Thatcher Kime|<P1>|DPI: 2823733766159\n Nombre: Terese Davie|<P2>"];
+nodo797936313[label="<P0>|DPI: 4855304650377\n Nombre: John Glyde|<P1>|DPI: 5316328265084\n Nombre: Nathanael Flury|<P2>|DPI: 5442283221086\n Nombre: Reuben Moth|<P3>|DPI: 5480161890012\n Nombre: Graig Crennan|<P4>"];
+nodo1732260578[label="<P0>|DPI: 5851882041458\n Nombre: Rafaellle Killelea|<P1>|DPI: 6656659782764\n Nombre: Clemmy Drinnan|<P2>|DPI: 7361343889268\n Nombre: Jaime Dadswell|<P3>"];
+nodo749118820[label="<P0>|DPI: 7438786545699\n Nombre: Carlie Harburtson|<P1>|DPI: 7591284585186\n Nombre: Malinda Beechcraft|<P2>|DPI: 8631712415042\n Nombre: Nathalia Cardenas|<P3>"];
+}

@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 
 import estructuras.ArbolB;
 import estructuras.Cola;
+import objetos.Cliente;
 
 public class Pagina {
     boolean hoja;
@@ -87,6 +88,39 @@ public class Pagina {
         this.primero = primero;
     }
     
+    // public Cliente imprimirB(ArbolB nueva, String user){        
+    //     NodoB aux=this.primero;
+    //     int contador = 1;
+    //     System.out.println(user);
+    //     Cliente cliente = this.imprimirBD(user);
+    //     while(aux != null ){  
+    //         if (aux.getIzquierda() != null) {
+    //              nueva.buscarUsuario(aux.getIzquierda(), user);
+    //         }          
+    //         if (aux.getDerecha() != null && contador == this.getContador()) {
+    //             nueva.buscarUsuario(aux.getDerecha(), user); 
+    //         }
+    //         contador++;    
+    //         aux=aux.siguiente;
+    //     }
+    //     return cliente;
+        
+    // }
+
+    public Cliente imprimirBD(String username){        
+        NodoB aux=this.primero;
+        while(aux != null){
+            System.out.println("------ HOLA JAJAJA ------");
+            System.out.println(aux.getData().getDpi());
+            System.out.println(aux.getData().getNombreCliente());
+            System.out.println(aux.getData().getUsername());            
+            aux=aux.siguiente;
+        }
+        Cliente nuevo = new Cliente(2070707090116L, "hugo", "hugoses", "hugo", "1234", "55555", "44444", 1);
+        return nuevo;
+    }
+
+
     public String imprimir(ArbolB nueva, String graphviz){        
         NodoB aux=this.primero;
         int contador = 1;
@@ -152,6 +186,21 @@ public class Pagina {
             // contador++;
             aux=aux.siguiente;
         }
+    }
+
+    public Cliente visualizarDos(String user){     
+        NodoB aux=this.primero;
+        while(aux != null){
+            if (aux.getData().getUsername().equals(user)) {
+                return aux.getData();
+            }
+            Object[] datosPFila =  {aux.getData().getNombreCliente(), aux.getData().getDpi(), aux.getData().getArbolitoAVL().getTotalImg()};
+            // System.out.println("------");
+            System.out.println(aux.getData().getDpi());
+            // System.out.println(aux.getData().getUsername());
+            aux=aux.siguiente;
+        }
+        return null;
     }
 
     public void visualizarPass(DefaultTableModel modelo){     

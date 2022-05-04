@@ -146,14 +146,26 @@ public class CargaMasiva {
                 String dpi =  (String) jsonObject1.get("dpi"); 
                 Long dpiN = Long.parseLong(dpi.trim());
                 String nombreCliente =  (String) jsonObject1.get("nombre_cliente"); 
-                String username =  (String) jsonObject1.get("username");
+                String usuario =  (String) jsonObject1.get("usuario");
                 String correo =  (String) jsonObject1.get("correo");
                 String password =  (String) jsonObject1.get("password"); 
                 String telefono =  (String) jsonObject1.get("telefono"); 
                 String direccion =  (String) jsonObject1.get("direccion"); 
-                String idMunicipio =  (String) jsonObject1.get("idMunicipio"); 
-                int idMunicipioN = Integer.parseInt(idMunicipio.trim());
-                Cliente nuevoCliente = new Cliente(dpiN, nombreCliente, username, correo, password, telefono, direccion, idMunicipioN);
+                Long idMunicipio =  (Long) jsonObject1.get("id_municipio");  
+                // System.out.println("CLIENTE ------- ");
+                // System.out.println(dpiN);
+                // System.out.println(nombreCliente);
+                // System.out.println(username);
+                // System.out.println(correo);
+                // System.out.println(password);
+                // System.out.println(telefono);
+                // System.out.println(direccion);
+                // System.out.println(idMunicipio);
+                Cliente nuevoCliente = new Cliente(dpiN, nombreCliente, usuario, correo, password, telefono, direccion, idMunicipio.intValue());
+                // System.out.println("DESDE CARGA ----------");
+                // System.out.println(dpiN);
+                // System.out.println(nombreCliente);
+                // System.out.println(usuario);
                 arbolitoB.insertar(nuevoCliente);
                 
             }

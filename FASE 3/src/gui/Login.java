@@ -63,7 +63,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("DPI");
+        jLabel1.setText("Usuario");
 
         jLabel2.setText("Password");
 
@@ -158,17 +158,16 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
-        String dpi = this.txtDpi.getText();
+        String username = this.txtDpi.getText();
         String password = passwordString(this.txtPassword.getPassword());
-        if(dpi.equals("admin") && password.equals("EDD2022")){
+        if(username.equals("admin") && password.equals("EDD2022")){
             this.dispose();
             InicioAdmin admin = new InicioAdmin(this.arbolitoB);
             admin.setVisible(true);
             admin.setLocationRelativeTo(null);
         } else {
             try {
-                Long dpiLong = Long.parseLong(dpi);
-                Cliente clienteEncontrado = arbolitoB.buscar(dpiLong);
+                Cliente clienteEncontrado = arbolitoB.buscarUsuario(username);
                 if(clienteEncontrado != null) {
                     if(password.equals(clienteEncontrado.getPassword())) {
                         this.dispose();

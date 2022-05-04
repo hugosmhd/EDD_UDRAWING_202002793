@@ -4,22 +4,44 @@ package edd_udrawing_fase3_202002793;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Timer;
 
 import estructuras.ArbolB;
 import estructuras.ListaAdyacencia;
 import estructuras.TablaHash;
 import funciones.CargaMasiva;
 import funciones.DispersionHash;
+import funciones.StopWatch;
 import gui.Login;
+import objetos.Cliente;
 import objetos.Lugar;
+
+
 
 public class App {
 
     public static void main(String[] args) throws IOException {
-        /*ArbolB arbolitoB = new ArbolB();
+
+        // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\clientes.json";
+        // try {
+        //     ArbolB tablaMensajeros = new ArbolB();
+        //     CargaMasiva.cargarClientes(ruta, tablaMensajeros);
+        //     tablaMensajeros.buscarUsuario("gcrennane");
+        //     // System.out.println(user.getDpi());
+        //     // System.out.println(user.getDireccion());
+        //     // System.out.println(user.getNombreCliente());
+        //     // System.out.println(user.getIdMunicipio());
+        //     // System.out.println(user.getUsername());
+        // } catch (IOException ex) {
+            
+        // }
+        // new StopWatch(180);
+        // System.out.println("StopWatch Started.");
+
+        ArbolB arbolitoB = new ArbolB();
         Login login = new Login(arbolitoB);
-         login.setVisible(true);
-        login.setLocationRelativeTo(null);        */
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
 
         // String clave;
         // long valor;
@@ -60,30 +82,33 @@ public class App {
         // } catch (IOException ex) {
             
         // }
-        String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_lugares.json";
-        ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
-        try {
-            // TablaHash tablaMensajeros = new TablaHash();
-            CargaMasiva.cargarLugares(ruta, listaAdyacencia);
-            // listaAdyacencia.imprimir();
-            // tablaMensajeros.imprimir();
-        } catch (IOException ex) {
+
+
+
+        // String ruta = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_lugares.json";
+        // ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
+        // try {
+        //     // TablaHash tablaMensajeros = new TablaHash();
+        //     CargaMasiva.cargarLugares(ruta, listaAdyacencia);
+        //     // listaAdyacencia.imprimir();
+        //     // tablaMensajeros.imprimir();
+        // } catch (IOException ex) {
             
-        }
-        String ruta2 = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_rutas.json";
-        try {
-            // TablaHash tablaMensajeros = new TablaHash();
-            // ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
-            CargaMasiva.cargarRutas(ruta2, listaAdyacencia);
-            listaAdyacencia.imprimir();
-            // tablaMensajeros.imprimir();
-        } catch (IOException ex) {
+        // }
+        // String ruta2 = "D:\\HP DOCUMENTOS\\USAC\\2022\\PRIMER SEMESTRE 2022\\ESTRUCTURA DE DATOS\\LABORATORIO\\PROYECTOS\\EDD_UDRAWING_202002793\\FASE 3\\edd_rutas.json";
+        // try {
+        //     // TablaHash tablaMensajeros = new TablaHash();
+        //     // ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
+        //     CargaMasiva.cargarRutas(ruta2, listaAdyacencia);
+        //     listaAdyacencia.imprimir();
+        //     // tablaMensajeros.imprimir();
+        // } catch (IOException ex) {
             
-        }
-        Lugar inicio = listaAdyacencia.buscar(62);
-        Lugar fin = listaAdyacencia.buscar(54);
-        listaAdyacencia.dijkstra(inicio);
-        listaAdyacencia.camino(inicio, fin);
+        // }
+        // Lugar inicio = listaAdyacencia.buscar(62);
+        // Lugar fin = listaAdyacencia.buscar(54);
+        // listaAdyacencia.dijkstra(inicio);
+        // listaAdyacencia.camino(inicio, fin);
 
 
         // ListaAdyacencia miLista=new ListaAdyacencia(7);
@@ -108,5 +133,7 @@ public class App {
         // miLista.imprimir();
         
     }
+
+    
     
 }
