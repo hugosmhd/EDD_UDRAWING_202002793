@@ -82,6 +82,7 @@ public class App {
         //     TablaHash tablaMensajeros = new TablaHash();
         //     CargaMasiva.cargarMensajeros(ruta, tablaMensajeros);
         //     tablaMensajeros.imprimir();
+        //     tablaMensajeros.codigoGraphviz();
         // } catch (IOException ex) {
             
         // }

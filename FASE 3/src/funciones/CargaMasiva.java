@@ -277,7 +277,9 @@ public class CargaMasiva {
 
                 if (inicioLugar != null && finLugar != null) {
                     Conexion nuevaConexion = new Conexion(finLugar, peso.intValue());
+                    Conexion inversoConexion = new Conexion(inicioLugar, peso.intValue());
                     listaAdyacencia.conexion(inicioLugar, nuevaConexion);
+                    listaAdyacencia.conexion(finLugar, inversoConexion);
                 }
 
 
