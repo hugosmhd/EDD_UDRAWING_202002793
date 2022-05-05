@@ -1,186 +1,21 @@
-digraph G { 
+graph G { 
 labelloc="t";
-label="Tabla Hash Mensajeros";
+label="Grafo de rutas";
 fontsize = 40;
-nodesep=.05;rankdir=LR;node [shape=record,width=.1,height=.1];node0 [label = "Posicion: [0] \nDPI: 74\n 
-Nombre: Hugo Martinez\n 
-Genero: Male\n 
-Telefono: 78945612\n 
-Tipo Licen: C\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [1] \nDPI: 5902124121255\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [2] \nDPI: 8208175148573\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [3] \nDPI: 7107499247031\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [4] \n | Posicion: [5] \nDPI: 7313498147586\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [6] \nDPI: 7132894712143\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [7] \nDPI: 7178824660706\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [8] \nDPI: 4691900412147\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [9] \nDPI: 3198204548738\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [10] \n | Posicion: [11] \nDPI: 3972994112146\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [12] \nDPI: 6636021612143\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [13] \n | Posicion: [14] \nDPI: 2969085121410\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [15] \nDPI: 3202816145958\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [16] \n | Posicion: [17] \nDPI: 54639270412159\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [18] \nDPI: 6389650312141\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [19] \nDPI: 7891824660706\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [20] \nDPI: 9656416314512\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [21] \nDPI: 8411599904578\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [22] \nDPI: 869323214872\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [23] \nDPI: 5066334845771\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [24] \nDPI: 6245771152145\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [25] \nDPI: 5947147351421\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [26] \nDPI: 3518262112451\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [27] \n | Posicion: [28] \nDPI: 3198208768738\n 
-Nombre: Burnaby Coviello\n 
-Genero: Male\n 
-Telefono: 45678123\n 
-Tipo Licen: C\n 
-Direccion: 3278 Dixon Center\n 
- | Posicion: [29] \nDPI: 1582104548408\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [30] \nDPI: 9959812245482\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [31] \n | Posicion: [32] \n | Posicion: [33] \nDPI: 2902414514569\n 
-Nombre: Devonna Dovey\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | Posicion: [34] \nDPI: 3230664121274\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [35] \n | Posicion: [36] \nDPI: 57433090845128\n 
-Nombre: Ulberto Goodsell\n 
-Genero: Male\n 
-Telefono: 12345678\n 
-Tipo Licen: B\n 
-Direccion: 5 Northfield Hill\n 
- | Posicion: [37] \n | Posicion: [38] \n | Posicion: [39] \n | Posicion: [40] \n | Posicion: [41] \n | Posicion: [42] \n | Posicion: [43] \n | Posicion: [44] \n | Posicion: [45] \n | Posicion: [46] \n | Posicion: [47] \n | Posicion: [48] \n | Posicion: [49] \n | Posicion: [50] \n | Posicion: [51] \n | Posicion: [52] \n | Posicion: [53] \n | Posicion: [54] \n | Posicion: [55] \n | Posicion: [56] \n | Posicion: [57] \n | Posicion: [58] \n | Posicion: [59] \n | Posicion: [60] \n | Posicion: [61] \n | Posicion: [62] \n | Posicion: [63] \n | Posicion: [64] \n | Posicion: [65] \n | Posicion: [66] \n | Posicion: [67] \n | Posicion: [68] \n | Posicion: [69] \n | Posicion: [70] \n | Posicion: [71] \n | Posicion: [72] \n | Posicion: [73] \nDPI: 73\n 
-Nombre: Alisson Bailon\n 
-Genero: Female\n 
-Telefono: 78945612\n 
-Tipo Licen: A\n 
-Direccion: 72329 Maple Alley\n 
- | ",height=2.5];node [width = 1.5]; 
-} 
+rankdir=LR;
+1[label="1\nCahabón", group=1]
+2[label="2\nChahal", group=2]
+3[label="3\nChisec", group=3]
+4[label="4\nCobán", group=4]
+5[label="5\nFray Bartolomé de las Casas", group=5]
+6[label="6\nLanquín", group=6]
+1 -- 2[label="7"];
+1 -- 3[label="9"];
+1 -- 6[label="14"];
+2 -- 3[label="10"];
+2 -- 4[label="15"];
+3 -- 6[label="2"];
+3 -- 4[label="11"];
+4 -- 5[label="6"];
+5 -- 6[label="9"];
+}

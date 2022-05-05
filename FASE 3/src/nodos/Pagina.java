@@ -194,7 +194,6 @@ public class Pagina {
             if (aux.getData().getUsername().equals(user)) {
                 return aux.getData();
             }
-            Object[] datosPFila =  {aux.getData().getNombreCliente(), aux.getData().getDpi(), aux.getData().getArbolitoAVL().getTotalImg()};
             // System.out.println("------");
             System.out.println(aux.getData().getDpi());
             // System.out.println(aux.getData().getUsername());

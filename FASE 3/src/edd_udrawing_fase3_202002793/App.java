@@ -94,6 +94,7 @@ public class App {
         // try {
         //     // TablaHash tablaMensajeros = new TablaHash();
         //     CargaMasiva.cargarLugares(ruta, listaAdyacencia);
+            
         //     // listaAdyacencia.imprimir();
         //     // tablaMensajeros.imprimir();
         // } catch (IOException ex) {
@@ -104,37 +105,17 @@ public class App {
         //     // TablaHash tablaMensajeros = new TablaHash();
         //     // ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
         //     CargaMasiva.cargarRutas(ruta2, listaAdyacencia);
-        //     listaAdyacencia.imprimir();
+        //     // listaAdyacencia.imprimir();
+        //     listaAdyacencia.codigoGraphviz();
         //     // tablaMensajeros.imprimir();
         // } catch (IOException ex) {
             
         // }
-        // Lugar inicio = listaAdyacencia.buscar(62);
-        // Lugar fin = listaAdyacencia.buscar(54);
+        // Lugar inicio = listaAdyacencia.buscar(5);
+        // Lugar fin = listaAdyacencia.buscar(1);
         // listaAdyacencia.dijkstra(inicio);
         // listaAdyacencia.camino(inicio, fin);
 
-
-        // ListaAdyacencia miLista=new ListaAdyacencia(7);
-        // ////lista
-        // miLista.insert("A", 0);
-        // miLista.insert("B", 1);
-        // miLista.insert("C", 2);
-        // miLista.insert("D", 3);
-        // miLista.insert("E", 4);
-        // miLista.insert("F", 5);
-        // miLista.insert("G", 6);
-        // ///conexiones
-        // miLista.conexion(0,1);
-        // miLista.conexion(1,2);
-        // miLista.conexion(1,4);
-        // miLista.conexion(1,5);
-        // miLista.conexion(2,4);
-        // miLista.conexion(3,2);
-        // miLista.conexion(4,1);
-        // miLista.conexion(4,3);
-        // miLista.conexion(5,6);
-        // miLista.imprimir();
         
     }
 

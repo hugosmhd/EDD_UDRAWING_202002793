@@ -254,11 +254,8 @@ public class CargaMasiva {
     }
 
     public static void cargarRutas(String ruta, ListaAdyacencia listaAdyacencia) throws FileNotFoundException, IOException {
-        JSONParser parser = new JSONParser();
-        // System.out.println("Hola gola");
-        
-        try {
-            
+        JSONParser parser = new JSONParser();        
+        try {            
             Object obj = parser.parse(new FileReader(ruta));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray array = (JSONArray) jsonObject.get("Grafo");  
@@ -266,8 +263,6 @@ public class CargaMasiva {
             for(int i = 0 ; i < array.size() ; i++) {
                 JSONObject jsonObject1 = (JSONObject) array.get(i);
                 
-                // System.out.println("DATOS DEL LUGAR: " + i);
-                // System.out.println("ID: " + jsonObject1.get("id"));
                 Long inicio =  (Long) jsonObject1.get("inicio");  
                 Long fin =  (Long) jsonObject1.get("final");
                 Long peso =  (Long) jsonObject1.get("peso");
@@ -276,16 +271,13 @@ public class CargaMasiva {
                 Lugar finLugar = listaAdyacencia.buscar(fin.intValue());
 
                 if (inicioLugar != null && finLugar != null) {
-                    Conexion nuevaConexion = new Conexion(finLugar, peso.intValue());
-                    Conexion inversoConexion = new Conexion(inicioLugar, peso.intValue());
-                    listaAdyacencia.conexion(inicioLugar, nuevaConexion);
-                    listaAdyacencia.conexion(finLugar, inversoConexion);
-                }
-
-
-                
-                
-            }            
+                    Conexion nuevaConexion = new Conexion(listaAdyacencia.buscarA(fin.intValue()), peso.intValue(), true);
+                    Conexion inversoConexion = new Conexion(listaAdyacencia.buscarA(inicio.intValue()), peso.intValue(), false);
+                    listaAdyacencia.conexion(listaAdyacencia.buscarA(inicio.intValue()), nuevaConexion);
+                    listaAdyacencia.conexion(listaAdyacencia.buscarA(fin.intValue()), inversoConexion);
+                }                
+            }    
+            listaAdyacencia.codigoGraphviz();        
             
         } catch(FileNotFoundException e) { }
         catch(IOException e) { }

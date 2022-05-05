@@ -1,5 +1,8 @@
 package estructuras;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import nodos.NodoGrafo;
 import nodos.NodoSimple;
 import nodos.NodoVector;
@@ -46,8 +49,16 @@ public class ListaAdyacencia {
         return actual.getData();
     }
 
-    public void conexion(Lugar inicio, Conexion conex) {
-        NodoVector vertice = buscar(inicio);
+    public NodoVector buscarA(int idLugar) {
+        NodoVector actual = this.primero;
+        while (actual != null && actual.getData().getId() != idLugar) {            
+            actual = actual.getSiguiente();
+        }
+        return actual;
+    }
+
+    public void conexion(NodoVector inicio, Conexion conex) {
+        NodoVector vertice = inicio;
         NodoGrafo actualGrafo = vertice.getAdyacencia();
         if (actualGrafo == null) {
             vertice.setAdyacencia(new NodoGrafo(conex));
@@ -81,10 +92,10 @@ public class ListaAdyacencia {
         while (!noVisitados.estaVacia()) {
             NodoGrafo actualGrafo = actual.getAdyacencia();
             while(actualGrafo != null) {
-                if (actualGrafo.getData().getDestino().isVisitado() == false) {
-                    if (actual.getData().getDistancia() + actualGrafo.getData().getPeso() < actualGrafo.getData().getDestino().getDistancia()) {
-                        actualGrafo.getData().getDestino().setDistancia(actual.getData().getDistancia() + actualGrafo.getData().getPeso());
-                        actualGrafo.getData().getDestino().setPadre(actual.getData());
+                if (actualGrafo.getData().getDestino().getData().isVisitado() == false) {
+                    if (actual.getData().getDistancia() + actualGrafo.getData().getPeso() < actualGrafo.getData().getDestino().getData().getDistancia()) {
+                        actualGrafo.getData().getDestino().getData().setDistancia(actual.getData().getDistancia() + actualGrafo.getData().getPeso());
+                        actualGrafo.getData().getDestino().getData().setPadre(actual.getData());
                     }
                 }
                 actualGrafo = actualGrafo.getSiguiente();
@@ -150,11 +161,77 @@ public class ListaAdyacencia {
             // System.out.println("NOMBRE: " + actual.getData().getNombre());                
             NodoGrafo actualGrafo = actual.getAdyacencia();
             while(actualGrafo != null) {
-                System.out.print(" -> " + actualGrafo.getData().getDestino().getId());    
+                System.out.print(" -> " + actualGrafo.getData().getDestino().getData().getId());    
                 actualGrafo = actualGrafo.getSiguiente();
             }                
             actual = actual.getSiguiente();
             System.out.println("");
+        }
+    }
+
+    public void codigoGraphviz(){
+
+        StringBuilder dot = new StringBuilder();
+        dot.append("graph G { \n");
+        dot.append("labelloc=\"t\";\n");
+        dot.append("label=\"Grafo de rutas\";\n");         
+        dot.append("fontsize = 40;\n"); 
+        dot.append("rankdir=LR;\n"); 
+
+        String nodos = "";
+        String relaciones = "";
+
+        NodoVector actual= this.primero;
+
+        while( actual != null) {
+            // System.out.println("--------- VERTICE --------------");
+            // System.out.print("ID: " + actual.getData().getId()); 
+            nodos += actual.getData().getId()+ "[label=\"" + actual.getData().getDepartamento() + "\\n" +
+            actual.getData().getNombre() + "\", group=" + actual.getData().getId() + "]\n";               
+            // System.out.println("DEPARTAMENTO: " + actual.getData().getDepartamento());                
+            // System.out.println("NOMBRE: " + actual.getData().getNombre());                
+            NodoGrafo actualGrafo = actual.getAdyacencia();
+            while(actualGrafo != null) {
+                System.out.print(" -> " + actualGrafo.getData().getDestino().getData().getId()); 
+                if (actualGrafo.getData().isGraficado()) {
+                    relaciones += actual.getData().getId() + " -- " + actualGrafo.getData().getDestino().getData().getId() +  
+                    "[label=\"" + actualGrafo.getData().getPeso() + "\"];" + "\n";                    
+                }
+                actualGrafo = actualGrafo.getSiguiente();
+            }                
+            actual = actual.getSiguiente();
+        }
+
+        dot.append(nodos);
+        dot.append(relaciones);
+
+        dot.append("}\n"); 
+        // System.out.println(dot.toString());
+
+        escribirArchivo("./reporte.dot", dot.toString());
+        try {
+            Runtime.getRuntime().exec("dot" + " -Tpng " + "./reporte" + ".dot -o " + "reporte" + ".png ").waitFor();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
+    private void escribirArchivo(String ruta, String contenido) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+            pw.write(contenido);
+            pw.close();
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(pw != null) {
+                pw.close();
+            }            
         }
     }
         

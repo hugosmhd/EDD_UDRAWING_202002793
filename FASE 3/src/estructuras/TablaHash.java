@@ -120,16 +120,6 @@ public class TablaHash {
                 tabla += "Telefono: " + this.tabla[i].getTelefono() + "\\n \n";
                 tabla += "Tipo Licen: " + this.tabla[i].getTipoLicencia() + "\\n \n";
                 tabla += "Direccion: " + this.tabla[i].getDireccion() + "\\n \n";
-                // System.out.println(this.tabla[i].getDpi());
-                // System.out.println(tabla[i].getNombres());
-                // System.out.println(tabla[i].getApellidos());
-                // System.out.println(tabla[i].getGenero());
-                // System.out.println(tabla[i].getTelefono());
-                // System.out.println(tabla[i].getTipoLicencia());
-                // System.out.println(tabla[i].getDireccion());
-                // System.out.println("------------------------------------------");
-            } else {
-                // System.out.println(i + " NULL");
             }
             tabla += " | ";
         }
