@@ -216,6 +216,74 @@ public class ListaAdyacencia {
         }
     }
 
+    public void codigoGraphvizAdy(){
+
+        StringBuilder dot = new StringBuilder();
+        dot.append("digraph G { \n");
+        dot.append("labelloc=\"t\";\n");
+        dot.append("label=\"Lista de adyacencia\";\n");     
+        dot.append("fontsize = 40;\n");     
+        dot.append("nodesep=.05;\n"); 
+        dot.append("rankdir=LR;\n"); 
+        dot.append("node [shape=record,width=.1,height=.1];\n"); 
+
+        String cabeceras = "node0 [label = \"";
+        String nodosAdyacentes = "";
+        String relaciones = "";
+        int contadorFilas = 0;
+        
+
+        NodoVector actual= this.primero;
+
+        while( actual != null) {
+            // System.out.println("--------- VERTICE --------------");
+            // System.out.print("ID: " + actual.getData().getId());
+            cabeceras += "<f" + contadorFilas + "> " + actual.getData().getNombre() + ", " +  actual.getData().getDepartamento();
+            if (actual.getSiguiente() != null) {
+                cabeceras += " | \n";
+            }               
+            NodoGrafo actualGrafo = actual.getAdyacencia();
+            nodosAdyacentes += "nodo" + actual.getData().getId() + "[label = \"{<n> ";
+            while(actualGrafo != null) {
+                // System.out.print(" -> " + actualGrafo.getData().getDestino().getData().getId()); 
+                // if (actualGrafo.getData().isGraficado()) {
+                //     relaciones += actual.getData().getId() + " -- " + actualGrafo.getData().getDestino().getData().getId() +  
+                //     "[label=\"" + actualGrafo.getData().getPeso() + "\"];" + "\n";                    
+                // }
+                nodosAdyacentes += actualGrafo.getData().getDestino().getData().getNombre() + ", " +  actualGrafo.getData().getDestino().getData().getDepartamento();
+                actualGrafo = actualGrafo.getSiguiente();
+                if (actualGrafo != null) {
+                    nodosAdyacentes += " | ";
+                } else {
+                    relaciones += "node0:f" + contadorFilas + " -> " + "nodo" + actual.getData().getId() + ";\n";
+                }
+            }
+            nodosAdyacentes += "}\"]; \n"; 
+            contadorFilas++;               
+            actual = actual.getSiguiente();
+        }
+
+        cabeceras += "\",height=2.5];\n";
+
+        dot.append(cabeceras);
+        dot.append(nodosAdyacentes);
+        dot.append(relaciones);
+
+        dot.append("}\n"); 
+        // System.out.println(dot.toString());
+        // System.out.println(cabeceras);
+        // System.out.println(nodosAdyacentes);
+        // System.out.println(relaciones);
+
+        escribirArchivo("./reporte.dot", dot.toString());
+        try {
+            Runtime.getRuntime().exec("dot" + " -Tpng " + "./reporte" + ".dot -o " + "reporte" + ".png ").waitFor();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
+
     private void escribirArchivo(String ruta, String contenido) {
         FileWriter fichero = null;
         PrintWriter pw = null;

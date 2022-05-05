@@ -106,7 +106,7 @@ public class App {
         //     // ListaAdyacencia listaAdyacencia = new ListaAdyacencia();
         //     CargaMasiva.cargarRutas(ruta2, listaAdyacencia);
         //     // listaAdyacencia.imprimir();
-        //     listaAdyacencia.codigoGraphviz();
+        //     listaAdyacencia.codigoGraphvizAdy();
         //     // tablaMensajeros.imprimir();
         // } catch (IOException ex) {
             
