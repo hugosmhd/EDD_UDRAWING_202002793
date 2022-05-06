@@ -24,6 +24,10 @@ public class Mensajero {
         return dpi;
     }
 
+    public String toString() {
+        return this.getNombres();
+    }
+
     public void setDpi(Long dpi) {
         this.dpi = dpi;
     }

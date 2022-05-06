@@ -1,10 +1,14 @@
 package estructuras;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 import javax.swing.table.DefaultTableModel;
 
 import nodos.NodoLD;
 import nodos.NodoSimple;
 import objetos.Imagen;
+import objetos.Lugar;
 
 public class ListaSimple {
     NodoSimple primero;
@@ -33,6 +37,68 @@ public class ListaSimple {
             this.cantidadNodos++;
         }
     }
+
+    public void codigoGraphvizRuta(){
+
+        StringBuilder dot = new StringBuilder();
+        dot.append("graph G { \n");
+        dot.append("labelloc=\"t\";\n");
+        dot.append("label=\"Mejor ruta\";\n");         
+        dot.append("fontsize = 40;\n"); 
+        dot.append("rankdir=LR;\n"); 
+
+        String nodos = "";
+        String relaciones = "";
+
+        NodoSimple actual= this.primero;
+
+        while( actual!= null){
+            Lugar aux = (Lugar) actual.getData();
+            nodos += aux.getId()+ "[label=\"" + aux.getDepartamento() + "\\n" +
+            aux.getNombre() + "\""+ "]\n"; 
+
+            actual=actual.getSiguiente();
+            if (actual != null) {
+                Lugar auxD = (Lugar) actual.getData();
+                relaciones += aux.getId() + " -- " + auxD.getId() +  
+                        "[label=\"" + aux.getDistancia() + "\"];" + "\n";    
+            }
+        }
+        
+
+        dot.append(nodos);
+        dot.append(relaciones);
+
+        dot.append("}\n"); 
+        System.out.println(dot.toString());
+
+        escribirArchivo("./ruta.dot", dot.toString());
+        try {
+            Runtime.getRuntime().exec("dot" + " -Tpng " + "./ruta" + ".dot -o " + "ruta" + ".png ").waitFor();
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+    }
+
+    private void escribirArchivo(String ruta, String contenido) {
+        FileWriter fichero = null;
+        PrintWriter pw = null;
+        
+        try {
+            fichero = new FileWriter(ruta);
+            pw = new PrintWriter(fichero);
+            pw.write(contenido);
+            pw.close();
+            fichero.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            if(pw != null) {
+                pw.close();
+            }            
+        }
+    }
+    
 
     public void insertarAlFinal(Object data) {
         NodoSimple nuevo = new NodoSimple(data);

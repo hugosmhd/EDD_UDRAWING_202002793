@@ -834,6 +834,8 @@ public class InicioAdmin extends javax.swing.JFrame {
         });
     }
     
+   
+    
     private void tblMouseClicked(java.awt.event.MouseEvent evt) {
 
         String cadena = "";

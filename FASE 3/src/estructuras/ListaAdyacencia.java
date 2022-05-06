@@ -3,6 +3,8 @@ package estructuras;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import javax.swing.table.DefaultTableModel;
+
 import nodos.NodoGrafo;
 import nodos.NodoSimple;
 import nodos.NodoVector;
@@ -139,14 +141,34 @@ public class ListaAdyacencia {
 
     }
 
-    public void camino(Lugar a, Lugar b) {
+    public ListaSimple camino(Lugar a, Lugar b) {
         ListaSimple rutaOptima = new ListaSimple();
         Lugar actual = b;
 
         while (actual != null) {
-            rutaOptima.insertarAlInicio(actual);
+            rutaOptima.insertarAlFinal(actual);
             System.out.println(actual.getId() + " " + actual.getDepartamento() + " " + actual.getNombre());
             actual = actual.getPadre();            
+        }
+        System.out.println(b.getDistancia());
+        // recorrer();
+        return rutaOptima;
+    }
+
+    public void recorrer(){
+
+        NodoVector actual= this.primero;
+
+        while( actual != null) {
+            actual.getData().setVisitado(false);           
+            actual.getData().setDistancia(Float.POSITIVE_INFINITY);
+            NodoGrafo actualGrafo = actual.getAdyacencia();
+            while(actualGrafo != null) {
+                actualGrafo.getData().getDestino().getData().setVisitado(false);           
+                actualGrafo.getData().getDestino().getData().setDistancia(Float.POSITIVE_INFINITY); 
+                actualGrafo = actualGrafo.getSiguiente();
+            }                
+            actual = actual.getSiguiente();
         }
     }
 
@@ -155,19 +177,40 @@ public class ListaAdyacencia {
         NodoVector actual= this.primero;
 
         while( actual != null) {
-            // System.out.println("--------- VERTICE --------------");
-            System.out.print("ID: " + actual.getData().getId());                
-            // System.out.println("DEPARTAMENTO: " + actual.getData().getDepartamento());                
-            // System.out.println("NOMBRE: " + actual.getData().getNombre());                
             NodoGrafo actualGrafo = actual.getAdyacencia();
             while(actualGrafo != null) {
                 System.out.print(" -> " + actualGrafo.getData().getDestino().getData().getId());    
                 actualGrafo = actualGrafo.getSiguiente();
             }                
             actual = actual.getSiguiente();
-            System.out.println("");
         }
     }
+
+    public void listarSucursales(DefaultTableModel modelo){
+
+        NodoVector actual= this.primero;
+
+        while( actual != null) {
+            if (actual.getData().isSucursal()) {
+                Object[] datosPFila =  {actual.getData().getId(), actual.getData().getNombre() + ", " + actual.getData().getDepartamento()};
+                modelo.addRow(datosPFila);                
+            }
+            actual = actual.getSiguiente();
+        }
+    }
+
+    // public void listarSucursales(DefaultTableModel modelo) {
+    //     this.listarSucursales(this.raiz, modelo);
+    // }
+
+    // private void listarSucursales(NodoAVL tmp, DefaultTableModel modelo) {
+	// 	if (tmp != null) {
+    //         Object[] datosPFila =  {tmp.getImg().getId(), tmp.getImg().getCapas().devolverCapas()};
+    //         modelo.addRow(datosPFila);
+	// 		listarImagenes(tmp.getIzq(), modelo);
+	// 		listarImagenes(tmp.getDer(), modelo);
+	// 	}
+	// }
 
     public void codigoGraphviz(){
 
@@ -184,15 +227,10 @@ public class ListaAdyacencia {
         NodoVector actual= this.primero;
 
         while( actual != null) {
-            // System.out.println("--------- VERTICE --------------");
-            // System.out.print("ID: " + actual.getData().getId()); 
             nodos += actual.getData().getId()+ "[label=\"" + actual.getData().getDepartamento() + "\\n" +
             actual.getData().getNombre() + "\", group=" + actual.getData().getId() + "]\n";               
-            // System.out.println("DEPARTAMENTO: " + actual.getData().getDepartamento());                
-            // System.out.println("NOMBRE: " + actual.getData().getNombre());                
             NodoGrafo actualGrafo = actual.getAdyacencia();
             while(actualGrafo != null) {
-                System.out.print(" -> " + actualGrafo.getData().getDestino().getData().getId()); 
                 if (actualGrafo.getData().isGraficado()) {
                     relaciones += actual.getData().getId() + " -- " + actualGrafo.getData().getDestino().getData().getId() +  
                     "[label=\"" + actualGrafo.getData().getPeso() + "\"];" + "\n";                    

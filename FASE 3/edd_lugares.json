@@ -1,10 +1,10 @@
 {
     "Lugares": [
-        {"id":1,"departamento":"1","nombre":"Cahabón","sn_sucursal":"no"},
+        {"id":1,"departamento":"1","nombre":"Cahabón","sn_sucursal":"si"},
         {"id":2,"departamento":"2","nombre":"Chahal","sn_sucursal":"no"},
         {"id":3,"departamento":"3","nombre":"Chisec","sn_sucursal":"no"},
-        {"id":4,"departamento":"4","nombre":"Cobán","sn_sucursal":"no"},
+        {"id":4,"departamento":"4","nombre":"Cobán","sn_sucursal":"si"},
         {"id":5,"departamento":"5","nombre":"Fray Bartolomé de las Casas","sn_sucursal":"no"},
-        {"id":6,"departamento":"6","nombre":"Lanquín","sn_sucursal":"no"}        
+        {"id":6,"departamento":"6","nombre":"Lanquín","sn_sucursal":"si"}        
     ]
 }

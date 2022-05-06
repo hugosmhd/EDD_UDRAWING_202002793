@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
                     if(password.equals(clienteEncontrado.getPassword())) {
                         this.dispose();
                         InicioUsuario user = new InicioUsuario(this.arbolitoB, clienteEncontrado.getArbolitoAVL(), clienteEncontrado.getArbolitoBB(), 
-                                clienteEncontrado.getListaAlbumes(), tablaMsj, this.listaAdyacencia);
+                                clienteEncontrado.getListaAlbumes(), tablaMsj, this.listaAdyacencia, clienteEncontrado);
                         user.setVisible(true);
                         user.setLocationRelativeTo(null);
                     } else {

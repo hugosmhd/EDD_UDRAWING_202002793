@@ -3,6 +3,9 @@ package estructuras;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
+
 import funciones.DispersionHash;
 import objetos.Mensajero;
 
@@ -72,6 +75,31 @@ public class TablaHash {
         posicion=posAuxDos%M;
         return posicion;
     }
+    
+    public int dobleDispersionBuscar(int posicion, long clave) {
+        int i = 1;
+        int posAux = 0;
+        int posAuxDos = posicion;
+        
+        while (!(String.valueOf(clave).equals(String.valueOf(tabla[posAuxDos].getDpi())))) {
+            posAux = Math.toIntExact(((clave % 7) + 1) * i);
+            posAuxDos = posicion + posAux;
+            posAuxDos=posAuxDos%M;
+            i++;
+        }
+        posicion = posAuxDos + posAux;
+        posicion=posAuxDos%M;
+        return posicion;
+    }
+    
+
+    public Mensajero buscar(long dpi) {
+        int posicion = indice(dpi);
+        if (tabla[posicion] != null && !(String.valueOf(dpi).equals(String.valueOf(tabla[posicion].getDpi())))){
+            posicion = dobleDispersionBuscar(posicion, dpi);
+        }
+        return tabla[posicion];
+    }
 
     // VALIDAR LA BUSQUEDA
     // public String buscar(String clave) {
@@ -130,7 +158,6 @@ public class TablaHash {
         dot.append(tabla);
         dot.append("node [width = 1.5]; \n");  
         dot.append("} \n");  
-        System.out.println(dot.toString());
         
         escribirArchivo("./reporte.dot", dot.toString());
         try {
@@ -139,22 +166,40 @@ public class TablaHash {
             //TODO: handle exception
         }
     }
+
+    public void agregarItem(JComboBox<String> cmbMensajeros) {
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i] != null) {
+                cmbMensajeros.addItem(tabla[i].toString());
+            }
+        }
+    }
     
     public void imprimir() {
         for (int i = 0; i < tabla.length; i++) {
             if (tabla[i] != null) {
-                System.out.println(i + "\t" + "MENSAJERO");
-                System.out.println(tabla[i].getDpi());
+                // System.out.println(tabla[i].getDpi());
                 // System.out.println(tabla[i].getNombres());
                 // System.out.println(tabla[i].getApellidos());
                 // System.out.println(tabla[i].getGenero());
                 // System.out.println(tabla[i].getTelefono());
                 // System.out.println(tabla[i].getTipoLicencia());
                 // System.out.println(tabla[i].getDireccion());
-                System.out.println("------------------------------------------");
+                // System.out.println("------------------------------------------");
             } else {
                 System.out.println(i + " NULL");
             }
         }
     }
+
+    public void listarMensajeros(DefaultTableModel modelo) {
+        for (int i = 0; i < tabla.length; i++) {
+            if (tabla[i] != null) {
+                Object[] datosPFila =  {tabla[i].getDpi(), tabla[i].getNombres() + " " + tabla[i].getApellidos()};
+                modelo.addRow(datosPFila); 
+            }
+        }
+    }
+
+    
 }

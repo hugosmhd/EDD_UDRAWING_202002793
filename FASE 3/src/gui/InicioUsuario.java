@@ -17,9 +17,11 @@ import estructuras.TablaHash;
 import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -32,8 +34,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import nodos.NodoAVL;
+import nodos.NodoVector;
 import objetos.Capa;
+import objetos.Cliente;
+import objetos.Entrega;
 import objetos.Imagen;
+import objetos.Mensajero;
 
 /**
  *
@@ -53,6 +59,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private ListaDoble listaAlbumes;
     private ArbolB arbolitoB;
     private TablaHash tablaMsj;
+    private Cliente cliente;
     private ListaAdyacencia listaAdyacencia;
     private String recorrido = "";
     private String recorridoListaCapas = "";
@@ -61,9 +68,16 @@ public class InicioUsuario extends javax.swing.JFrame {
     JLabel labelTitulo;
     JTable t;
     
+    private JScrollPane spImg;
+    JTable tImg;
+    
+    private JScrollPane spSucursal;
+    JTable tSucursal;
+    
     public InicioUsuario(ArbolB arbolitoB, ArbolAVL arbolitoAVL, ArbolBB arbolitoBB, ListaDoble listaAlbumes,
-    TablaHash tablaMsj, ListaAdyacencia listaAdyacencia) {
+    TablaHash tablaMsj, ListaAdyacencia listaAdyacencia, Cliente actual) {
         initComponents();
+        
         // this.jPanel5.add(this.cargarTabla());
         
         // this.jPanel4
@@ -77,6 +91,11 @@ public class InicioUsuario extends javax.swing.JFrame {
         this.arbolitoB = arbolitoB;
         this.tablaMsj = tablaMsj;
         this.listaAdyacencia = listaAdyacencia;
+        this.cliente = actual;
+        this.llenarCmbMensajeros();
+        this.jPanel7.add(this.cargarTablaImg(this.arbolitoAVL));
+        this.jPanel7.add(this.cargarTablaSucursal(this.listaAdyacencia));
+        this.jPanel7.add(this.cargarTablaMensajeros(this.tablaMsj));
     }
     
     
@@ -155,6 +174,16 @@ public class InicioUsuario extends javax.swing.JFrame {
         jRadioButton6 = new javax.swing.JRadioButton();
         jButton14 = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        txtIdImgE = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        txtIdSucursalE = new javax.swing.JTextField();
+        txtDPIE = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
+        lblRuta = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButton11 = new javax.swing.JButton();
 
@@ -222,7 +251,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -440,7 +469,7 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addComponent(txtIdImg, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel12)
@@ -710,12 +739,12 @@ public class InicioUsuario extends javax.swing.JFrame {
                 .addComponent(txtIdImgEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(34, 34, 34)
                     .addComponent(jLabel16)
-                    .addContainerGap(572, Short.MAX_VALUE)))
+                    .addContainerGap(653, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Gestion imagenes", jPanel4);
@@ -847,10 +876,94 @@ public class InicioUsuario extends javax.swing.JFrame {
                     .addComponent(jRadioButton6))
                 .addGap(18, 18, 18)
                 .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Reportes", jPanel5);
+
+        jLabel22.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel22.setText("ID de las imagenes");
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel23.setText("ID´s de las imagenes separadas por comas");
+
+        jLabel24.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel24.setText("ID de la sucursal");
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel25.setText("DPI mensajero");
+
+        jButton15.setBackground(new java.awt.Color(255, 255, 153));
+        jButton15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton15.setText("Enviar");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+
+        lblRuta.setText(".");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lblRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 906, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel23)
+                                .addComponent(jLabel22))
+                            .addComponent(txtIdImgE, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(jLabel24))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(93, 93, 93)
+                                .addComponent(txtIdSucursalE, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(txtDPIE, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(97, 97, 97)
+                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel24))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIdImgE, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdSucursalE, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDPIE, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(51, 51, 51)
+                .addComponent(lblRuta, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Entrega", jPanel7);
 
         jButton11.setBackground(new java.awt.Color(255, 204, 0));
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -880,7 +993,7 @@ public class InicioUsuario extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(264, 264, 264)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Sesion", jPanel6);
@@ -920,6 +1033,9 @@ public class InicioUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             this.metodos.openFile("img",arbolitoAVL, arbolitoBB, listaAlbumes);
+            this.jPanel7.remove(this.spImg);
+            this.jPanel7.updateUI();
+            this.jPanel7.add(cargarTablaImg(this.arbolitoAVL));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1264,6 +1380,36 @@ public class InicioUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRecorridoLimitado1ActionPerformed
 
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        // TODO add your handling code here:
+        String imgs = this.txtIdImgE.getText();
+        String idSucursal = this.txtIdSucursalE.getText();
+        String dpiMensajero = this.txtDPIE.getText();
+        // !imgs.equals("") &&
+        if (!idSucursal.equals("") && !dpiMensajero.equals("")) {
+            NodoVector sucursal = this.listaAdyacencia.buscarA(Integer.parseInt(idSucursal.trim()));
+            NodoVector destino = this.listaAdyacencia.buscarA(cliente.getIdMunicipio());
+            Mensajero mensajero = this.tablaMsj.buscar(Long.parseLong(dpiMensajero.trim()));
+            this.listaAdyacencia.dijkstra(sucursal.getData());
+            ListaSimple ruta = this.listaAdyacencia.camino(sucursal.getData(), destino.getData());
+            ruta.codigoGraphvizRuta();
+            this.jPanel7.remove(spSucursal);
+            this.jPanel7.remove(spImg);
+            this.jPanel7.remove(this.sp);
+            JLabel lblRuta = new JLabel();
+            lblRuta.setBounds(150, 150, 500, 400);
+            lblRuta.setVisible(true);
+            // this.pintarImagen(lblRuta, getClass().getResource("/image/imagen.png"));
+
+            this.pintarImagen(lblRuta, "ruta.png");
+            this.jPanel7.add(lblRuta);
+            this.jPanel7.updateUI();
+            // Entrega nueva = new Entrega(sucursal, destino, cliente, mensajero, ruta);
+            // System.out.println(new Date(nueva.getTimestamp()));
+
+        }
+    }//GEN-LAST:event_jButton15MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1291,24 +1437,95 @@ public class InicioUsuario extends javax.swing.JFrame {
             sp = new JScrollPane(this.t);
             sp.setBounds(this.btnTop5Capas.getX() + this.btnTop5Capas.getWidth() + 300, this.btnTop5Capas.getY() + 60, 400, 450);
             sp.setVisible(true);
-            // Por ultimo agregamos el ScrollPane que tiene dentro la tabla.
-            /*DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();
-            tcr.setHorizontalAlignment(SwingConstants.CENTER);
-            this.t.getColumnModel().getColumn(0).setCellRenderer(tcr);
-            this.t.getColumnModel().getColumn(1).setCellRenderer(tcr);
-            this.t.getColumnModel().getColumn(2).setCellRenderer(tcr);
+            return sp;
+        }
 
-//        t.setEnabled(false);
-            this.t.getColumnModel().getColumn(0).setPreferredWidth(100);
-            this.t.getColumnModel().getColumn(1).setPreferredWidth(115);
-            this.t.getColumnModel().getColumn(2).setPreferredWidth(50);
-            // setEventoMouseClicked(this.tblUsuarios);
+        return falso;
 
-//        t.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            JTableHeader jtableHeader = this.t.getTableHeader();
-            jtableHeader.setDefaultRenderer(new GestionEncabezadoTabla());
-            this.t.setTableHeader(jtableHeader);
-//        panelProfesores.updateUI();*/
+    }
+    
+    public JScrollPane cargarTablaImg(ArbolAVL imagenes) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+        this.falso = new JScrollPane(this.tImg);
+
+        if (datos != null) {
+            String[] columnas = {"ID imagen", "Cantidad de capas"};
+            this.tImg = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tImg.setModel(modelo);
+            imagenes.listarImagenesDos(modelo);
+            
+
+            spImg = new JScrollPane(this.tImg);
+            spImg.setBounds(this.txtIdImgE.getX() , this.txtIdImgE.getY() + 60, 250, 450);
+            spImg.setVisible(true);
+            return spImg;
+        }
+
+        return falso;
+
+    }
+    
+    public JScrollPane cargarTablaSucursal(ListaAdyacencia listaAdy) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+        this.falso = new JScrollPane(this.t);
+
+        if (datos != null) {
+            String[] columnas = {"ID sucursal", "Sucursal"};
+            this.tSucursal = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            tSucursal.setModel(modelo);
+            listaAdy.listarSucursales(modelo);
+            
+
+            spSucursal = new JScrollPane(this.tSucursal);
+            spSucursal.setBounds(this.txtIdSucursalE.getX() , this.txtIdSucursalE.getY() + 60, 250, 450);
+            spSucursal.setVisible(true);
+            setEventoMouseClickedSucursal(this.tSucursal);
+            return spSucursal;
+        }
+
+        return falso;
+
+    }
+    
+    public JScrollPane cargarTablaMensajeros(TablaHash tablaMensajeros) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        Object[][] datos
+                = {
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},
+                    {"2999062130101", "Nombre1", "Apellido1"},};
+
+        this.falso = new JScrollPane(this.t);
+
+        if (datos != null) {
+            String[] columnas = {"DPI", "Mensajero"};
+            this.t = new JTable();
+            modelo.setColumnIdentifiers(columnas);
+            t.setModel(modelo);
+            tablaMensajeros.listarMensajeros(modelo);
+            
+
+            sp = new JScrollPane(this.t);
+            sp.setBounds(this.txtDPIE.getX() , this.txtDPIE.getY() + 60, 250, 450);
+            sp.setVisible(true);
+            setEventoMouseClickedMensajero(t);
             return sp;
         }
 
@@ -1418,6 +1635,53 @@ public class InicioUsuario extends javax.swing.JFrame {
         return falso;
 
     }
+    
+    private void setEventoMouseClickedSucursal(JTable tbl) {
+        tbl.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tblMouseClickedSucursal(e);
+            }
+        });
+    }
+     
+    private void tblMouseClickedSucursal(java.awt.event.MouseEvent evt) {
+
+        String cadena = "";
+        String dpi, nombre, password;
+
+        int row = tSucursal.rowAtPoint(evt.getPoint());
+        if (row >= 0 && tSucursal.isEnabled()) {
+            dpi = tSucursal.getValueAt(row, 0).toString();
+            this.txtIdSucursalE.setText(dpi);
+        }
+
+    }
+    
+    private void setEventoMouseClickedMensajero(JTable tbl) {
+        tbl.addMouseListener(new java.awt.event.MouseAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tblMouseClickedMensajero(e);
+            }
+        });
+    }
+     
+    private void tblMouseClickedMensajero(java.awt.event.MouseEvent evt) {
+
+        String cadena = "";
+        String dpi, nombre, password;
+
+        int row = t.rowAtPoint(evt.getPoint());
+        if (row >= 0 && t.isEnabled()) {
+            dpi = t.getValueAt(row, 0).toString();
+            this.txtDPIE.setText(dpi);
+        }
+
+    }
+
 
     public JScrollPane cargarTablaProfundidad(ArbolBB hojas) {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -1542,6 +1806,15 @@ public class InicioUsuario extends javax.swing.JFrame {
         this.repaint();
         
     }
+    
+    public void llenarCmbMensajeros() {
+        // System.out.println(tablaMsj);
+        // this.tablaMsj.agregarItem(this.cmbMensajeros);
+        
+        /*for(int i=0; i < 10; i++) {
+            this.cmbMensajeros.addItem(""+i);
+        }*/
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRecorridoLimitado;
@@ -1554,6 +1827,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1576,6 +1850,10 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1589,6 +1867,7 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
@@ -1603,13 +1882,17 @@ public class InicioUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel lblEstructura;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JTextArea lblRecorrido;
+    private javax.swing.JLabel lblRuta;
     private javax.swing.JTextField txtCapasNuevaImg;
+    private javax.swing.JTextField txtDPIE;
     private javax.swing.JTextField txtIdCapaL;
     private javax.swing.JTextField txtIdCapas;
     private javax.swing.JTextField txtIdImagenL;
     private javax.swing.JTextField txtIdImg;
+    private javax.swing.JTextField txtIdImgE;
     private javax.swing.JTextField txtIdImgEliminar;
     private javax.swing.JTextField txtIdNuevaImg;
+    private javax.swing.JTextField txtIdSucursalE;
     private javax.swing.JTextField txtNumeroCapas;
     // End of variables declaration//GEN-END:variables
 

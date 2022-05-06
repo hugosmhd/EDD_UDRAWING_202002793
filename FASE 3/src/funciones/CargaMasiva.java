@@ -277,7 +277,7 @@ public class CargaMasiva {
                     listaAdyacencia.conexion(listaAdyacencia.buscarA(fin.intValue()), inversoConexion);
                 }                
             }    
-            listaAdyacencia.codigoGraphviz();        
+            listaAdyacencia.codigoGraphviz();      
             
         } catch(FileNotFoundException e) { }
         catch(IOException e) { }

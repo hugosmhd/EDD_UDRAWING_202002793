@@ -280,5 +280,18 @@ public class ArbolAVL {
 		}
 	}
 
+    public void listarImagenesDos(DefaultTableModel modelo) {
+        this.listarImagenesDos(this.raiz, modelo);
+    }
+
+    private void listarImagenesDos(NodoAVL tmp, DefaultTableModel modelo) {
+		if (tmp != null) {
+            Object[] datosPFila =  {tmp.getImg().getId(), tmp.getImg().getCapas().devolverCapas()};
+            modelo.addRow(datosPFila);
+			listarImagenes(tmp.getIzq(), modelo);
+			listarImagenes(tmp.getDer(), modelo);
+		}
+	}
+
 
 }
